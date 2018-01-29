@@ -4,6 +4,7 @@
   roles:
 
     - .
+    - security
     - communication
     - configuration-management
     - java
