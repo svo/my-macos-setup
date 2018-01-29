@@ -17,5 +17,11 @@
       - export PATH="$HOME/.jenv/bin:$PATH"
       - eval "$(jenv init -)"
 
+    - name: Install tap for Java
+      homebrew_tap: tap=caskroom/versions
+
+    - name: Install Java 8
+      homebrew_cask: name=java8
+
     - name: Install IntelliJ
       homebrew_cask: name=intellij-idea
