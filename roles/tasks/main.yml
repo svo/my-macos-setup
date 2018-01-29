@@ -1,2 +1,5 @@
     - name: Install slack
       homebrew_cask: name=slack
+
+    - name: Install docker
+      homebrew: name=docker
