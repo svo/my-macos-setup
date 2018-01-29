@@ -8,8 +8,14 @@
     - name: Install tmux
       homebrew: name=tmux
 
+    - name: Install jenv java environment manager
+      homebrew: name=jenv
+
+    - name: Add jenv to .bash_profile
+      lineinfile: dest=~/.bash_profile line='{{ item }}' create=yes
+      with_items:
+      - export PATH="$HOME/.jenv/bin:$PATH"
+      - eval "$(jenv init -)"
+
     - name: Install IntelliJ
       homebrew_cask: name=intellij-idea
-
-    - name: Install homebrew versions
-      homebrew_tap: tap=homebrew/versions
