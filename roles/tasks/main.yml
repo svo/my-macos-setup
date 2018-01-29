@@ -3,7 +3,9 @@
       homebrew_cask: name=slack
 
     - name: Install docker
-      homebrew: name=docker
+      homebrew_cask: name={{ item }}
+      with_items:
+      - docker
 
     - name: Install tmux
       homebrew: name=tmux
