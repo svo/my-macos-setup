@@ -8,4 +8,4 @@ sudo easy_install pip
 
 pip install ansible==2.4.2.0
 
-ansible-playbook -i "localhost," -c local playbook.yml
+ansible-playbook -i "localhost," -c local -K playbook.yml
