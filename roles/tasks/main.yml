@@ -1,3 +1,4 @@
+
     - name: Install slack
       homebrew_cask: name=slack
 
@@ -6,3 +7,9 @@
 
     - name: Install tmux
       homebrew: name=tmux
+
+    - name: Install IntelliJ
+      homebrew_cask: name=intellij-idea
+
+    - name: Install homebrew versions
+      homebrew_tap: tap=homebrew/versions
