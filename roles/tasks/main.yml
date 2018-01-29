@@ -27,3 +27,7 @@
 
     - name: Install IntelliJ
       homebrew_cask: name=intellij-idea
+
+    - name: Install AWS CLI tools
+      pip: name=awscli extra_args="--ignore-installed six"
+      become: yes
