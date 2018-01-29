@@ -3,3 +3,6 @@
 
     - name: Install docker
       homebrew: name=docker
+
+    - name: Install tmux
+      homebrew: name=tmux
