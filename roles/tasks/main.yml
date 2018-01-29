@@ -1,4 +1,7 @@
 
+    - name: Install git
+      homebrew: name=git
+
     - name: Install tmux
       homebrew: name=tmux
 
@@ -23,7 +26,7 @@
       - {repo: "https://github.com/airblade/vim-gitgutter.git", name: vim-gitgutter}
 
     - name: Update .vimrc
-      lineinfile: dest=~/.vimrc line="{{ item }}" create=yes
+      lineinfile: dest=~/.vimrc line={{ item }} create=yes
       with_items:
       - execute pathogen#infect()
       - syntax on

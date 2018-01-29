@@ -3,7 +3,7 @@
 
   roles:
 
+    - .
     - communication
     - configuration-management
     - java
-    - .
