@@ -15,9 +15,16 @@
     - name: Install Vagrant
       homebrew_cask: name=vagrant
 
+    - name: Install Terraform
+      homebrew: name=terraform
+
+    - name: Install Packer
+      homebrew: name=packer
+
     - name: Install vim plugins
       git: repo={{ item.repo }} dest=~/.vim/bundle/{{ item.dest }}
       with_items:
       - {repo: "https://github.com/pearofducks/ansible-vim.git", dest: ansible-vim}
       - {repo: "https://github.com/hashivim/vim-terraform.git", dest: vim-terraform}
       - {repo: "https://github.com/rodjek/vim-puppet.git", dest: vim-puppet}
+      - {repo: "https://github.com/hashivim/vim-packer.git", dest: vim-packer}
