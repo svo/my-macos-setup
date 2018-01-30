@@ -1,0 +1,3 @@
+
+    - name: Install Spotify
+      homebrew_cask: name=spotify
