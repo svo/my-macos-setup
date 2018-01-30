@@ -1,12 +1,8 @@
 
-    - name: Install vim plugins
-      git: repo={{ item.repo }} dest=~/.vim/bundle/{{ item.dest }}
-      with_items:
-      - {repo: "https://github.com/pearofducks/ansible-vim.git", dest: ansible-vim}
-      - {repo: "https://github.com/hashivim/vim-terraform.git", dest: vim-terraform}
-      - {repo: "https://github.com/rodjek/vim-puppet.git", dest: vim-puppet}
+    - name: Install Ansible
+      pip: name=ansible version=2.4.2.0
 
-    - name: Install docker
+    - name: Install Docker
       homebrew_cask: name=docker
 
     - name: Install AWS CLI tools
@@ -18,3 +14,10 @@
 
     - name: Install Vagrant
       homebrew_cask: name=vagrant
+
+    - name: Install vim plugins
+      git: repo={{ item.repo }} dest=~/.vim/bundle/{{ item.dest }}
+      with_items:
+      - {repo: "https://github.com/pearofducks/ansible-vim.git", dest: ansible-vim}
+      - {repo: "https://github.com/hashivim/vim-terraform.git", dest: vim-terraform}
+      - {repo: "https://github.com/rodjek/vim-puppet.git", dest: vim-puppet}
