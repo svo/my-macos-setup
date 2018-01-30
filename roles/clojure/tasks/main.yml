@@ -1,0 +1,4 @@
+
+    - name: Install leiningen
+      homebrew: name=leiningen
+
