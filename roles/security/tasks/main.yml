@@ -1,3 +1,6 @@
 
     - name: Install nmap
       homebrew: name=nmap
+
+    - name: Install dnsmap
+      homebrew: name=dnsmap
