@@ -1,11 +1,11 @@
 
-    - name: Install git
+    - name: Install git source control
       homebrew: name=git
 
-    - name: Install tmux
+    - name: Install tmux terminal multiplexer
       homebrew: name=tmux
 
-    - name: Install vim
+    - name: Install vim text editor
       homebrew: name=vim
 
     - name: Setup paths for vim
@@ -14,7 +14,7 @@
       - ~/.vim/autoload
       - ~/.vim/bundle
 
-    - name: Install pathogen
+    - name: Install pathogen vim plugin/configuration manager
       get_url: url=https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim dest=~/.vim/autoload/pathogen.vim
 
     - name: Install vim plugin
@@ -44,5 +44,5 @@
     - name: Install Chrome browser
       homebrew_cask: name=google-chrome
 
-    - name: Install 1Password
+    - name: Install 1Password password manager
       homebrew_cask: name=1password
