@@ -10,3 +10,6 @@
 
     - name: Install ncrack
       homebrew: name=ncrack
+
+    - name: Install skipfish
+      homebrew: name=skipfish
