@@ -41,6 +41,9 @@
       - let g:ctrlp_cmd = 'CtrlP'
       - autocmd BufEnter * EnableStripWhitespaceOnSave
 
+    - name: Install icdiff side-by-side diff tool
+      homebrew: name=icdiff
+
     - name: Install Chrome browser
       homebrew_cask: name=google-chrome
 
