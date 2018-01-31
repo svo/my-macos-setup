@@ -41,6 +41,9 @@
       - let g:ctrlp_cmd = 'CtrlP'
       - autocmd BufEnter * EnableStripWhitespaceOnSave
 
+    - name: Install IntelliJ
+      homebrew_cask: name=intellij-idea
+
     - name: Install icdiff side-by-side diff tool
       homebrew: name=icdiff
 
