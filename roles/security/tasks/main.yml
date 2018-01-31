@@ -1,15 +1,15 @@
 
-    - name: Install tor
+    - name: Install tor anonymizing overlay network for TCP
       homebrew: name=tor
 
-    - name: Install nmap
+    - name: Install nmap for network discovery and security auditing
       homebrew: name=nmap
 
-    - name: Install dnsmap
+    - name: Install dnsmap for brute force DNS name discovery
       homebrew: name=dnsmap
 
-    - name: Install ncrack
+    - name: Install ncrack network authentication cracking tool
       homebrew: name=ncrack
 
-    - name: Install skipfish
+    - name: Install skipfish web application security reconnaissance tool
       homebrew: name=skipfish
