@@ -1,0 +1,9 @@
+
+    - name: Install nvm for node version management
+      homebrew: name=nvm
+
+    - name: Add nvm to .bash_profile
+      lineinfile: dest=~/.bash_profile line='{{ item }}' create=yes
+      with_items:
+      - export NVM_DIR="$HOME/.nvm"
+      - . "$(brew --prefix nvm)/nvm.sh"
