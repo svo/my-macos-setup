@@ -7,3 +7,6 @@
 
     - name: Install dnsmap
       homebrew: name=dnsmap
+
+    - name: Install ncrack
+      homebrew: name=ncrack
