@@ -1,4 +1,7 @@
 
+    - name: Install tor
+      homebrew: name=tor
+
     - name: Install nmap
       homebrew: name=nmap
 
