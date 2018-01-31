@@ -49,3 +49,6 @@
 
     - name: Install Alfred productivity utility
       homebrew_cask: name=alfred
+
+    - name: Install Taskwarrior command line task management tool
+      homebrew: name=task
