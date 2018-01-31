@@ -46,3 +46,6 @@
 
     - name: Install 1Password password manager
       homebrew_cask: name=1password
+
+    - name: Install Alfred productivity utility
+      homebrew_cask: name=alfred
