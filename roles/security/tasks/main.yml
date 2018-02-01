@@ -19,3 +19,6 @@
 
     - name: Install Wireshark packet analyzer
       homebrew_cask: name=wireshark
+
+    - name: Install OWASP ZAP attack proxy
+      homebrew_cask: name=owasp-zap
