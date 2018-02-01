@@ -16,3 +16,6 @@
 
     - name: Install theHarvester e-mail account and subdomain discovery tool
       homebrew: name=theharvester
+
+    - name: Install Wireshark packet analyzer
+      homebrew_cask: name=wireshark
