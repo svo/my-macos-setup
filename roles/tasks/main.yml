@@ -62,3 +62,6 @@
 
     - name: Install Taskwarrior command line task management tool
       homebrew: name=task
+
+    - name: Install Dropbox for online storage
+      homebrew_cask: name=dropbox
