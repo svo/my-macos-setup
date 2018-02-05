@@ -54,6 +54,9 @@
     - name: Install HTTPie cURL wrapper
       homebrew: name=httpie
 
+    - name: Install lynx command line browser
+      homebrew: name=lynx
+
     - name: Install Chrome browser
       homebrew_cask: name=google-chrome
 
