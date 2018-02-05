@@ -4,3 +4,6 @@
 
     - name: Install iftop for network monitoring
       homebrew: name=iftop
+
+    - name: Install Wireshark packet analyzer
+      homebrew_cask: name=wireshark
