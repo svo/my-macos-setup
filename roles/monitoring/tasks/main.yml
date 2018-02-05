@@ -1,3 +1,6 @@
 
     - name: Install htop for process monitoring
       homebrew: name=htop
+
+    - name: Install iftop for network monitoring
+      homebrew: name=iftop
