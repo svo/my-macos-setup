@@ -51,6 +51,9 @@
     - name: Install icdiff side-by-side diff tool
       homebrew: name=icdiff
 
+    - name: Install HTTPie cURL wrapper
+      homebrew: name=httpie
+
     - name: Install Chrome browser
       homebrew_cask: name=google-chrome
 
