@@ -71,6 +71,3 @@
 
     - name: Install Dropbox for online storage
       homebrew_cask: name=dropbox
-
-    - name: Install Mounty for NTFS
-      homebrew_cask: name=mounty
