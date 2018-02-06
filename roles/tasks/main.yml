@@ -71,3 +71,13 @@
 
     - name: Install Dropbox for online storage
       homebrew_cask: name=dropbox
+
+    - name: Install FUSE for extending native file handling capabilities
+      homebrew_cask: name=osxfuse
+
+    - name: Install FUSE NTFS support
+      homebrew: name=ntfs-3g
+
+    - name: Add /usr/local/sbin to path
+      lineinfile: path=/etc/paths line='/usr/local/sbin' insertbefore='/usr/sbin'
+      become: yes
