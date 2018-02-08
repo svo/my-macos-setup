@@ -81,3 +81,9 @@
     - name: Add /usr/local/sbin to path
       lineinfile: path=/etc/paths line='/usr/local/sbin' insertbefore='/usr/sbin'
       become: yes
+
+    - name: Add drivers brew tap
+      homebrew_tap: name=caskroom/drivers
+
+    - name: Install logitech options software
+      homebrew_cask: name=logitech-options
