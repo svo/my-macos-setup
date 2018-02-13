@@ -87,3 +87,6 @@
 
     - name: Install logitech options software
       homebrew_cask: name=logitech-options
+
+    - name: Install watch for repeating command line commands
+      homebrew: name=watch
