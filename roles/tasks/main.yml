@@ -21,6 +21,28 @@
           GIT_PS1_SHOWDIRTYSTATE=true
           export PS1='[\u@mbp \w$(__git_ps1)]\$ '
 
+    - name: Setup git colors
+      blockinfile:
+        path: ~/.gitconfig
+        block: |
+          [color]
+                  branch = auto
+                  diff = auto
+                  status = auto
+          [color "branch"]
+                  current = yellow reverse
+                  local = yellow
+                  remote = green
+          [color "diff"]
+                  meta = yellow bold
+                  frag = magenta bold
+                  old = red bold
+                  new = green bold
+          [color "status"]
+                  added = yellow
+                  changed = green
+                  untracked = cyan
+
     - name: Install tmux terminal multiplexer
       homebrew: name=tmux
 
