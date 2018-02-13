@@ -2,6 +2,17 @@
     - name: Install git source control
       homebrew: name=git
 
+    - name: Install bash-completion
+      homebrew: name=bash-completion
+
+    - name: Setup bash-completion
+      blockinfile:
+        path: ~/.bash_profile
+        block: |
+          if [ -f $(brew --prefix)/etc/bash_completion ]; then
+            . $(brew --prefix)/etc/bash_completion
+          fi
+
     - name: Install tmux terminal multiplexer
       homebrew: name=tmux
 
