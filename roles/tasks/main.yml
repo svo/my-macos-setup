@@ -46,6 +46,9 @@
     - name: Install tmux terminal multiplexer
       homebrew: name=tmux
 
+    - name: Install Midnight Commander command line file manager
+      homebrew: name=midnight-commander
+
     - name: Install PlantUML CLI diagramming tool
       homebrew: name=plantuml
 
