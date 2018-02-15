@@ -19,8 +19,10 @@
         path: ~/.bash_profile
         marker: "# {mark} ANSIBLE MANAGED BLOCK (GIT)"
         block: |
-          GIT_PS1_SHOWDIRTYSTATE=true
-          export PS1='[\u@mbp \w$(__git_ps1)]\$ '
+          export GIT_PS1_SHOWDIRTYSTATE=1 GIT_PS1_SHOWSTASHSTATE=1 GIT_PS1_SHOWUNTRACKEDFILES=1
+          export GIT_PS1_DESCRIBE_STYLE=branch
+          export PROMPT_COMMAND='__git_ps1 "\u@\h:\w" " \\\$ "'
+          export GIT_PS1_SHOWCOLORHINTS=1
 
     - name: Setup git colors
       blockinfile:
