@@ -1,5 +1,3 @@
-- name: Install PlantUML CLI diagramming tool
-  homebrew: name=plantuml
 
 - name: Install vim text editor
   homebrew: name=vim
@@ -46,17 +44,8 @@
 - name: Install YouCompleteMe
   shell: ./install.py chdir=~/.vim/bundle/YouCompleteMe
 
-- name: Install IntelliJ
-  homebrew_cask: name=intellij-idea
-
 - name: Install lynx command line browser
   homebrew: name=lynx
 
 - name: Install Chrome browser
   homebrew_cask: name=google-chrome
-
-- name: Install Taskwarrior command line task management tool
-  homebrew: name=task
-
-- name: Install 1Password password manager
-  homebrew_cask: name=1password
