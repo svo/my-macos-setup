@@ -3,6 +3,7 @@
 
   roles:
 
+    - source-control
     - .
     - security
     - communication

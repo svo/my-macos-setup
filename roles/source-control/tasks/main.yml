@@ -1,0 +1,37 @@
+- name: Install git source control
+  homebrew: name=git
+
+- name: Setup terminal for git
+  blockinfile:
+    path: ~/.bash_profile
+    marker: "# {mark} ANSIBLE MANAGED BLOCK (GIT)"
+    block: |
+      export GIT_PS1_SHOWDIRTYSTATE=1 GIT_PS1_SHOWSTASHSTATE=1 GIT_PS1_SHOWUNTRACKEDFILES=1
+      export GIT_PS1_DESCRIBE_STYLE=branch
+      export PROMPT_COMMAND='__git_ps1 "\u@\h:\w" " \\\$ "'
+      export GIT_PS1_SHOWCOLORHINTS=1
+
+- name: Setup git colors
+  blockinfile:
+    path: ~/.gitconfig
+    block: |
+      [color]
+              branch = auto
+              diff = auto
+              status = auto
+      [color "branch"]
+              current = yellow reverse
+              local = yellow
+              remote = green
+      [color "diff"]
+              meta = yellow bold
+              frag = magenta bold
+              old = red bold
+              new = green bold
+      [color "status"]
+              added = yellow
+              changed = green
+              untracked = cyan
+
+- name: Install perforce
+  homebrew: name=perforce

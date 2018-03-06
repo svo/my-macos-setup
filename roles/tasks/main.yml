@@ -1,51 +1,4 @@
 
-    - name: Install git source control
-      homebrew: name=git
-
-    - name: Install bash-completion
-      homebrew: name=bash-completion
-
-    - name: Setup bash-completion
-      blockinfile:
-        path: ~/.bash_profile
-        marker: "# {mark} ANSIBLE MANAGED BLOCK (BASH_COMPLETION)"
-        block: |
-          if [ -f $(brew --prefix)/etc/bash_completion ]; then
-            . $(brew --prefix)/etc/bash_completion
-          fi
-
-    - name: Setup terminal for git
-      blockinfile:
-        path: ~/.bash_profile
-        marker: "# {mark} ANSIBLE MANAGED BLOCK (GIT)"
-        block: |
-          export GIT_PS1_SHOWDIRTYSTATE=1 GIT_PS1_SHOWSTASHSTATE=1 GIT_PS1_SHOWUNTRACKEDFILES=1
-          export GIT_PS1_DESCRIBE_STYLE=branch
-          export PROMPT_COMMAND='__git_ps1 "\u@\h:\w" " \\\$ "'
-          export GIT_PS1_SHOWCOLORHINTS=1
-
-    - name: Setup git colors
-      blockinfile:
-        path: ~/.gitconfig
-        block: |
-          [color]
-                  branch = auto
-                  diff = auto
-                  status = auto
-          [color "branch"]
-                  current = yellow reverse
-                  local = yellow
-                  remote = green
-          [color "diff"]
-                  meta = yellow bold
-                  frag = magenta bold
-                  old = red bold
-                  new = green bold
-          [color "status"]
-                  added = yellow
-                  changed = green
-                  untracked = cyan
-
     - name: Install tmux terminal multiplexer
       homebrew: name=tmux
 
@@ -71,9 +24,13 @@
       git: repo={{ item.repo }} dest=~/.vim/bundle/{{ item.name }}
       with_items:
       - {repo: "https://github.com/scrooloose/nerdtree.git", name: nerdtree}
+      - {repo: "https://github.com/Xuyuanp/nerdtree-git-plugin.git", name: nerdtree-git-plugin}
       - {repo: "https://github.com/ctrlpvim/ctrlp.vim.git", name: ctrlp}
       - {repo: "https://github.com/ntpeters/vim-better-whitespace.git", name: vim-better-whitespace}
       - {repo: "https://github.com/airblade/vim-gitgutter.git", name: vim-gitgutter}
+      - {repo: "https://github.com/plasticboy/vim-markdown.git", name: vim-markdown}
+      - {repo: "https://github.com/IN3D/vim-raml.git", name: vim-raml}
+      - {repo: "https://github.com/Valloric/YouCompleteMe.git", name: YouCompleteMe}
       - {repo: "https://github.com/aklt/plantuml-syntax.git", name: plantuml-syntax}
 
     - name: Update .vimrc
@@ -90,7 +47,11 @@
       - :set noswapfile
       - let g:ctrlp_map = '<c-p>'
       - let g:ctrlp_cmd = 'CtrlP'
+      - map <C-n> :NERDTreeToggle<CR>
       - autocmd BufEnter * EnableStripWhitespaceOnSave
+
+    - name: Install YouCompleteMe
+      shell: ./install.py chdir=~/.vim/bundle/YouCompleteMe
 
     - name: Install IntelliJ
       homebrew_cask: name=intellij-idea
