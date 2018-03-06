@@ -4,9 +4,9 @@
   roles:
 
     - source-control
+    - vim
     - system
     - office
-    - .
     - security
     - internet
     - configuration-management
