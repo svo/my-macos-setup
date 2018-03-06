@@ -1,0 +1,51 @@
+- name: Install bash-completion
+  homebrew: name=bash-completion
+
+- name: Setup bash-completion
+  blockinfile:
+    path: ~/.bash_profile
+    marker: "# {mark} ANSIBLE MANAGED BLOCK (BASH_COMPLETION)"
+    block: |
+      if [ -f $(brew --prefix)/etc/bash_completion ]; then
+        . $(brew --prefix)/etc/bash_completion
+      fi
+
+- name: Install tmux terminal multiplexer
+  homebrew: name=tmux
+
+- name: Install Midnight Commander command line file manager
+  homebrew: name=midnight-commander
+
+- name: Install icdiff side-by-side diff tool
+  homebrew: name=icdiff
+
+- name: Install HTTPie cURL wrapper
+  homebrew: name=httpie
+
+- name: Install Alfred productivity utility
+  homebrew_cask: name=alfred
+
+- name: Install Dropbox for online storage
+  homebrew_cask: name=dropbox
+
+- name: Install FUSE for extending native file handling capabilities
+  homebrew_cask: name=osxfuse
+
+- name: Install FUSE NTFS support
+  homebrew: name=ntfs-3g
+
+- name: Install RDC
+  homebrew_cask: name=microsoft-remote-desktop-beta
+
+- name: Add /usr/local/sbin to path
+  lineinfile: path=/etc/paths line='/usr/local/sbin' insertbefore='/usr/sbin'
+  become: yes
+
+- name: Add drivers brew tap
+  homebrew_tap: name=caskroom/drivers
+
+- name: Install logitech options software
+  homebrew_cask: name=logitech-options
+
+- name: Install watch for repeating command line commands
+  homebrew: name=watch
