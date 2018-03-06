@@ -1,0 +1,8 @@
+- name: Install slack
+  homebrew_cask: name=slack
+
+- name: Install lynx command line browser
+  homebrew: name=lynx
+
+- name: Install Chrome browser
+  homebrew_cask: name=google-chrome
