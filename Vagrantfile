@@ -16,11 +16,13 @@ end
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "emil-appunite/macos10.13-xcode9.1"
 
+  config.vm.synced_folder ".", "/vagrant", disabled: true
+
   config.vm.hostname = "development-box-osx"
 
-  config.cache.scope = :machine
+  config.vm.provision "shell", inline: 'su vagrant -c "brew upgrade && brew update && brew doctor || true"'
 
-  config.vm.provider :virtualbox do |vb|
-    vb.gui = true
+  config.vm.provision "ansible" do |ansible|
+    ansible.playbook = "playbook.yml"
   end
 end

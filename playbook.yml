@@ -3,14 +3,14 @@
 
   roles:
 
+    - system
     - source-control
     - vim
-    - system
+    - java
     - office
     - security
     - internet
     - configuration-management
-    - java
     - clojure
     - ruby
     - node

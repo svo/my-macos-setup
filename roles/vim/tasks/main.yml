@@ -1,4 +1,3 @@
-
 - name: Install vim text editor
   homebrew: name=vim
 
@@ -41,5 +40,8 @@
   - map <C-n> :NERDTreeToggle<CR>
   - autocmd BufEnter * EnableStripWhitespaceOnSave
 
+- name: Install cmake
+  homebrew: name=cmake
+
 - name: Install YouCompleteMe
-  shell: ./install.py chdir=~/.vim/bundle/YouCompleteMe
+  shell: PATH=/usr/local/bin:$PATH ./install.sh chdir=~/.vim/bundle/YouCompleteMe
