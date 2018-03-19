@@ -1,16 +1,21 @@
 
+    - name: Install python setuptools
+      pip: name=setuptools executable=/usr/local/bin/pip
+
     - name: Install Ansible
-      pip: name=ansible version=2.4.2.0
+      pip: name=ansible version=2.4.2.0 executable=/usr/local/bin/pip
+      become: yes
 
     - name: Install Docker
       homebrew_cask: name=docker
 
     - name: Install AWS CLI tools
-      pip: name=awscli extra_args="--ignore-installed six"
+      pip: name=awscli extra_args="--ignore-installed six" executable=/usr/local/bin/pip
       become: yes
 
     - name: Install VirtualBox
       homebrew_cask: name=virtualbox
+      ignore_errors: yes
 
     - name: Install Vagrant
       homebrew_cask: name=vagrant

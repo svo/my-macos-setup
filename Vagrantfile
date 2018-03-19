@@ -20,7 +20,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.hostname = "development-box-osx"
 
-  config.vm.provision "shell", inline: 'su vagrant -c "brew upgrade && brew update && brew doctor || true"'
+  config.vm.provision "shell", inline: 'su vagrant -c "brew upgrade && brew update"'
+  config.vm.provision "shell", inline: 'su vagrant -c "brew doctor || true"'
+  config.vm.provision "shell", inline: 'su vagrant -c "brew install python && sudo easy_install pip"'
 
   config.vm.provision "ansible" do |ansible|
     ansible.playbook = "playbook.yml"

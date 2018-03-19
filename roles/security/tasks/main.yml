@@ -4,6 +4,7 @@
 
     - name: Install tor browser for anonymous web browsing
       homebrew_cask: name=torbrowser
+      ignore_errors: yes
 
     - name: Install nmap for network discovery and security auditing
       homebrew: name=nmap
