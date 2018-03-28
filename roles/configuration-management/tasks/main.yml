@@ -2,8 +2,12 @@
     - name: Install python setuptools
       pip: name=setuptools executable=/usr/local/bin/pip
 
+    - name: Install pywinrm for Ansible to work with Windows
+      pip: name=pywinrm executable=/usr/local/bin/pip
+      become: yes
+
     - name: Install Ansible
-      pip: name=ansible version=2.4.2.0 executable=/usr/local/bin/pip
+      pip: name=ansible version=2.4.3.0 executable=/usr/local/bin/pip
       become: yes
 
     - name: Install Docker
