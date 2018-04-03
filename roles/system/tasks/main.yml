@@ -52,3 +52,9 @@
 
 - name: Install watch for repeating command line commands
   homebrew: name=watch
+
+- name: Install fuse for additional file system support
+  homebrew_cask: name=osxfuse
+
+- name: Install ext4 file system support
+  homebrew: name=ext4fuse
