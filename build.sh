@@ -3,6 +3,8 @@
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 brew install python
+brew install python@2
+brew link --overwrite python
 
 sudo easy_install pip
 

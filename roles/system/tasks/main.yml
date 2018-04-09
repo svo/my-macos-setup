@@ -58,3 +58,6 @@
 
 - name: Install ext4 file system support
   homebrew: name=ext4fuse
+
+- name: Install App Cleaner
+  homebrew_cask: name=appcleaner
