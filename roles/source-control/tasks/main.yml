@@ -33,3 +33,6 @@
               added = yellow
               changed = green
               untracked = cyan
+
+- name: Install perforce visual client
+  homebrew_cask: name=p4v
