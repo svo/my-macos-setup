@@ -61,3 +61,6 @@
 
 - name: Install App Cleaner
   homebrew_cask: name=appcleaner
+
+- name: Install flycut clipboard manager
+  homebrew_cask: name=flycut
