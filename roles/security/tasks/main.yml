@@ -23,3 +23,6 @@
 
     - name: Install OWASP ZAP attack proxy
       homebrew_cask: name=owasp-zap
+
+    - name: Install nikto web server scanner
+      homebrew: name=nikto
