@@ -20,18 +20,8 @@
     - name: Install VirtualBox
       homebrew_cask: name=virtualbox
 
-    - name: Download Vagrant
-      get_url: url=https://releases.hashicorp.com/vagrant/2.0.1/vagrant_2.0.1_x86_64.dmg dest=~/Documents/installs/vagrant_2.0.1_x86_64.dmg
-
-    - name: Mount Vagrant image
-      command: hdiutil attach vagrant_2.0.1_x86_64.dmg chdir=~/Documents/installs
-
     - name: Install Vagrant
-      command: installer -package /Volumes/Vagrant/vagrant.pkg -target /
-      become: yes
-
-    - name: Unmount Vagrant image
-      command: hdiutil detach /Volumes/Vagrant
+      homebrew_cask: name=vagrant
 
     - name: Install Terraform
       homebrew: name=terraform
