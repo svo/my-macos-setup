@@ -70,3 +70,6 @@
 
 - name: Install VMWare VMDK Mounter
   homebrew_cask: name=paragon-vmdk-mounter
+
+- name: Install Disk Inventory X
+  homebrew_cask: name=disk-inventory-x
