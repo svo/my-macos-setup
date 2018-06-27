@@ -22,6 +22,9 @@
 - name: Install icdiff side-by-side diff tool
   homebrew: name=icdiff
 
+- name: Install telnet
+  homebrew: name=telnet
+
 - name: Install HTTPie cURL wrapper
   homebrew: name=httpie
 
