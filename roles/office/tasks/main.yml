@@ -1,6 +1,9 @@
 - name: Install PlantUML CLI diagramming tool
   homebrew: name=plantuml
 
+- name: Install jq command-line JSON processor
+  homebrew: name=jq
+
 - name: Install IntelliJ
   homebrew_cask: name=intellij-idea
 
