@@ -15,3 +15,6 @@
 
 - name: Install postman
   homebrew_cask: name=postman
+
+- name: Install atom
+  homebrew_cask: name=atom
