@@ -76,3 +76,10 @@
 
 - name: Install Disk Inventory X
   homebrew_cask: name=disk-inventory-x
+
+- name: Start tmux by default in Terminal.app
+  blockinfile:
+    path: ~/.bash_profile
+    marker: "# {mark} ANSIBLE MANAGED BLOCK (tmux start)"
+    block: |
+      [[ $TERM != "screen" ]] && exec tmux
