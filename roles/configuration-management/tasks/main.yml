@@ -29,6 +29,9 @@
     - name: Install Packer
       homebrew: name=packer
 
+    - name: Install templates for Kubernetes manifests
+      homebrew: name=ktmpl
+
     - name: Install vim plugins
       git: repo={{ item.repo }} dest=~/.vim/bundle/{{ item.dest }}
       with_items:
