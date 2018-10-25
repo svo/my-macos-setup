@@ -18,3 +18,9 @@
 
 - name: Install atom
   homebrew_cask: name=atom
+
+- name: Install XmlStarlet
+  homebrew: name=xmlstarlet
+
+- name: Install yq XML/YAML query procesor
+  homebrew: name=python-yq
