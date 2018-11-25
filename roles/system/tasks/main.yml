@@ -62,6 +62,9 @@
 - name: Install ext4 file system support
   homebrew: name=ext4fuse
 
+- name: Install The Unarchiver
+  homebrew_cask: name=the-unarchiver
+
 - name: Install App Cleaner
   homebrew_cask: name=appcleaner
 
