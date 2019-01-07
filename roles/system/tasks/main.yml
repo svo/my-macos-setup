@@ -1,4 +1,4 @@
-- name: Install brew versians tap
+- name: Install brew versions tap
   shell: brew tap caskroom/versions
 
 - name: Install bash-completion
@@ -6,6 +6,7 @@
 
 - name: Setup bash-completion
   blockinfile:
+    create: yes
     path: ~/.bash_profile
     marker: "# {mark} ANSIBLE MANAGED BLOCK (BASH_COMPLETION)"
     block: |
