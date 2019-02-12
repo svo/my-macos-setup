@@ -24,3 +24,6 @@
 
 - name: Install yq XML/YAML query procesor
   homebrew: name=python-yq
+
+- name: Install cloc lines of code utility
+  homebrew: name=cloc
