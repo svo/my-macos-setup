@@ -27,3 +27,6 @@
 
 - name: Install cloc lines of code utility
   homebrew: name=cloc
+
+- name: Install Adobe Reader
+  homebrew_cask: name=adobe-acrobat-reader
