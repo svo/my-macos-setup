@@ -87,3 +87,6 @@
     marker: "# {mark} ANSIBLE MANAGED BLOCK (tmux start)"
     block: |
       [[ $TERM != "screen" ]] && exec tmux
+
+- name: Install core GNU utilities
+  homebrew: name=coreutils
