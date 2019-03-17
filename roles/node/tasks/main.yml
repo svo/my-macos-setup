@@ -7,3 +7,7 @@
       with_items:
       - export NVM_DIR="$HOME/.nvm"
       - . "$(brew --prefix nvm)/nvm.sh"
+
+    - name: Install Electron Packager
+      npm: name=electron-packager version=13.0.1 global=yes
+      become: yes
