@@ -90,3 +90,6 @@
 
 - name: Install core GNU utilities
   homebrew: name=coreutils
+
+- name: Install balena etcher bootable USB creator
+  homebrew_cask: name=balenaetcher
