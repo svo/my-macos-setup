@@ -29,3 +29,6 @@
 
     - name: Install slowhttptest denial of service attack tool
       homebrew: name=slowhttptest
+
+    - name: Install hping packet generator and analyser
+      homebrew: name=hping
