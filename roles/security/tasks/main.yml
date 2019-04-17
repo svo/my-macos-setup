@@ -26,3 +26,6 @@
 
     - name: Install nikto web server scanner
       homebrew: name=nikto
+
+    - name: Install slowhttptest denial of service attack tool
+      homebrew: name=slowhttptest
