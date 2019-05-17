@@ -30,3 +30,6 @@
 
 - name: Install Adobe Reader
   homebrew_cask: name=adobe-acrobat-reader
+
+- name: Install psequel for working with PostgreSQL
+  homebrew_cask: name=psequel
