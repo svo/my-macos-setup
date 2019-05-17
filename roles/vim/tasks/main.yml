@@ -6,6 +6,7 @@
   with_items:
   - ~/.vim/autoload
   - ~/.vim/bundle
+  - ~/.vim/ftplugin
 
 - name: Install pathogen vim plugin/configuration manager
   get_url: url=https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim dest=~/.vim/autoload/pathogen.vim

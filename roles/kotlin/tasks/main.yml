@@ -1,5 +1,11 @@
+- name: Set kotlin vim settings
+  copy:
+    dest: ~/.vim/ftplugin/kotlin.vim
+    content: |
+      setlocal  tabstop=4
+      setlocal  shiftwidth=4
 
-    - name: Install vim plugin
-      git: repo={{ item.repo }} dest=~/.vim/bundle/{{ item.name }}
-      with_items:
-      - {repo: "https://github.com/udalov/kotlin-vim.git", name: kotlin-vim}
+- name: Install vim plugin
+  git: repo={{ item.repo }} dest=~/.vim/bundle/{{ item.name }}
+  with_items:
+  - {repo: "https://github.com/udalov/kotlin-vim.git", name: kotlin-vim}
