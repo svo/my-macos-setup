@@ -14,14 +14,14 @@
     - java
     - gradle
     - dotnet
+    - node
+    - clojure
+    - kotlin
+    - ruby
     - office
     - security
     - internet
     - configuration-management
-    - clojure
-    - kotlin
-    - ruby
-    - node
     - media
 
   post_tasks:

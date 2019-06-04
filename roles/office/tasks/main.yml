@@ -33,3 +33,7 @@
 
 - name: Install psequel for working with PostgreSQL
   homebrew_cask: name=psequel
+
+- name: Install Markdown to Confluence converter
+  npm: name=markdown2confluence-cws version=2.0.4 global=yes
+  become: yes
