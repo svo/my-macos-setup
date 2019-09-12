@@ -41,6 +41,9 @@
 - name: Install FUSE NTFS support
   homebrew: name=ntfs-3g
 
+- name: Install mounty for NTFS volumes
+  homebrew_cask: name=mounty
+
 - name: Install RDC
   homebrew_cask: name=microsoft-remote-desktop-beta
 
