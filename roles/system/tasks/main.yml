@@ -1,5 +1,5 @@
 - name: Install brew versions tap
-  shell: brew tap caskroom/versions
+  shell: /usr/local/bin/brew tap caskroom/versions
 
 - name: Install bash-completion
   homebrew: name=bash-completion
@@ -52,7 +52,7 @@
   become: yes
 
 - name: Add drivers brew tap
-  shell: brew tap caskroom/drivers
+  shell: /usr/local/bin/brew tap caskroom/drivers
 
 - name: Install logitech options software
   homebrew_cask: name=logitech-options
