@@ -8,8 +8,8 @@
       - export PATH="$HOME/.jenv/bin:$PATH"
       - eval "$(jenv init -)"
 
-    - name: Install Java 8
-      homebrew_cask: name=java8
+    - name: Install Java
+      homebrew_cask: name=adoptopenjdk
 
     - name: Install YourKit
       homebrew_cask: name=yourkit-java-profiler
