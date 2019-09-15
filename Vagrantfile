@@ -14,7 +14,7 @@ unless Vagrant.has_plugin?("vagrant-vbguest")
 end
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  config.vm.box = "emil-appunite/macos10.13-xcode9.1"
+  config.vm.box = "ashiq/osx-10.14"
 
   config.vm.synced_folder ".", "/vagrant", disabled: true
 
