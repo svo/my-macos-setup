@@ -8,6 +8,9 @@
       - export NVM_DIR="$HOME/.nvm"
       - . "$(brew --prefix nvm)/nvm.sh"
 
+    - name: Install Node.js
+      shell: export NVM_DIR="$HOME/.nvm" && . "$(brew --prefix nvm)/nvm.sh" && nvm install v10.16.3
+
     - name: Install Electron Packager
       npm: name=electron-packager version=13.0.1 global=yes
       become: yes
