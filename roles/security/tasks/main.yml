@@ -15,9 +15,6 @@
     - name: Install ncrack network authentication cracking tool
       homebrew: name=ncrack
 
-    - name: Install skipfish web application security reconnaissance tool
-      homebrew: name=skipfish
-
     - name: Install theHarvester e-mail account and subdomain discovery tool
       homebrew: name=theharvester
 
