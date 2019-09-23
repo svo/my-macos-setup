@@ -38,3 +38,4 @@
       file: path=/Users/remote/{{ item }} src=/Users/{{ ansible_user }}/{{ item }} state=link owner=remote force=yes
       with_items: "{{ shares }}"
       become: yes
+      ignore_errors: yes
