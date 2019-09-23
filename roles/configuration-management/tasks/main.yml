@@ -19,6 +19,7 @@
 
     - name: Install VirtualBox
       homebrew_cask: name=virtualbox
+      ignore_errors: yes
 
     - name: Install Vagrant
       homebrew_cask: name=vagrant
