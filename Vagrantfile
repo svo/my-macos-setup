@@ -8,11 +8,6 @@ unless Vagrant.has_plugin?("vagrant-cachier")
   exec 'vagrant plugin install vagrant-cachier && vagrant up'
 end
 
-unless Vagrant.has_plugin?("vagrant-vbguest")
-  puts "Install vagrant-vbguest"
-  exec 'vagrant plugin install vagrant-vbguest && vagrant up'
-end
-
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "ashiq/osx-10.14"
 
