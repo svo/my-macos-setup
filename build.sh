@@ -7,6 +7,7 @@ brew install python@2
 brew link --overwrite python
 brew update
 brew upgrade
+brew cask upgrade
 
 sudo easy_install pip
 
