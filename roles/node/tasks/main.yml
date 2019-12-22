@@ -16,3 +16,6 @@
 
     - name: Install Electron Packager
       shell: export NVM_DIR="$HOME/.nvm" && . "$(/usr/local/bin/brew --prefix nvm)/nvm.sh" && $HOME/.nvm/versions/node/v10.16.3/bin/npm install electron-packager@13.0.1 --global
+
+    - name: Install Yarn
+      shell: export NVM_DIR="$HOME/.nvm" && . "$(/usr/local/bin/brew --prefix nvm)/nvm.sh" && $HOME/.nvm/versions/node/v10.16.3/bin/npm install yarn@1.21.1 --global
