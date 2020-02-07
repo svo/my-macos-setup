@@ -35,10 +35,7 @@
   homebrew_cask: name=psequel
 
 - name: Install pandoc document converter
-  homebrew: name={{ item }}
-  with_items:
-  - pandoc
-  - librsvg
+  homebrew: name=pandoc,librsvg
 
 - name: Install basictex to support pandoc behaviours
   homebrew_cask: name=basictex
