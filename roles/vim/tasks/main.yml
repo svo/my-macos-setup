@@ -12,7 +12,7 @@
   get_url: url=https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim dest=~/.vim/autoload/pathogen.vim
 
 - name: Install vim plugin
-  git: repo={{ item.repo }} dest=~/.vim/bundle/{{ item.name }}
+  git: repo={{ item.repo }} dest=~/.vim/bundle/{{ item.name }} force=yes
   with_items:
   - {repo: "https://github.com/scrooloose/nerdtree.git", name: nerdtree}
   - {repo: "https://github.com/Xuyuanp/nerdtree-git-plugin.git", name: nerdtree-git-plugin}
