@@ -15,6 +15,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.hostname = "development-box-osx"
 
+  config.vm.provision "shell", inline: 'sudo softwareupdate -i "Command Line Tools (macOS Mojave version 10.14) for Xcode-10.3"'
   config.vm.provision "shell", inline: 'su vagrant -c "brew upgrade && brew update"'
   config.vm.provision "shell", inline: 'su vagrant -c "brew doctor || true"'
   config.vm.provision "shell", inline: 'su vagrant -c "brew install python && sudo easy_install pip"'
