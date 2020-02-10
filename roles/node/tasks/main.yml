@@ -19,3 +19,9 @@
 
     - name: Install Yarn
       shell: export NVM_DIR="$HOME/.nvm" && . "$(/usr/local/bin/brew --prefix nvm)/nvm.sh" && $HOME/.nvm/versions/node/v10.16.3/bin/npm install yarn@1.21.1 --global
+
+    - name: Install Gitinspector
+      shell: export NVM_DIR="$HOME/.nvm" && . "$(/usr/local/bin/brew --prefix nvm)/nvm.sh" && $HOME/.nvm/versions/node/v10.16.3/bin/npm install gitinspector@0.5.0-dev-2 --global
+
+    - name: Install git-stats
+      shell: export NVM_DIR="$HOME/.nvm" && . "$(/usr/local/bin/brew --prefix nvm)/nvm.sh" && $HOME/.nvm/versions/node/v10.16.3/bin/npm install git-stats-html@1.0.8 --global
