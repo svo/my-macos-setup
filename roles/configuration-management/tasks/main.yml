@@ -1,20 +1,20 @@
 
     - name: Install python setuptools
-      pip: name=setuptools executable=/usr/local/bin/pip
+      pip: name=setuptools executable=/usr/local/bin/pip3
 
     - name: Install pywinrm for Ansible to work with Windows
-      pip: name=pywinrm executable=/usr/local/bin/pip
+      pip: name=pywinrm executable=/usr/local/bin/pip3
       become: yes
 
     - name: Install Ansible
-      pip: name=ansible executable=/usr/local/bin/pip
+      pip: name=ansible executable=/usr/local/bin/pip3
       become: yes
 
     - name: Install Docker
       homebrew_cask: name=docker
 
     - name: Install AWS CLI tools
-      pip: name=awscli extra_args="--ignore-installed six" executable=/usr/local/bin/pip
+      pip: name=awscli extra_args="--ignore-installed six" executable=/usr/local/bin/pip3
       become: yes
 
     - name: Install VirtualBox

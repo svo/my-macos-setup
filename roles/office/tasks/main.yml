@@ -23,7 +23,7 @@
   homebrew: name=xmlstarlet
 
 - name: Install yq XML/YAML query procesor
-  homebrew: name=python-yq
+  pip: name=yq executable=/usr/local/bin/pip3
 
 - name: Install cloc lines of code utility
   homebrew: name=cloc
@@ -47,4 +47,4 @@
   shell: export NVM_DIR="$HOME/.nvm" && . "$(/usr/local/bin/brew --prefix nvm)/nvm.sh" && $HOME/.nvm/versions/node/v10.16.3/bin/npm install js-beautify@1.10.1 --global
 
 - name: Install CLI tool for working with Architecture Decision Records
-  homebrew_cask: name=adr-tools
+  homebrew: name=adr-tools

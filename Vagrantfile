@@ -9,19 +9,22 @@ unless Vagrant.has_plugin?("vagrant-cachier")
 end
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  config.vm.box = "ashiq/osx-10.14"
+  config.vm.box = "LoganAvatar/macOS-10.14"
 
   config.vm.synced_folder ".", "/vagrant", disabled: true
 
+  config.vm.boot_timeout = 3600
+
   config.vm.hostname = "development-box-osx"
 
-  config.vm.provision "shell", inline: 'sudo softwareupdate -i "Command Line Tools (macOS Mojave version 10.14) for Xcode-10.3"'
-  config.vm.provision "shell", inline: 'su vagrant -c "brew upgrade && brew update"'
-  config.vm.provision "shell", inline: 'su vagrant -c "brew doctor || true"'
-  config.vm.provision "shell", inline: 'su vagrant -c "brew install python && sudo easy_install pip"'
-  config.vm.provision "shell", inline: 'su vagrant -c "sudo dscl . -passwd /Users/vagrant vagrant"'
+  config.vm.provision "shell", path: 'prepare.sh', privileged: false
 
   config.vm.provision "ansible" do |ansible|
     ansible.playbook = "playbook.yml"
+  end
+
+  config.vm.provider :virtualbox do |vb|
+    vb.cpus = 2
+    vb.memory = 4096
   end
 end

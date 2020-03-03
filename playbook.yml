@@ -1,10 +1,13 @@
 ---
 - hosts: all
-  vars:
-    shares:
-    - Documents/workspace
-    - Dropbox
-    - .vagrant.d/boxes
+
+  pre_tasks:
+
+    - name: Add python3 as python to .bash_profile
+      lineinfile: dest=~/.bash_profile line='alias python=/usr/local/bin/python3' create=yes
+
+    - name: Add pip3 as pip to .bash_profile
+      lineinfile: dest=~/.bash_profile line='alias pip=/usr/local/bin/pip3'
 
   roles:
 
@@ -33,9 +36,3 @@
     - name: Create remote user Documents directory
       file: path=/Users/remote/Documents state=directory owner=remote force=yes
       become: yes
-
-    - name: Create symlink to shared directories for remote pair
-      file: path=/Users/remote/{{ item }} src=/Users/{{ ansible_user }}/{{ item }} state=link owner=remote force=yes
-      with_items: "{{ shares }}"
-      become: yes
-      ignore_errors: yes
