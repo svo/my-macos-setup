@@ -3,13 +3,8 @@
 
 VAGRANTFILE_API_VERSION = "2"
 
-unless Vagrant.has_plugin?("vagrant-cachier")
-  puts "Install vagrant-cachier"
-  exec 'vagrant plugin install vagrant-cachier && vagrant up'
-end
-
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  config.vm.box = "LoganAvatar/macOS-10.14"
+  config.vm.box = "ramsey/macos-catalina"
 
   config.vm.synced_folder ".", "/vagrant", disabled: true
 

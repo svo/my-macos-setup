@@ -72,12 +72,6 @@
 - name: Install flycut clipboard manager
   homebrew_cask: name=flycut
 
-- name: Install VMWare Fusion
-  homebrew_cask: name=vmware-fusion
-
-- name: Install VMWare VMDK Mounter
-  homebrew_cask: name=paragon-vmdk-mounter
-
 - name: Install Disk Inventory X
   homebrew_cask: name=disk-inventory-x
 
