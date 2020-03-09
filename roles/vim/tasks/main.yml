@@ -25,6 +25,7 @@
   - {repo: "https://github.com/aklt/plantuml-syntax.git", name: plantuml-syntax}
   - {repo: "https://github.com/fatih/vim-go.git", name: vim-go}
   - {repo: "https://github.com/tfnico/vim-gradle.git", name: vim-gradle}
+  - {repo: "https://github.com/python-mode/python-mode.git", name: python-mode}
 
 - name: Update .vimrc
   lineinfile: dest=~/.vimrc line={{ item }} create=yes
