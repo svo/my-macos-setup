@@ -90,3 +90,6 @@
 
 - name: Install balena etcher bootable USB creator
   homebrew_cask: name=balenaetcher
+
+- name: Install htop
+  homebrew: name=htop
