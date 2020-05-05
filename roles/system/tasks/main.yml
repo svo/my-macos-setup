@@ -93,3 +93,6 @@
 
 - name: Install htop
   homebrew: name=htop
+
+- name: Install topgrade
+  homebrew: name=topgrade
