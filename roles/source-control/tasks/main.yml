@@ -1,15 +1,23 @@
 - name: Install git source control
   homebrew: name=git
 
-- name: Setup terminal for git
+- name: Copy git-prompt.sh
+  copy:
+    src: /usr/local/Cellar/git/2.26.2/etc/bash_completion.d/git-prompt.sh
+    dest: ~/.git-prompt.sh
+    remote_src: yes
+
+- name: Setup git for zsh
   blockinfile:
-    path: ~/.bash_profile
+    create: yes
+    path: ~/.zshrc
     marker: "# {mark} ANSIBLE MANAGED BLOCK (GIT)"
     block: |
       export GIT_PS1_SHOWDIRTYSTATE=1 GIT_PS1_SHOWSTASHSTATE=1 GIT_PS1_SHOWUNTRACKEDFILES=1
       export GIT_PS1_DESCRIBE_STYLE=branch
-      export PROMPT_COMMAND='__git_ps1 "\u@\h:\w" " \\\$ "'
       export GIT_PS1_SHOWCOLORHINTS=1
+      source ~/.git-prompt.sh
+      precmd () { __git_ps1 "%n" " $ " }
 
 - name: Setup git colors
   blockinfile:

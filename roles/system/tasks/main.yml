@@ -1,17 +1,20 @@
 - name: Install brew versions tap
   shell: /usr/local/bin/brew tap homebrew/cask-versions
 
-- name: Install bash-completion
-  homebrew: name=bash-completion
+- name: Install zsh-completions
+  homebrew: name=zsh-completions
 
-- name: Setup bash-completion
+- name: Setup zsh-completions
   blockinfile:
     create: yes
-    path: ~/.bash_profile
+    path: ~/.zshrc
     marker: "# {mark} ANSIBLE MANAGED BLOCK (BASH_COMPLETION)"
     block: |
-      if [ -f $(brew --prefix)/etc/bash_completion ]; then
-        . $(brew --prefix)/etc/bash_completion
+      if type brew &>/dev/null; then
+      FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+
+      autoload -Uz compinit
+      compinit
       fi
 
 - name: Install tmux terminal multiplexer
@@ -80,7 +83,7 @@
 
 - name: Start tmux by default in Terminal.app
   blockinfile:
-    path: ~/.bash_profile
+    path: ~/.zshrc
     marker: "# {mark} ANSIBLE MANAGED BLOCK (tmux start)"
     block: |
       [[ $TERM != "screen" ]] && exec tmux

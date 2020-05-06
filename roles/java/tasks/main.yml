@@ -2,8 +2,8 @@
     - name: Install jenv java environment manager
       homebrew: name=jenv
 
-    - name: Add jenv to .bash_profile
-      lineinfile: dest=~/.bash_profile line='{{ item }}' create=yes
+    - name: Add jenv to .zshrc
+      lineinfile: dest=~/.zshrc line='{{ item }}' create=yes
       with_items:
       - export PATH="$HOME/.jenv/bin:$PATH"
       - eval "$(jenv init -)"

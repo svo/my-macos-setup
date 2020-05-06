@@ -2,5 +2,5 @@
     - name: Install rbenv for ruby version management
       homebrew: name=rbenv
 
-    - name: Add rbenv to .bash_profile
-      lineinfile: dest=~/.bash_profile line='eval "$(rbenv init -)"' create=yes
+    - name: Add rbenv to .zshrc
+      lineinfile: dest=~/.zshrc line='eval "$(rbenv init -)"' create=yes
