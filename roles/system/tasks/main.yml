@@ -20,6 +20,15 @@
 - name: Install tmux terminal multiplexer
   homebrew: name=tmux
 
+- name: Setup tmux
+  blockinfile:
+    create: yes
+    path: ~/.tmux.conf
+    block: |
+      bind c new-window -c "#{pane_current_path}"
+      bind '"' split-window -c "#{pane_current_path}"
+      bind % split-window -h -c "#{pane_current_path}"
+
 - name: Install Midnight Commander command line file manager
   homebrew: name=midnight-commander
 
