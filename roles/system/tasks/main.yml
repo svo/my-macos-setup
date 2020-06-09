@@ -99,3 +99,6 @@
 
 - name: Install topgrade
   homebrew: name=topgrade
+
+- name: Install testdisk
+  homebrew: name=testdisk
