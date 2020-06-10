@@ -28,22 +28,24 @@
   - {repo: "https://github.com/python-mode/python-mode.git", name: python-mode}
 
 - name: Update .vimrc
-  lineinfile: dest=~/.vimrc line={{ item }} create=yes
-  with_items:
-  - execute pathogen#infect()
-  - syntax on
-  - filetype plugin indent on
-  - :set tabstop=2
-  - :set shiftwidth=2
-  - :set backspace=indent,eol,start
-  - :set expandtab
-  - :set nobackup
-  - :set noswapfile
-  - let g:ctrlp_map = '<c-p>'
-  - let g:ctrlp_cmd = 'CtrlP'
-  - map <C-n> :NERDTreeToggle<CR>
-  - autocmd BufEnter * EnableStripWhitespaceOnSave
-  - set encoding=utf-8
+  blockinfile:
+    create: yes
+    path: ~/.vimrc
+    marker: "\" {mark} ANSIBLE MANAGED BLOCK"
+    block: |
+      execute pathogen#infect()
+      syntax on
+      filetype plugin indent on
+      :set tabstop=2
+      :set shiftwidth=2
+      :set backspace=indent,eol,start
+      :set expandtab
+      :set nobackup
+      :set noswapfile
+      let g:ctrlp_map = '<c-p>'
+      let g:ctrlp_cmd = 'CtrlP'
+      autocmd BufEnter * EnableStripWhitespaceOnSave
+      set encoding=utf-8
 
 - name: Install cmake
   homebrew: name=cmake
