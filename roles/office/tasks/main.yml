@@ -28,6 +28,15 @@
 - name: Install docutils for processing documentation
   pip: name=docutils executable=/usr/local/bin/pip3
 
+- name: Setup additional bin path for atom
+  blockinfile:
+    create: yes
+    path: ~/.atom/init.coffee
+    block: |
+      process.env.PATH = ["/usr/bin",
+        "/usr/local/bin",
+        ].join(":")
+
 - name: Install cloc lines of code utility
   homebrew: name=cloc
 
