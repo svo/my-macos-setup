@@ -10,6 +10,3 @@
 
     - name: Install Java
       homebrew_cask: name=adoptopenjdk
-
-    - name: Install YourKit
-      homebrew_cask: name=yourkit-java-profiler
