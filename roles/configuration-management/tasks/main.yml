@@ -20,6 +20,9 @@
     - name: Install VirtualBox
       homebrew_cask: name=virtualbox
 
+    - name: Install VirtualBox Extension Pack
+      homebrew_cask: name=virtualbox-extension-pack
+
     - name: Install Vagrant
       homebrew_cask: name=vagrant
 
