@@ -56,9 +56,6 @@
 - name: Install mounty for NTFS volumes
   homebrew_cask: name=mounty
 
-- name: Install RDC
-  homebrew_cask: name=microsoft-remote-desktop-beta
-
 - name: Add /usr/local/sbin to path
   lineinfile: path=/etc/paths line='/usr/local/sbin' insertbefore='/usr/sbin'
   become: yes
