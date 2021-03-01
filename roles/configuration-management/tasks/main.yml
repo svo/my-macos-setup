@@ -7,8 +7,7 @@
       become: yes
 
     - name: Install Ansible
-      pip: name=ansible executable=/usr/local/bin/pip3
-      become: yes
+      homebrew: name=ansible
 
     - name: Install Docker
       homebrew_cask: name=docker
