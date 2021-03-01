@@ -111,3 +111,6 @@
 
 - name: Install testdisk
   homebrew: name=testdisk
+
+- name: Install lastpass password manager
+  homebrew_cask: name=lastpass
