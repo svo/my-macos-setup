@@ -12,3 +12,6 @@
 
 - name: Install Chrome browser
   homebrew_cask: name=google-chrome
+
+- name: Install Brave browser
+  homebrew_cask: name=brave-browser
