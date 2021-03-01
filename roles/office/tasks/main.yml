@@ -52,6 +52,9 @@
 - name: Install MySQL Workbench for working with MySQL
   homebrew_cask: name=mysqlworkbench
 
+- name: Install TablePlus database management tool
+  homebrew_cask: name=tableplus
+
 - name: Install pandoc document converter
   homebrew: name=pandoc,librsvg
 
