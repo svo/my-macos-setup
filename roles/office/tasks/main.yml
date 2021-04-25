@@ -72,3 +72,6 @@
 
 - name: Install git-quick-stats
   homebrew: name=git-quick-stats
+
+- name: Install Semgrep static analysis for finding bugs and enforcing code standards
+  homebrew: name=semgrep
