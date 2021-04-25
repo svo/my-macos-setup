@@ -19,6 +19,7 @@
     - dotnet
     - node
     - clojure
+    - golang
     - kotlin
     - ruby
     - office
