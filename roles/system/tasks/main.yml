@@ -114,3 +114,6 @@
 
 - name: Install lastpass password manager
   homebrew_cask: name=lastpass
+
+- name: Install clocker timezone menu
+  homebrew_cask: name=clocker
