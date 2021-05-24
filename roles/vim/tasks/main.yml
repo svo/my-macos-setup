@@ -45,6 +45,7 @@
       let g:ctrlp_map = '<c-p>'
       let g:ctrlp_cmd = 'CtrlP'
       autocmd BufEnter * EnableStripWhitespaceOnSave
+      autocmd FileType Markdown setlocal spell spelllang=en_au
       set encoding=utf-8
 
 - name: Install cmake
