@@ -47,12 +47,6 @@
 - name: Install Dropbox for online storage
   homebrew_cask: name=dropbox
 
-- name: Install FUSE for extending native file handling capabilities
-  homebrew_cask: name=osxfuse
-
-- name: Install FUSE NTFS support
-  homebrew: name=ntfs-3g
-
 - name: Install mounty for NTFS volumes
   homebrew_cask: name=mounty
 
@@ -68,12 +62,6 @@
 
 - name: Install watch for repeating command line commands
   homebrew: name=watch
-
-- name: Install fuse for additional file system support
-  homebrew_cask: name=osxfuse
-
-- name: Install ext4 file system support
-  homebrew: name=ext4fuse
 
 - name: Install The Unarchiver
   homebrew_cask: name=the-unarchiver
