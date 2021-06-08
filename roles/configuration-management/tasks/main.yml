@@ -22,6 +22,9 @@
     - name: Install VirtualBox Extension Pack
       homebrew_cask: name=virtualbox-extension-pack
 
+    - name: Install VMWare Fusion
+      homebrew_cask: name=vmware-fusion
+
     - name: Install Vagrant
       homebrew_cask: name=vagrant
 
