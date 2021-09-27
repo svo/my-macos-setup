@@ -106,6 +106,9 @@
 - name: Install clocker timezone menu
   homebrew_cask: name=clocker
 
+- name: Install Stopwatch, alarm clock, and clock utility
+  homebrew_cask: name=timer
+
 - name: Install petname command line name generator
   pip: name=petname executable=/usr/local/bin/pip3
 
