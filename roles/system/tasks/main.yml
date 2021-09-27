@@ -108,3 +108,6 @@
 
 - name: Install petname command line name generator
   pip: name=petname executable=/usr/local/bin/pip3
+
+- name: Install GNU implementation of sed
+  homebrew: name=gnu-sed
