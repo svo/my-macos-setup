@@ -117,3 +117,6 @@
 
 - name: Install scc code counter
   homebrew: name=scc
+
+- name: System monitor for the menu bar
+  homebrew_cask: name=stats
