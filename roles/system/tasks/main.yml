@@ -114,3 +114,6 @@
 
 - name: Install GNU implementation of sed
   homebrew: name=gnu-sed
+
+- name: Install scc code counter
+  homebrew: name=scc
