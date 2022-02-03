@@ -37,3 +37,10 @@
     - name: Create remote user Documents directory
       file: path=/Users/remote/Documents state=directory owner=remote force=yes
       become: yes
+
+    - name: Change .local ownership and permissions
+      file: path=/Users/{{ ansible_user_id }}/.local owner={{ ansible_user_id }} recurse=yes mode='0755'
+      become: yes
+
+    - name: Add podman docker alias to .zshrc
+      lineinfile: dest=~/.zshrc line='alias docker=podman'
