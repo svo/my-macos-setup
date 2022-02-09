@@ -34,6 +34,9 @@
     - name: Install templates for Kubernetes manifests
       homebrew: name=ktmpl
 
+    - name: Install Kuberenetes command line
+      homebrew: name=kubernetes-cli
+
     - name: Install vim plugins
       git: repo={{ item.repo }} dest=~/.vim/bundle/{{ item.dest }}
       with_items:
