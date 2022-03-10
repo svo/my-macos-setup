@@ -1,4 +1,4 @@
-# Development Box for OSX
+# My OSX Setup
 
 ## Building
 
