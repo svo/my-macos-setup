@@ -53,4 +53,4 @@
   homebrew: name=cmake
 
 - name: Install YouCompleteMe
-  shell: PATH=/usr/local/bin:$PATH ./install.sh chdir=~/.vim/bundle/YouCompleteMe
+  shell: PATH=/usr/local/bin:$PATH ./install.py chdir=~/.vim/bundle/YouCompleteMe
