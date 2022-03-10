@@ -129,3 +129,6 @@
 
 - name: Install Turbo Boost Switcher to disable and control heat
   homebrew_cask: name=turbo-boost-switcher
+
+- name: Install letsencrypt command line tools
+  homebrew: name=letsencrypt
