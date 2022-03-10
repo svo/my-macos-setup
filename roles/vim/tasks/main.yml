@@ -26,6 +26,7 @@
   - {repo: "https://github.com/tfnico/vim-gradle.git", name: vim-gradle}
   - {repo: "https://github.com/python-mode/python-mode.git", name: python-mode}
   - {repo: "https://github.com/returntocorp/semgrep.vim.git", name: semgrep.vim}
+  - {repo: "https://github.com/pangloss/vim-javascript.git", name: vim-javascript}
 
 - name: Update .vimrc
   blockinfile:
