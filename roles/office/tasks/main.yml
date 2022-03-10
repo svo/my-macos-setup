@@ -78,3 +78,6 @@
 
 - name: Install miro collaboration whiteboard
   homebrew_cask: name=miro
+
+- name: Install GitHub CLI tools
+  homebrew: name=gh
