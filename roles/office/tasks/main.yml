@@ -31,6 +31,9 @@
 - name: Install python-json2csv
   pip: name=python-json2csv executable=/usr/local/bin/pip3
 
+- name: Install xlsx2csv
+  pip: name=xlsx2csv executable=/usr/local/bin/pip3
+
 - name: Setup additional bin path for atom
   blockinfile:
     create: yes
