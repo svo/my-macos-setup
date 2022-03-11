@@ -3,29 +3,37 @@
 
   pre_tasks:
 
-    - name: Add python3 as python to .zshrc
-      lineinfile: dest=~/.zshrc line='alias python=/usr/local/bin/python3' create=yes
+    - name: Install brew versions tap
+      shell: /usr/local/bin/brew tap homebrew/cask-versions
 
-    - name: Add pip3 as pip to .zshrc
-      lineinfile: dest=~/.zshrc line='alias pip=/usr/local/bin/pip3'
+    - name: Add drivers brew tap
+      shell: /usr/local/bin/brew tap homebrew/cask-drivers
+
+    - name: Add /usr/local/sbin to path
+      lineinfile: path=/etc/paths line='/usr/local/sbin' insertbefore='/usr/sbin'
+      become: yes
 
   roles:
 
-    - system
     - source-control
     - vim
+    - python
+    - system
     - java
     - gradle
-    - dotnet
     - node
     - clojure
     - golang
     - kotlin
     - ruby
     - office
+    - plantuml
+    - atom
+    - cli-tools
+    - semgrep
     - security
     - internet
-    - configuration-management
+    - infrastructure-as-code
     - media
 
   post_tasks:

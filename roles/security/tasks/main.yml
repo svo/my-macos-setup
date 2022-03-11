@@ -1,27 +1,26 @@
+- name: Install tor anonymizing overlay network for TCP
+  homebrew: name=tor
 
-    - name: Install tor anonymizing overlay network for TCP
-      homebrew: name=tor
+- name: Install nmap for network discovery and security auditing
+  homebrew: name=nmap
 
-    - name: Install nmap for network discovery and security auditing
-      homebrew: name=nmap
+- name: Install dnsmap for brute force DNS name discovery
+  homebrew: name=dnsmap
 
-    - name: Install dnsmap for brute force DNS name discovery
-      homebrew: name=dnsmap
+- name: Install ncrack network authentication cracking tool
+  homebrew: name=ncrack
 
-    - name: Install ncrack network authentication cracking tool
-      homebrew: name=ncrack
+- name: Install theHarvester e-mail account and subdomain discovery tool
+  homebrew: name=theharvester
 
-    - name: Install theHarvester e-mail account and subdomain discovery tool
-      homebrew: name=theharvester
+- name: Install OWASP ZAP attack proxy
+  homebrew_cask: name=owasp-zap
 
-    - name: Install OWASP ZAP attack proxy
-      homebrew_cask: name=owasp-zap
+- name: Install nikto web server scanner
+  homebrew: name=nikto
 
-    - name: Install nikto web server scanner
-      homebrew: name=nikto
+- name: Install slowhttptest denial of service attack tool
+  homebrew: name=slowhttptest
 
-    - name: Install slowhttptest denial of service attack tool
-      homebrew: name=slowhttptest
-
-    - name: Install hping packet generator and analyser
-      homebrew: name=hping
+- name: Install hping packet generator and analyser
+  homebrew: name=hping

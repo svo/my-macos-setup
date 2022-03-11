@@ -1,8 +1,7 @@
+- name: Install leiningen
+  homebrew: name=leiningen
 
-    - name: Install leiningen
-      homebrew: name=leiningen
-
-    - name: Install vim plugin
-      git: repo={{ item.repo }} dest=~/.vim/bundle/{{ item.name }}
-      with_items:
-      - {repo: "https://github.com/tpope/vim-fireplace.git", name: vim-fireplace}
+- name: Install vim plugin
+  git: repo={{ item.repo }} dest=~/.vim/bundle/{{ item.dest }}
+  with_items:
+    - {repo: "https://github.com/tpope/vim-fireplace.git", dest: vim-fireplace}

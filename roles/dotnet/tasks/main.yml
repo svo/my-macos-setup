@@ -1,2 +1,0 @@
-- name: Install VisualStudio
-  homebrew_cask: name=visual-studio-code

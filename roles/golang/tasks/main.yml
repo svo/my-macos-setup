@@ -1,8 +1,7 @@
+- name: Install go
+  homebrew: name=go
 
-    - name: Install go
-      homebrew: name=go
-
-    - name: Install vim plugin
-      git: repo={{ item.repo }} dest=~/.vim/bundle/{{ item.name }}
-      with_items:
-      - {repo: "https://github.com/fatih/vim-go.git", name: vim-go}
+- name: Install vim plugin
+  git: repo={{ item.repo }} dest=~/.vim/bundle/{{ item.dest }}
+  with_items:
+    - {repo: "https://github.com/fatih/vim-go.git", dest: vim-go}

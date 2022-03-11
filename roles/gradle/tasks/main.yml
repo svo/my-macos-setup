@@ -1,2 +1,7 @@
 - name: Install Gradle
   homebrew: name=gradle
+
+- name: Install vim plugins
+  git: repo={{ item.repo }} dest=~/.vim/bundle/{{ item.dest }}
+  with_items:
+    - {repo: "https://github.com/tfnico/vim-gradle.git", dest: vim-gradle}

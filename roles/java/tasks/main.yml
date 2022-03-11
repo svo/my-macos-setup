@@ -1,12 +1,11 @@
+- name: Install jenv java environment manager
+  homebrew: name=jenv
 
-    - name: Install jenv java environment manager
-      homebrew: name=jenv
+- name: Add jenv to .zshrc
+  lineinfile: dest=~/.zshrc line='{{ item }}' create=yes
+  with_items:
+    - export PATH="$HOME/.jenv/bin:$PATH"
+    - eval "$(jenv init -)"
 
-    - name: Add jenv to .zshrc
-      lineinfile: dest=~/.zshrc line='{{ item }}' create=yes
-      with_items:
-      - export PATH="$HOME/.jenv/bin:$PATH"
-      - eval "$(jenv init -)"
-
-    - name: Install Java
-      homebrew_cask: name=adoptopenjdk
+- name: Install Java
+  homebrew_cask: name=adoptopenjdk

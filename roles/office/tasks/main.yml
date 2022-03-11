@@ -1,50 +1,11 @@
-- name: Install PlantUML CLI diagramming tool
-  homebrew: name=plantuml
-
-- name: Install jq command-line JSON processor
-  homebrew: name=jq
-
 - name: Install IntelliJ
   homebrew_cask: name=intellij-idea
-
-- name: Install Taskwarrior command line task management tool
-  homebrew: name=task
 
 - name: Install 1Password password manager
   homebrew_cask: name=1password
 
 - name: Install postman
   homebrew_cask: name=postman
-
-- name: Install atom
-  homebrew_cask: name=atom
-
-- name: Install XmlStarlet
-  homebrew: name=xmlstarlet
-
-- name: Install yq XML/YAML query procesor
-  pip: name=yq executable=/usr/local/bin/pip3
-
-- name: Install docutils for processing documentation
-  pip: name=docutils executable=/usr/local/bin/pip3
-
-- name: Install python-json2csv
-  pip: name=python-json2csv executable=/usr/local/bin/pip3
-
-- name: Install xlsx2csv
-  pip: name=xlsx2csv executable=/usr/local/bin/pip3
-
-- name: Setup additional bin path for atom
-  blockinfile:
-    create: yes
-    path: ~/.atom/init.coffee
-    block: |
-      process.env.PATH = ["/usr/bin",
-        "/usr/local/bin",
-        ].join(":")
-
-- name: Install cloc lines of code utility
-  homebrew: name=cloc
 
 - name: Install Adobe Reader
   homebrew_cask: name=adobe-acrobat-reader
@@ -55,29 +16,38 @@
 - name: Install TablePlus database management tool
   homebrew_cask: name=tableplus
 
-- name: Install pandoc document converter
-  homebrew: name=pandoc,librsvg
-
-- name: Install basictex to support pandoc behaviours
-  homebrew_cask: name=basictex
-
-- name: Install Markdown to Confluence converter
-  shell: export NVM_DIR="$HOME/.nvm" && . "$(/usr/local/bin/brew --prefix nvm)/nvm.sh" && $HOME/.nvm/versions/node/v10.16.3/bin/npm install markdown2confluence-cws@2.0.4 --global
-
-- name: Install js-beautify
-  shell: export NVM_DIR="$HOME/.nvm" && . "$(/usr/local/bin/brew --prefix nvm)/nvm.sh" && $HOME/.nvm/versions/node/v10.16.3/bin/npm install js-beautify@1.10.1 --global
-
-- name: Install CLI tool for working with Architecture Decision Records
-  homebrew: name=adr-tools
-
-- name: Install git-quick-stats
-  homebrew: name=git-quick-stats
-
-- name: Install Semgrep static analysis for finding bugs and enforcing code standards
-  homebrew: name=semgrep
-
 - name: Install miro collaboration whiteboard
   homebrew_cask: name=miro
 
-- name: Install GitHub CLI tools
-  homebrew: name=gh
+- name: Install Alfred productivity utility
+  homebrew_cask: name=alfred
+
+- name: Install Dropbox for online storage
+  homebrew_cask: name=dropbox
+
+- name: Install mounty for NTFS volumes
+  homebrew_cask: name=mounty
+
+- name: Install The Unarchiver
+  homebrew_cask: name=the-unarchiver
+
+- name: Install App Cleaner
+  homebrew_cask: name=appcleaner
+
+- name: Install flycut clipboard manager
+  homebrew_cask: name=flycut
+
+- name: Install Disk Inventory X
+  homebrew_cask: name=disk-inventory-x
+
+- name: Install lastpass password manager
+  homebrew_cask: name=lastpass
+
+- name: Install clocker timezone menu
+  homebrew_cask: name=clocker
+
+- name: Install Stopwatch, alarm clock, and clock utility
+  homebrew_cask: name=timer
+
+- name: Install Wireshark packet analyzer
+  homebrew_cask: name=wireshark

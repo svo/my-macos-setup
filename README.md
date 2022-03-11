@@ -5,7 +5,7 @@
 ### Including Bootstrapping
 
 ```
-./build.sh
+./prepare.sh && ./build.sh
 ```
 
 Above sets up `brew`, `python`, `pip` and `ansible` before running the `playbook.yml`.
@@ -13,5 +13,5 @@ Above sets up `brew`, `python`, `pip` and `ansible` before running the `playbook
 ### Ansible Only
 
 ```
-ansible-playbook -i "localhost," -c local -K playbook.yml
+./build.sh
 ```

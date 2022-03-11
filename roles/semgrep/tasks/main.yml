@@ -1,0 +1,7 @@
+- name: Install Semgrep static analysis for finding bugs and enforcing code standards
+  homebrew: name=semgrep
+
+- name: Install vim plugin
+  git: repo={{ item.repo }} dest=~/.vim/bundle/{{ item.dest }}
+  with_items:
+    - {repo: "https://github.com/returntocorp/semgrep.vim.git", dest: semgrep.vim}

@@ -1,12 +1,6 @@
 - name: Install franz
   homebrew_cask: name=franz
 
-- name: Install slack
-  homebrew_cask: name=slack
-
-- name: Install teams
-  homebrew_cask: name=microsoft-teams
-
 - name: Install lynx command line browser
   homebrew: name=lynx
 

@@ -1,0 +1,112 @@
+- name: Install jq command-line JSON processor
+  homebrew: name=jq
+
+- name: Install yq XML/YAML query procesor
+  pip: name=yq executable=/usr/local/bin/pip3
+
+- name: Install XmlStarlet
+  homebrew: name=xmlstarlet
+
+- name: Install Taskwarrior command line task management tool
+  homebrew: name=task
+
+- name: Install docutils for processing documentation
+  pip: name=docutils executable=/usr/local/bin/pip3
+
+- name: Install python-json2csv
+  pip: name=python-json2csv executable=/usr/local/bin/pip3
+
+- name: Install cloc lines of code utility
+  homebrew: name=cloc
+
+- name: Install scc code counter
+  homebrew: name=scc
+
+- name: Install petname command line name generator
+  pip: name=petname executable=/usr/local/bin/pip3
+
+- name: Install core GNU utilities
+  homebrew: name=coreutils
+
+- name: Install GNU implementation of sed
+  homebrew: name=gnu-sed
+
+- name: Install Markdown to Confluence converter
+  shell: export NVM_DIR="$HOME/.nvm" && . "$(/usr/local/bin/brew --prefix nvm)/nvm.sh" && $HOME/.nvm/versions/node/v10.16.3/bin/npm install markdown2confluence-cws@2.0.4 --global
+
+- name: Install js-beautify
+  shell: export NVM_DIR="$HOME/.nvm" && . "$(/usr/local/bin/brew --prefix nvm)/nvm.sh" && $HOME/.nvm/versions/node/v10.16.3/bin/npm install js-beautify@1.10.1 --global
+
+- name: Install tool for working with Architecture Decision Records
+  homebrew: name=adr-tools
+
+- name: Install git-quick-stats
+  homebrew: name=git-quick-stats
+
+- name: Install GitHub tools
+  homebrew: name=gh
+
+- name: Install zsh-completions
+  homebrew: name=zsh-completions
+
+- name: Setup zsh-completions
+  blockinfile:
+    create: yes
+    path: ~/.zshrc
+    marker: "# {mark} ANSIBLE MANAGED BLOCK (BASH_COMPLETION)"
+    block: |
+      if type brew &>/dev/null; then
+      FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+
+      autoload -Uz compinit
+      compinit
+      fi
+
+- name: Install tmux terminal multiplexer
+  homebrew: name=tmux
+
+- name: Setup tmux
+  blockinfile:
+    create: yes
+    path: ~/.tmux.conf
+    block: |
+      bind c new-window -c "#{pane_current_path}"
+      bind '"' split-window -c "#{pane_current_path}"
+      bind % split-window -h -c "#{pane_current_path}"
+
+- name: Start tmux by default in Terminal.app
+  blockinfile:
+    path: ~/.zshrc
+    marker: "# {mark} ANSIBLE MANAGED BLOCK (tmux start)"
+    block: |
+      [[ $TERM != "screen" ]] && exec tmux
+
+- name: Install Midnight Commander command line file manager
+  homebrew: name=midnight-commander
+
+- name: Install icdiff side-by-side diff tool
+  homebrew: name=icdiff
+
+- name: Install telnet
+  homebrew: name=telnet
+
+- name: Install HTTPie cURL wrapper
+  homebrew: name=httpie
+
+- name: Install watch for repeating command line commands
+  homebrew: name=watch
+
+- name: Install topgrade
+  homebrew: name=topgrade
+
+- name: Install letsencrypt command line tools
+  homebrew: name=letsencrypt
+
+- name: Install htop for process monitoring
+  homebrew: name=htop
+
+- name: Install iftop for network monitoring
+  homebrew: name=iftop
+
+- name: Install NCurses Disk Usage utility
+  homebrew: name=ncdu

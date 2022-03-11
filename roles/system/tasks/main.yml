@@ -1,89 +1,5 @@
-- name: Install brew versions tap
-  shell: /usr/local/bin/brew tap homebrew/cask-versions
-
-- name: Install zsh-completions
-  homebrew: name=zsh-completions
-
-- name: Setup zsh-completions
-  blockinfile:
-    create: yes
-    path: ~/.zshrc
-    marker: "# {mark} ANSIBLE MANAGED BLOCK (BASH_COMPLETION)"
-    block: |
-      if type brew &>/dev/null; then
-      FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
-
-      autoload -Uz compinit
-      compinit
-      fi
-
-- name: Install tmux terminal multiplexer
-  homebrew: name=tmux
-
-- name: Setup tmux
-  blockinfile:
-    create: yes
-    path: ~/.tmux.conf
-    block: |
-      bind c new-window -c "#{pane_current_path}"
-      bind '"' split-window -c "#{pane_current_path}"
-      bind % split-window -h -c "#{pane_current_path}"
-
-- name: Install Midnight Commander command line file manager
-  homebrew: name=midnight-commander
-
-- name: Install icdiff side-by-side diff tool
-  homebrew: name=icdiff
-
-- name: Install telnet
-  homebrew: name=telnet
-
-- name: Install HTTPie cURL wrapper
-  homebrew: name=httpie
-
-- name: Install Alfred productivity utility
-  homebrew_cask: name=alfred
-
-- name: Install Dropbox for online storage
-  homebrew_cask: name=dropbox
-
-- name: Install mounty for NTFS volumes
-  homebrew_cask: name=mounty
-
-- name: Add /usr/local/sbin to path
-  lineinfile: path=/etc/paths line='/usr/local/sbin' insertbefore='/usr/sbin'
-  become: yes
-
-- name: Add drivers brew tap
-  shell: /usr/local/bin/brew tap homebrew/cask-drivers
-
 - name: Install logitech options software
   homebrew_cask: name=logitech-options
-
-- name: Install watch for repeating command line commands
-  homebrew: name=watch
-
-- name: Install The Unarchiver
-  homebrew_cask: name=the-unarchiver
-
-- name: Install App Cleaner
-  homebrew_cask: name=appcleaner
-
-- name: Install flycut clipboard manager
-  homebrew_cask: name=flycut
-
-- name: Install Disk Inventory X
-  homebrew_cask: name=disk-inventory-x
-
-- name: Start tmux by default in Terminal.app
-  blockinfile:
-    path: ~/.zshrc
-    marker: "# {mark} ANSIBLE MANAGED BLOCK (tmux start)"
-    block: |
-      [[ $TERM != "screen" ]] && exec tmux
-
-- name: Install core GNU utilities
-  homebrew: name=coreutils
 
 - name: Install balena etcher bootable USB creator
   homebrew_cask: name=balenaetcher
@@ -91,32 +7,8 @@
 - name: Install unetbootin
   homebrew_cask: name=unetbootin
 
-- name: Install htop
-  homebrew: name=htop
-
-- name: Install topgrade
-  homebrew: name=topgrade
-
 - name: Install testdisk
   homebrew: name=testdisk
-
-- name: Install lastpass password manager
-  homebrew_cask: name=lastpass
-
-- name: Install clocker timezone menu
-  homebrew_cask: name=clocker
-
-- name: Install Stopwatch, alarm clock, and clock utility
-  homebrew_cask: name=timer
-
-- name: Install petname command line name generator
-  pip: name=petname executable=/usr/local/bin/pip3
-
-- name: Install GNU implementation of sed
-  homebrew: name=gnu-sed
-
-- name: Install scc code counter
-  homebrew: name=scc
 
 - name: System monitor for the menu bar
   homebrew_cask: name=stats
@@ -129,6 +21,3 @@
 
 - name: Install Turbo Boost Switcher to disable and control heat
   homebrew_cask: name=turbo-boost-switcher
-
-- name: Install letsencrypt command line tools
-  homebrew: name=letsencrypt
