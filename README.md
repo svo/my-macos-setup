@@ -1,5 +1,19 @@
 # My OSX Setup
 
+## Testing
+
+If no Virtual Machine already in place:
+
+```
+vagrant up
+```
+
+If Virtual Machine already created:
+
+```
+vagrant provision
+```
+
 ## Building
 
 ### Including Bootstrapping
