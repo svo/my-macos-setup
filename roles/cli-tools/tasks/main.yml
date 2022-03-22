@@ -32,10 +32,10 @@
   homebrew: name=gnu-sed
 
 - name: Install Markdown to Confluence converter
-  shell: export NVM_DIR="$HOME/.nvm" && . "$(/usr/local/bin/brew --prefix nvm)/nvm.sh" && $HOME/.nvm/versions/node/v10.16.3/bin/npm install markdown2confluence-cws@2.0.4 --global
+  shell: export NVM_DIR="$HOME/.nvm" && . "$(/usr/local/bin/brew --prefix nvm)/nvm.sh" && $HOME/.nvm/versions/node/v16.14.2/bin/npm install markdown2confluence-cws@2.0.4 --global
 
 - name: Install js-beautify
-  shell: export NVM_DIR="$HOME/.nvm" && . "$(/usr/local/bin/brew --prefix nvm)/nvm.sh" && $HOME/.nvm/versions/node/v10.16.3/bin/npm install js-beautify@1.10.1 --global
+  shell: export NVM_DIR="$HOME/.nvm" && . "$(/usr/local/bin/brew --prefix nvm)/nvm.sh" && $HOME/.nvm/versions/node/v16.14.2/bin/npm install js-beautify@1.10.1 --global
 
 - name: Install tool for working with Architecture Decision Records
   homebrew: name=adr-tools
