@@ -8,8 +8,11 @@
     - export NVM_DIR="$HOME/.nvm"
     - . "$(brew --prefix nvm)/nvm.sh"
 
-- name: Install Node.js
-  shell: export NVM_DIR="$HOME/.nvm" && . "$(/usr/local/bin/brew --prefix nvm)/nvm.sh" && nvm install v10.16.3
+- name: Install Node.js LTS
+  shell: export NVM_DIR="$HOME/.nvm" && . "$(/usr/local/bin/brew --prefix nvm)/nvm.sh" && nvm install --lts
+
+- name: Setup to use LTS
+  shell: export NVM_DIR="$HOME/.nvm" && . "$(/usr/local/bin/brew --prefix nvm)/nvm.sh" && nvm use --lts
 
 - name: Set default node version for NVM
   shell: export NVM_DIR="$HOME/.nvm" && . "$(/usr/local/bin/brew --prefix nvm)/nvm.sh" && nvm alias default node
