@@ -4,6 +4,9 @@
 - name: Install container engine
   homebrew: name=qemu,podman
 
+- name: Install Docker Desktop
+  homebrew_cask: name=docker
+
 - name: Install AWS CLI tools
   pip: name=awscli extra_args="--ignore-installed six" executable=/usr/local/bin/pip3
   become: yes
@@ -25,6 +28,9 @@
 
 - name: Install Kuberenetes command line
   homebrew: name=kubernetes-cli
+
+- name: Install Act for testing local GitHub workflows
+  homebrew: name=act
 
 - name: Install vim plugins
   git: repo={{ item.repo }} dest=~/.vim/bundle/{{ item.dest }}
