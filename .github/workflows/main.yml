@@ -8,7 +8,13 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
+    - name: Uninstall GitHub Actions' built-in Homebrew.
+      run: uninstall-homebrew.sh
+
     - name: Run the default task
       run: |
         ./prepare.sh
         ./build.sh
+      env:
+        ANSIBLE_FORCE_COLOR: '1'
+
