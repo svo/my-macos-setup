@@ -13,8 +13,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Uninstall built-in homebrew
-        run: ./uninstall-homebrew.sh
+      - name: Remove existing setup
+        run: |
+          ./uninstall-homebrew.sh
+          sudo rm -rf /Applications/Google\ Chrome.app
 
       - name: Provision
         run: |
