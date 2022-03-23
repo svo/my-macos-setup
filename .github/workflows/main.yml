@@ -1,20 +1,25 @@
 name: Test
 
-on: [push,pull_request]
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: '0 0 * * *'
+
 
 jobs:
   build:
     runs-on: macos-latest
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - name: Uninstall GitHub Actions' built-in Homebrew.
-      run: ./uninstall-homebrew.sh
+      - name: Uninstall built-in homebrew
+        run: ./uninstall-homebrew.sh
 
-    - name: Run the default task
-      run: |
-        ./prepare.sh
-        ./build.sh
-      env:
-        ANSIBLE_FORCE_COLOR: '1'
+      - name: Provision
+        run: |
+          ./prepare.sh
+          ./build.sh
+        env:
+          ANSIBLE_FORCE_COLOR: '1'
 
