@@ -9,7 +9,7 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Uninstall GitHub Actions' built-in Homebrew.
-      run: uninstall-homebrew.sh
+      run: ./uninstall-homebrew.sh
 
     - name: Run the default task
       run: |
