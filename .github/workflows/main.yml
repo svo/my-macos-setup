@@ -20,8 +20,8 @@ jobs:
 
       - name: Provision
         run: |
-          ./prepare.sh
-          ./build.sh
+          ./prepare.sh &&
+          ansible-playbook -i "localhost," -c local playbook.yml
         env:
           ANSIBLE_FORCE_COLOR: '1'
 
