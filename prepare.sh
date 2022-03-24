@@ -1,6 +1,6 @@
 #!/bin/bash
 
-chsh -s /bin/zsh &&
+chsh -s /bin/zsh
 
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" &&
 
