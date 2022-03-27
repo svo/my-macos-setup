@@ -1,11 +1,8 @@
 - name: Install Ansible
   homebrew: name=ansible
 
-- name: Install container engine
-  homebrew: name=qemu,podman
-
-- name: Install Docker Desktop
-  homebrew_cask: name=docker
+- name: Install docker container engine
+  homebrew: name=docker,colima
 
 - name: Install AWS CLI tools
   pip: name=awscli extra_args="--ignore-installed six" executable=/usr/local/bin/pip3
