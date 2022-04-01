@@ -4,20 +4,8 @@
 - name: Install balena etcher bootable USB creator
   homebrew_cask: name=balenaetcher
 
-- name: Install unetbootin
-  homebrew_cask: name=unetbootin
-
 - name: Install testdisk
   homebrew: name=testdisk
 
 - name: System monitor for the menu bar
   homebrew_cask: name=stats
-
-- name: Install tool to control external monitor brightness & volume
-  homebrew_cask: name=monitorcontrol
-
-- name: Install intel core monitoring tool
-  homebrew_cask: name=intel-power-gadget
-
-- name: Install Turbo Boost Switcher to disable and control heat
-  homebrew_cask: name=turbo-boost-switcher
