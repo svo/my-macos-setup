@@ -1,4 +1,5 @@
 *.swp
 *.swo
 *.retry
+*.log
 .vagrant
