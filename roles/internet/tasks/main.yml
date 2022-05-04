@@ -1,6 +1,9 @@
 - name: Install franz
   homebrew_cask: name=franz
 
+- name: Install zoom
+  homebrew_cask: name=zoom
+
 - name: Install lynx command line browser
   homebrew: name=lynx
 
