@@ -6,7 +6,7 @@
     src: "{{ item }}"
     dest: ~/.git-prompt.sh
     remote_src: yes
-  with_fileglob: "/usr/local/Cellar/git/*/etc/bash_completion.d/git-prompt.sh"
+  with_fileglob: "/usr/local/Cellar/git/2.36.0/etc/bash_completion.d/git-prompt.sh"
 
 - name: Setup git for zsh
   blockinfile:
