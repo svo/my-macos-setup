@@ -1,6 +1,9 @@
 - name: Install franz
   homebrew_cask: name=franz
 
+- name: Install loom
+  homebrew_cask: name=loom
+
 - name: Install zoom
   homebrew_cask: name=zoom
 
