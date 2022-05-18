@@ -6,3 +6,6 @@
 
 - name: Install handbrake
   homebrew_cask: name=handbrake
+
+- name: Install Jellyfin Media Player
+  homebrew_cask: name=jellyfin-media-player
