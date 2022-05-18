@@ -10,5 +10,5 @@
 - name: System monitor for the menu bar
   homebrew_cask: name=stats
 
-- name: Install OpenVPN Connect
-  homebrew_cask: name=openvpn-connect
+- name: Install OpenVPN Client
+  homebrew_cask: name=tunnelblick
