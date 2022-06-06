@@ -79,7 +79,8 @@
     path: ~/.zshrc
     marker: "# {mark} ANSIBLE MANAGED BLOCK (tmux start)"
     block: |
-      [[ $TERM != "screen" ]] && exec tmux
+      TERM=xterm &&
+      if [ "$TMUX" = "" ]; then tmux; fi
 
 - name: Install Midnight Commander command line file manager
   homebrew: name=midnight-commander
