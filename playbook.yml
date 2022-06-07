@@ -13,6 +13,10 @@
       lineinfile: path=/etc/paths line='/usr/local/sbin' insertbefore='/usr/sbin'
       become: yes
 
+    - hostname: name=svo-mac
+      become: yes
+
+
   roles:
 
     - source-control
