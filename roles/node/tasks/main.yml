@@ -28,6 +28,12 @@
 - name: Install git-stats
   shell: export NVM_DIR="$HOME/.nvm" && . "$(/usr/local/bin/brew --prefix nvm)/nvm.sh" && $HOME/.nvm/versions/node/v16.14.2/bin/npm install git-stats-html@1.0.8 --global
 
+- name: Install Markdown to Confluence converter
+  shell: export NVM_DIR="$HOME/.nvm" && . "$(/usr/local/bin/brew --prefix nvm)/nvm.sh" && $HOME/.nvm/versions/node/v16.14.2/bin/npm install markdown2confluence-cws@2.0.4 --global
+
+- name: Install js-beautify
+  shell: export NVM_DIR="$HOME/.nvm" && . "$(/usr/local/bin/brew --prefix nvm)/nvm.sh" && $HOME/.nvm/versions/node/v16.14.2/bin/npm install js-beautify@1.10.1 --global
+
 - name: Install vim plugin
   git: repo={{ item.repo }} dest=~/.vim/bundle/{{ item.dest }}
   with_items:
