@@ -4,9 +4,6 @@
 - name: Install nmap for network discovery and security auditing
   homebrew: name=nmap
 
-- name: Install dnsmap for brute force DNS name discovery
-  homebrew: name=dnsmap
-
 - name: Install ncrack network authentication cracking tool
   homebrew: name=ncrack
 
