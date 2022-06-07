@@ -21,6 +21,7 @@
     - system
     - java
     - gradle
+    - maven
     - node
     - clojure
     - golang

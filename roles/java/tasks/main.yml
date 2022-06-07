@@ -8,4 +8,7 @@
     - eval "$(jenv init -)"
 
 - name: Install Java
-  homebrew_cask: name=adoptopenjdk
+  homebrew: name=java11
+
+- name: Add Java version to jenv
+  command: jenv add /usr/local/opt/java11/libexec/openjdk.jdk/Contents/Home/
