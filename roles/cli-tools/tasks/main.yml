@@ -1,5 +1,14 @@
-- name: Setup ohmyzsh
+- name: Install ohmyzsh
   shell: /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  args:
+    creates: ~/.oh-my-zsh
+
+- name: Setup ohmyzsh theme
+  lineinfile:
+    path: ~/.zshrc
+    regexp: '^(.*)ZSH_THEME="(.*)"$'
+    line: 'ZSH_THEME="gnzh"'
+    backrefs: yes
 
 - name: Install jq command-line JSON processor
   homebrew: name=jq

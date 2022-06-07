@@ -16,6 +16,7 @@
   roles:
 
     - source-control
+    - cli-tools
     - vim
     - python
     - system
@@ -30,7 +31,6 @@
     - office
     - plantuml
     - atom
-    - cli-tools
     - semgrep
     - security
     - internet
