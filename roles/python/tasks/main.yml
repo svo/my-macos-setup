@@ -1,8 +1,8 @@
 - name: Add python3 as python to .zshrc
-  lineinfile: dest=~/.zshrc line='alias python=/opt/homebrew/bin/python3' create=yes
+  lineinfile: dest=~/.zshrc line='alias python=python3' create=yes
 
 - name: Add pip3 as pip to .zshrc
-  lineinfile: dest=~/.zshrc line='alias pip=/opt/homebrew/bin/pip3'
+  lineinfile: dest=~/.zshrc line='alias pip=pip3'
 
 - name: Install python setuptools
   pip: name=setuptools
