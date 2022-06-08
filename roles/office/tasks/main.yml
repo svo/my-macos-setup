@@ -7,9 +7,6 @@
 - name: Install postman
   homebrew_cask: name=postman
 
-- name: Install Adobe Reader
-  homebrew_cask: name=adobe-acrobat-reader
-
 - name: Install MySQL Workbench for working with MySQL
   homebrew_cask: name=mysqlworkbench
 

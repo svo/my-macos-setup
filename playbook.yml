@@ -3,11 +3,14 @@
 
   pre_tasks:
 
+    - name: Add brew to shell
+      lineinfile: path=~/.zprofile line='eval "$(/opt/homebrew/bin/brew shellenv)"' create=yes
+
     - name: Install brew versions tap
-      shell: /usr/local/bin/brew tap homebrew/cask-versions
+      shell: /opt/homebrew/bin/brew tap homebrew/cask-versions
 
     - name: Add drivers brew tap
-      shell: /usr/local/bin/brew tap homebrew/cask-drivers
+      shell: /opt/homebrew/bin/brew tap homebrew/cask-drivers
 
     - name: Add /usr/local/sbin to path
       lineinfile: path=/etc/paths line='/usr/local/sbin' insertbefore='/usr/sbin'
@@ -40,17 +43,3 @@
     - internet
     - infrastructure-as-code
     - media
-
-  post_tasks:
-
-    - name: Create remote user
-      user: name=remote generate_ssh_key=yes ssh_key_bits=2048 ssh_key_file=.ssh/id_rsa shell=/bin/bash
-      become: yes
-
-    - name: Create remote user Documents directory
-      file: path=/Users/remote/Documents state=directory owner=remote force=yes
-      become: yes
-
-    - name: Change .local ownership and permissions
-      file: path=/Users/{{ ansible_user_id }}/.local owner={{ ansible_user_id }} recurse=yes mode='0755'
-      become: yes

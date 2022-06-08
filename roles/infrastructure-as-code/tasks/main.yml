@@ -5,11 +5,8 @@
   homebrew: name=docker,colima
 
 - name: Install AWS CLI tools
-  pip: name=awscli extra_args="--ignore-installed six" executable=/usr/local/bin/pip3
+  pip: name=awscli extra_args="--ignore-installed six" executable=/opt/homebrew/bin/pip3
   become: yes
-
-- name: Install VirtualBox
-  homebrew_cask: name=virtualbox
 
 - name: Install Vagrant
   homebrew_cask: name=vagrant

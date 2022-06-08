@@ -2,7 +2,11 @@
 
 chsh -s /bin/zsh
 
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" &&
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" &&
+
+eval "$(/opt/homebrew/bin/brew shellenv)" &&
+
+/usr/sbin/softwareupdate --install-rosetta --agree-to-license &&
 
 brew update && brew upgrade && brew upgrade --cask &&
 
