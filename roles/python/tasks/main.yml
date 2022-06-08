@@ -5,7 +5,7 @@
   lineinfile: dest=~/.zshrc line='alias pip=/opt/homebrew/bin/pip3'
 
 - name: Install python setuptools
-  pip: name=setuptools executable=/opt/homebrew/bin/pip3
+  pip: name=setuptools
 
 - name: Install vim plugin
   git: repo={{ item.repo }} dest=~/.vim/bundle/{{ item.dest }}

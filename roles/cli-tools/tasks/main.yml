@@ -14,7 +14,7 @@
   homebrew: name=jq
 
 - name: Install yq XML/YAML query procesor
-  pip: name=yq executable=/opt/homebrew/bin/pip3
+  pip: name=yq
 
 - name: Install XmlStarlet
   homebrew: name=xmlstarlet
@@ -23,10 +23,10 @@
   homebrew: name=task
 
 - name: Install docutils for processing documentation
-  pip: name=docutils executable=/opt/homebrew/bin/pip3
+  pip: name=docutils
 
 - name: Install python-json2csv
-  pip: name=python-json2csv executable=/opt/homebrew/bin/pip3
+  pip: name=python-json2csv
 
 - name: Install cloc lines of code utility
   homebrew: name=cloc
@@ -35,7 +35,7 @@
   homebrew: name=scc
 
 - name: Install petname command line name generator
-  pip: name=petname executable=/opt/homebrew/bin/pip3
+  pip: name=petname
 
 - name: Install core GNU utilities
   homebrew: name=coreutils
