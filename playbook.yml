@@ -7,10 +7,10 @@
       lineinfile: path=~/.zprofile line='eval "$(/opt/homebrew/bin/brew shellenv)"' create=yes
 
     - name: Install brew versions tap
-      shell: /opt/homebrew/bin/brew tap homebrew/cask-versions
+      shell: brew tap homebrew/cask-versions
 
     - name: Add drivers brew tap
-      shell: /opt/homebrew/bin/brew tap homebrew/cask-drivers
+      shell: brew tap homebrew/cask-drivers
 
     - name: Add /usr/local/sbin to path
       lineinfile: path=/etc/paths line='/usr/local/sbin' insertbefore='/usr/sbin'
