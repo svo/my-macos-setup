@@ -19,7 +19,6 @@
     - hostname: name=svo-mac
       become: yes
 
-
   roles:
 
     - source-control
@@ -43,3 +42,9 @@
     - internet
     - infrastructure-as-code
     - media
+
+  post_tasks:
+
+    - name: Change .local ownership and permissions
+      file: path=/opt/homebrew/share owner={{ ansible_user_id }} recurse=yes mode='0755'
+      become: yes
