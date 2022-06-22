@@ -22,6 +22,7 @@
   roles:
 
     - source-control
+    - docker
     - cli-tools
     - vim
     - python
