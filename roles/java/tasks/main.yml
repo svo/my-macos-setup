@@ -7,5 +7,8 @@
     - export PATH="$HOME/.jenv/bin:$PATH"
     - eval "$(jenv init -)"
 
-- name: Install Java
-  homebrew: name=java11
+- name: Install temurin 11
+  homebrew_cask: name=temurin11
+
+- name: Install temurin 17
+  homebrew_cask: name=temurin17
