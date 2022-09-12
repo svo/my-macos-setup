@@ -8,6 +8,9 @@
 - name: Install Vagrant
   homebrew_cask: name=vagrant
 
+- name: Install Google Cloud SDK
+  homebrew_cask: name=google-cloud-sdk
+
 - name: Install Terraform
   homebrew: name=terraform
 
