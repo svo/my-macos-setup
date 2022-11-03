@@ -1,2 +1,2 @@
 - name: Install docker container engine
-  homebrew: name=docker,colima
+  homebrew: name=docker,docker-compose,colima
