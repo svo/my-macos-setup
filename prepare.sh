@@ -12,8 +12,6 @@ brew update && brew upgrade && brew upgrade --cask &&
 
 brew doctor || true &&
 
-brew unlink python &&
-
 brew install python &&
 
 brew install ansible
