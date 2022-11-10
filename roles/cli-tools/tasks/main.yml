@@ -50,7 +50,7 @@
   homebrew: name=git-quick-stats
 
 - name: Install GitHub tools
-  homebrew: name=gh
+  homebrew: name=gh,git-lfs,git-filter-repo,bfg
 
 - name: Install zsh-completions
   homebrew: name=zsh-completions
