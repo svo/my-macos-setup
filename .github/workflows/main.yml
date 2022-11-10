@@ -17,6 +17,7 @@ jobs:
         run: |
           ./uninstall-homebrew.sh
           sudo rm -rf /Applications/Google\ Chrome.app
+          sudo rm -rf /Library/Frameworks/Python.framework
 
       - name: Provision
         run: |
