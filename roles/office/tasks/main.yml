@@ -52,8 +52,8 @@
 - name: Install Stopwatch, alarm clock, and clock utility
   homebrew_cask: name=timer
 
-- name: Install Google Drive CLI Client
-  homebrew: name=gdrive
+- name: Install Google Drive
+  homebrew_cask: name=google-drive
 
 - name: Install Wireshark packet analyzer
   homebrew_cask: name=wireshark
