@@ -1,3 +1,6 @@
+- name: Install newer bash
+  homebrew: name=bash
+
 - name: Install ohmyzsh
   shell: /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
   args:
