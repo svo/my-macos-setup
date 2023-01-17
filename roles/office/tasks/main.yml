@@ -13,6 +13,9 @@
 - name: Install TablePlus database management tool
   homebrew_cask: name=tableplus
 
+- name: Install dbvisualizer
+  homebrew_cask: name=dbvisualizer
+
 - name: Install psql client
   homebrew: name=libpq
 
