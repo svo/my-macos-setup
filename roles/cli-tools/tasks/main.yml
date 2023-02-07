@@ -120,3 +120,6 @@
 
 - name: Install NCurses Disk Usage utility
   homebrew: name=ncdu
+
+- name: Install Traceroute
+  homebrew: name=tcptraceroute
