@@ -3,6 +3,3 @@
 
 - name: Add rbenv to .zshrc
   lineinfile: dest=~/.zshrc line='eval "$(rbenv init -)"' create=yes
-
-- name: Install ruby 3.2.0
-  shell: rbenv install 3.2.0
