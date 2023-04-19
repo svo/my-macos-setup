@@ -123,3 +123,6 @@
 
 - name: Install Traceroute
   homebrew: name=tcptraceroute
+
+- name: Install pqrs command line tool for inspecting Parquet files
+  homebrew: name=manojkarthick/tap/pqrs
