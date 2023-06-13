@@ -1,0 +1,10 @@
+- name: Install flutter
+  homebrew_cask: name=flutter
+
+- name: Precache
+  command: flutter precache
+
+- name: Install vim plugin
+  git: repo={{ item.repo }} dest=~/.vim/bundle/{{ item.dest }}
+  with_items:
+    - {repo: "https://github.com/dart-lang/dart-vim-plugin.git", dest: dart-vim-plugin}

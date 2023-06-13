@@ -1,6 +1,9 @@
 - name: Install IntelliJ
   homebrew_cask: name=intellij-idea
 
+- name: Install Cocoapods
+  homebrew: name=cocoapods
+
 - name: Install 1Password password manager
   homebrew_cask: name=1password
 
