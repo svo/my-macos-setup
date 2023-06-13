@@ -46,9 +46,6 @@
 - name: Install flycut clipboard manager
   homebrew_cask: name=flycut
 
-- name: Install Disk Inventory X
-  homebrew_cask: name=disk-inventory-x
-
 - name: Install lastpass password manager
   homebrew_cask: name=lastpass
 
