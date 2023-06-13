@@ -9,9 +9,6 @@
     - name: Install brew versions tap
       shell: brew tap homebrew/cask-versions
 
-    - name: Add drivers brew tap
-      shell: brew tap homebrew/cask-drivers
-
     - name: Add /usr/local/sbin to path
       lineinfile: path=/etc/paths line='/usr/local/sbin' insertbefore='/usr/sbin'
       become: yes
