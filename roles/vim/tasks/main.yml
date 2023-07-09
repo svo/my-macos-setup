@@ -40,6 +40,7 @@
       :set noswapfile
       let g:ctrlp_map = '<c-p>'
       let g:ctrlp_cmd = 'CtrlP'
+      let g:pymode_options_max_line_length = 100
       autocmd BufEnter * EnableStripWhitespaceOnSave
       autocmd FileType Markdown setlocal spell spelllang=en_au
       set encoding=utf-8
