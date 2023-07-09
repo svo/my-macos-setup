@@ -4,6 +4,9 @@
 - name: Precache
   command: flutter precache
 
+- name: Install lcov for code coverage
+  homebrew: name=lcov
+
 - name: Install vim plugin
   git: repo={{ item.repo }} dest=~/.vim/bundle/{{ item.dest }}
   with_items:
