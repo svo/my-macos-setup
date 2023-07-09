@@ -12,3 +12,6 @@
 
 - name: Install OpenVPN Client
   homebrew_cask: name=tunnelblick
+
+- name: Install ExpressVPN
+  homebrew_cask: name=expressvpn
