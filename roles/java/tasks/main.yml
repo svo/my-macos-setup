@@ -12,3 +12,6 @@
 
 - name: Install temurin 17
   homebrew_cask: name=temurin17
+
+- name: Install VisualVM
+  homebrew_cask: name=visualvm
