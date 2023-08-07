@@ -1,2 +1,5 @@
 - name: Install docker container engine
   homebrew: name=docker,docker-compose,colima
+
+- name: Add colima socket as DOCKER_HOST
+  lineinfile: path=~/.zprofile line='export DOCKER_HOST="unix://$HOME/.colima/docker.sock"' create=yes
