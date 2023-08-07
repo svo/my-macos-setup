@@ -14,6 +14,12 @@
 - name: Install Terraform
   homebrew: name=terraform
 
+- name: Install bundler
+  gem: name=bundler executable=/Users/svo/.rbenv/shims/gem
+
+- name: Install direnv
+  homebrew: name=direnv
+
 - name: Install Packer
   homebrew: name=packer
 
