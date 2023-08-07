@@ -3,3 +3,6 @@
 
 - name: Add rbenv to .zshrc
   lineinfile: dest=~/.zshrc line='eval "$(rbenv init -)"' create=yes
+
+- name: Add bin to PATH
+  lineinfile: dest=~/.zshrc line='export PATH="$HOME/.rbenv/versions/3.2.0/bin:$PATH"'
