@@ -20,6 +20,15 @@
 - name: Install direnv
   homebrew: name=direnv
 
+- name: Install tflint
+  homebrew: name=tflint
+
+- name: Install tfenv
+  homebrew: name=tfenv
+
+- name: Install terraform-docs
+  homebrew: name=terraform-docs
+
 - name: Install Packer
   homebrew: name=packer
 
