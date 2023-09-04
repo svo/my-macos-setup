@@ -1,8 +1,20 @@
 - name: Install rbenv for ruby version management
   homebrew: name=rbenv
 
-- name: Add rbenv to .zshrc
-  lineinfile: dest=~/.zshrc line='eval "$(rbenv init -)"' create=yes
+- name: Install default ruby
+  shell: rbenv install 3.2.2
+  args:
+    creates: ~/.rbenv/versions/3.2.2
 
-- name: Add bin to PATH
-  lineinfile: dest=~/.zshrc line='export PATH="$HOME/.rbenv/versions/3.2.0/bin:$PATH"'
+- name: Set default ruby
+  shell: rbenv global 3.2.2
+
+- name: Update .zshrc
+  blockinfile:
+    create: yes
+    path: ~/.zshrc
+    marker: "# {mark} ANSIBLE MANAGED BLOCK FOR RBENV"
+    block: |
+      eval "$(rbenv init -)"
+      export PATH="$HOME/.rbenv/versions/3.2.2/bin:$PATH"
+      export PATH="$HOME/.gem/ruby/3.2.2/bin:$PATH"
