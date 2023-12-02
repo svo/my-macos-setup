@@ -10,9 +10,6 @@
 - name: Install theHarvester e-mail account and subdomain discovery tool
   homebrew: name=theharvester
 
-- name: Install OWASP ZAP attack proxy
-  homebrew_cask: name=owasp-zap
-
 - name: Install nikto web server scanner
   homebrew: name=nikto
 
