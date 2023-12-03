@@ -12,7 +12,7 @@ brew update && brew upgrade && brew upgrade --cask &&
 
 brew doctor || true &&
 
-brew install python@3.11 &&
+brew install python &&
 brew install pipx &&
 
 pipx install --include-deps ansible
