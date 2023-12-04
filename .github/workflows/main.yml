@@ -21,7 +21,7 @@ jobs:
 
       - name: Provision
         run: |
-          ./prepare.sh &&
+          ./prepare-github.sh &&
           ansible-playbook -i "localhost," -c local -e 'ansible_python_interpreter=/opt/homebrew/bin/python3.11' playbook.yml
         env:
           ANSIBLE_FORCE_COLOR: '1'
