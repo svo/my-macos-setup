@@ -21,18 +21,7 @@ jobs:
 
       - name: Provision
         run: |
-          /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" &&
-          /usr/sbin/softwareupdate --install-rosetta --agree-to-license &&
-
-          brew update && brew upgrade && brew upgrade --cask &&
-
-          brew doctor || true &&
-
-          brew install python &&
-          brew install pipx &&
-
-          pipx install --include-deps ansible &&
-
+          ./prepare.sh &&
           ansible-playbook -i "localhost," -c local -e 'ansible_python_interpreter=/opt/homebrew/bin/python3.11' playbook.yml
         env:
           ANSIBLE_FORCE_COLOR: '1'
