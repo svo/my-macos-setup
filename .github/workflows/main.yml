@@ -15,7 +15,8 @@ jobs:
 
       - name: Remove existing brew
         run: |
-          ./uninstall-homebrew.sh
+          ./uninstall-homebrew.sh &&
+          sudo pip uninstall pip
 
       - name: Provision
         run: |
