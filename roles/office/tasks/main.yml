@@ -1,66 +1,92 @@
 - name: Install IntelliJ
-  homebrew_cask: name=intellij-idea
+  community.general.homebrew_cask:
+    name: intellij-idea
 
 - name: Install Cocoapods
-  homebrew: name=cocoapods
+  community.general.homebrew:
+    name: cocoapods
 
 - name: Install 1Password password manager
-  homebrew_cask: name=1password
+  community.general.homebrew_cask:
+    name: 1password
 
 - name: Install postman
-  homebrew_cask: name=postman
+  community.general.homebrew_cask:
+    name: postman
 
 - name: Install MySQL Workbench for working with MySQL
-  homebrew_cask: name=mysqlworkbench
+  community.general.homebrew_cask:
+    name: mysqlworkbench
 
 - name: Install TablePlus database management tool
-  homebrew_cask: name=tableplus
+  community.general.homebrew_cask:
+    name: tableplus
 
 - name: Install dbvisualizer
-  homebrew_cask: name=dbvisualizer
+  community.general.homebrew_cask:
+    name: dbvisualizer
 
 - name: Install psql client
-  homebrew: name=libpq
+  community.general.homebrew:
+    name: libpq
 
 - name: Get psql client path
-  shell: brew --prefix libpq
+  ansible.builtin.command: brew --prefix libpq
   register: psql_client_path
 
 - name: Add psql to bin
-  lineinfile: dest=~/.zshrc line='export PATH="{{ psql_client_path.stdout_lines[0] }}/bin:$PATH"'
+  ansible.builtin.blockinfile:
+    create: true
+    path: ~/.zshrc
+    marker: "# {mark} ANSIBLE MANAGED BLOCK FOR PSQL"
+    mode: "0644"
+    block: |
+      export PATH="{{ psql_client_path.stdout_lines[0] }}/bin:$PATH"
 
 - name: Install miro collaboration whiteboard
-  homebrew_cask: name=miro
+  community.general.homebrew_cask:
+    name: miro
 
 - name: Install Alfred productivity utility
-  homebrew_cask: name=alfred
+  community.general.homebrew_cask:
+    name: alfred
 
 - name: Install Dropbox for online storage
-  homebrew_cask: name=dropbox
+  community.general.homebrew_cask:
+    name: dropbox
 
 - name: Install mounty for NTFS volumes
-  homebrew_cask: name=mounty
+  community.general.homebrew_cask:
+    name: mounty
 
 - name: Install The Unarchiver
-  homebrew_cask: name=the-unarchiver
+  community.general.homebrew_cask:
+    name: the-unarchiver
 
 - name: Install App Cleaner
-  homebrew_cask: name=appcleaner
+  community.general.homebrew_cask:
+    name: appcleaner
 
 - name: Install flycut clipboard manager
-  homebrew_cask: name=flycut
+  community.general.homebrew_cask:
+    name: flycut
 
 - name: Install lastpass password manager
-  homebrew_cask: name=lastpass
+  community.general.homebrew_cask:
+    name: lastpass
 
 - name: Install clocker timezone menu
-  homebrew_cask: name=clocker
+  community.general.homebrew_cask:
+    name: clocker
 
 - name: Install Stopwatch, alarm clock, and clock utility
-  homebrew_cask: name=timer
+  community.general.homebrew_cask:
+    name: timer
 
 - name: Install Google Drive
-  homebrew_cask: name=google-drive
+  community.general.homebrew_cask:
+    name: google-drive
 
 - name: Install Wireshark packet analyzer
-  homebrew_cask: name=wireshark
+  community.general.homebrew_cask:
+    name: wireshark

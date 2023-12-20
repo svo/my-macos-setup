@@ -1,19 +1,26 @@
-- name: Add python3 as python to .zshrc
-  lineinfile: dest=~/.zshrc line='alias python=python3' create=yes
-
 - name: Add pip3 as pip to .zshrc
-  lineinfile: dest=~/.zshrc line='alias pip=pip3'
+  ansible.builtin.blockinfile:
+    create: true
+    path: ~/.zshrc
+    marker: "# {mark} ANSIBLE MANAGED BLOCK FOR PYTHON"
+    mode: "0644"
+    block: |
+      alias pip=pip3
+      alias python=python3
 
 - name: Install python
-  homebrew: name=python
+  community.general.homebrew:
+    name: python
 
 - name: Install pipx
-  homebrew: name=pipx
+  community.general.homebrew:
+    name: pipx
 
 - name: Install python setuptools
-  pip: name=setuptools
+  ansible.builtin.pip:
+    name: setuptools
 
 - name: Install vim plugin
-  git: repo={{ item.repo }} dest=~/.vim/bundle/{{ item.dest }}
-  with_items:
-    - {repo: "https://github.com/python-mode/python-mode.git", dest: python-mode}
+  ansible.builtin.git:
+    repo: https://github.com/python-mode/python-mode.git
+    dest: ~/.vim/bundle/python-mode

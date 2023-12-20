@@ -1,9 +1,11 @@
 - name: Install atom
-  homebrew_cask: name=atom
+  community.general.homebrew_cask:
+    name: atom
 
 - name: Setup additional bin path for atom
-  blockinfile:
-    create: yes
+  ansible.builtin.blockinfile:
+    create: true
     path: ~/.atom/init.coffee
+    mode: "0644"
     block: |
       process.env.PATH = ["/usr/bin", "/usr/local/bin", ].join(":")

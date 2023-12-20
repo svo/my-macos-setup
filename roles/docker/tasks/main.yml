@@ -1,5 +1,12 @@
 - name: Install docker container engine
-  homebrew: name=docker,docker-compose,colima
+  community.general.homebrew:
+    name: docker,docker-compose,colima
 
 - name: Add colima socket as DOCKER_HOST
-  lineinfile: path=~/.zprofile line='export DOCKER_HOST="unix://$HOME/.colima/docker.sock"' create=yes
+  ansible.builtin.blockinfile:
+    create: true
+    path: ~/.zprofile
+    marker: "# {mark} ANSIBLE MANAGED BLOCK FOR DOCKER_HOST"
+    mode: "0644"
+    block: |
+      export DOCKER_HOST="unix://$HOME/.colima/docker.sock"

@@ -1,2 +1,3 @@
 - name: Install Maven
-  homebrew: name=maven
+  community.general.homebrew:
+    name: maven

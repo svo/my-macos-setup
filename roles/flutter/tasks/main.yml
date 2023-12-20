@@ -1,13 +1,15 @@
 - name: Install flutter
-  homebrew_cask: name=flutter
+  community.general.homebrew_cask:
+    name: flutter
 
 - name: Precache
-  command: flutter precache
+  ansible.builtin.command: flutter precache
 
 - name: Install lcov for code coverage
-  homebrew: name=lcov
+  community.general.homebrew:
+    name: lcov
 
 - name: Install vim plugin
-  git: repo={{ item.repo }} dest=~/.vim/bundle/{{ item.dest }}
-  with_items:
-    - {repo: "https://github.com/dart-lang/dart-vim-plugin.git", dest: dart-vim-plugin}
+  ansible.builtin.git:
+    repo: https://github.com/dart-lang/dart-vim-plugin.git
+    dest: ~/.vim/bundle/dart-vim-plugin

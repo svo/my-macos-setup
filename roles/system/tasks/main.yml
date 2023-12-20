@@ -1,17 +1,23 @@
 - name: Install logitech options software
-  homebrew_cask: name=logitech-options
+  community.general.homebrew_cask:
+    name: logitech-options
 
 - name: Install balena etcher bootable USB creator
-  homebrew_cask: name=balenaetcher
+  community.general.homebrew_cask:
+    name: balenaetcher
 
 - name: Install testdisk
-  homebrew: name=testdisk
+  community.general.homebrew:
+    name: testdisk
 
 - name: System monitor for the menu bar
-  homebrew_cask: name=stats
+  community.general.homebrew_cask:
+    name: stats
 
 - name: Install OpenVPN Client
-  homebrew_cask: name=tunnelblick
+  community.general.homebrew_cask:
+    name: tunnelblick
 
 - name: Install ExpressVPN
-  homebrew_cask: name=expressvpn
+  community.general.homebrew_cask:
+    name: expressvpn

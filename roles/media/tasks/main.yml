@@ -1,8 +1,11 @@
 - name: Install Spotify
-  homebrew_cask: name=spotify
+  community.general.homebrew_cask:
+    name: spotify
 
 - name: Install VLC
-  homebrew_cask: name=vlc
+  community.general.homebrew_cask:
+    name: vlc
 
 - name: Install handbrake
-  homebrew_cask: name=handbrake
+  community.general.homebrew_cask:
+    name: handbrake

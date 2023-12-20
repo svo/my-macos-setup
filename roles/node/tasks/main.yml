@@ -1,40 +1,45 @@
 - name: Install nvm for node version management
-  homebrew: name=nvm
+  community.general.homebrew:
+    name: nvm
 
 - name: Add nvm to .zshrc
-  lineinfile: dest=~/.zshrc line='{{ item }}' create=yes
-  with_items:
-    - export NVM_DIR="$HOME/.nvm"
-    - . "$(brew --prefix nvm)/nvm.sh"
+  ansible.builtin.blockinfile:
+    create: true
+    path: ~/.zshrc
+    marker: "# {mark} ANSIBLE MANAGED BLOCK FOR NVM"
+    mode: "0644"
+    block: |
+      export NVM_DIR="$HOME/.nvm"
+      . "$(brew --prefix nvm)/nvm.sh"
 
 - name: Install Node.js LTS
-  shell: export NVM_DIR="$HOME/.nvm" && . "$(brew --prefix nvm)/nvm.sh" && nvm install v20.10.0
+  ansible.builtin.shell: export NVM_DIR="$HOME/.nvm" && . "$(brew --prefix nvm)/nvm.sh" && nvm install v20.10.0
 
 - name: Setup to use LTS
-  shell: export NVM_DIR="$HOME/.nvm" && . "$(brew --prefix nvm)/nvm.sh" && nvm use v20.10.0
+  ansible.builtin.shell: export NVM_DIR="$HOME/.nvm" && . "$(brew --prefix nvm)/nvm.sh" && nvm use v20.10.0
 
 - name: Set default node version for NVM
-  shell: export NVM_DIR="$HOME/.nvm" && . "$(brew --prefix nvm)/nvm.sh" && nvm alias default node
+  ansible.builtin.shell: export NVM_DIR="$HOME/.nvm" && . "$(brew --prefix nvm)/nvm.sh" && nvm alias default node
 
 - name: Install Electron Packager
-  shell: export NVM_DIR="$HOME/.nvm" && . "$(brew --prefix nvm)/nvm.sh" && $HOME/.nvm/versions/node/v20.10.0/bin/npm install electron-packager --global
+  ansible.builtin.shell: export NVM_DIR="$HOME/.nvm" && . "$(brew --prefix nvm)/nvm.sh" && $HOME/.nvm/versions/node/v20.10.0/bin/npm install electron-packager --global
 
 - name: Install Yarn
-  shell: export NVM_DIR="$HOME/.nvm" && . "$(brew --prefix nvm)/nvm.sh" && $HOME/.nvm/versions/node/v20.10.0/bin/npm install yarn --global
+  ansible.builtin.shell: export NVM_DIR="$HOME/.nvm" && . "$(brew --prefix nvm)/nvm.sh" && $HOME/.nvm/versions/node/v20.10.0/bin/npm install yarn --global
 
 - name: Install Gitinspector
-  shell: export NVM_DIR="$HOME/.nvm" && . "$(brew --prefix nvm)/nvm.sh" && $HOME/.nvm/versions/node/v20.10.0/bin/npm install gitinspector --global
+  ansible.builtin.shell: export NVM_DIR="$HOME/.nvm" && . "$(brew --prefix nvm)/nvm.sh" && $HOME/.nvm/versions/node/v20.10.0/bin/npm install gitinspector --global
 
 - name: Install git-stats
-  shell: export NVM_DIR="$HOME/.nvm" && . "$(brew --prefix nvm)/nvm.sh" && $HOME/.nvm/versions/node/v20.10.0/bin/npm install git-stats-html --global
+  ansible.builtin.shell: export NVM_DIR="$HOME/.nvm" && . "$(brew --prefix nvm)/nvm.sh" && $HOME/.nvm/versions/node/v20.10.0/bin/npm install git-stats-html --global
 
 - name: Install Markdown to Confluence converter
-  shell: export NVM_DIR="$HOME/.nvm" && . "$(brew --prefix nvm)/nvm.sh" && $HOME/.nvm/versions/node/v20.10.0/bin/npm install markdown2confluence-cws --global
+  ansible.builtin.shell: export NVM_DIR="$HOME/.nvm" && . "$(brew --prefix nvm)/nvm.sh" && $HOME/.nvm/versions/node/v20.10.0/bin/npm install markdown2confluence-cws --global
 
 - name: Install js-beautify
-  shell: export NVM_DIR="$HOME/.nvm" && . "$(brew --prefix nvm)/nvm.sh" && $HOME/.nvm/versions/node/v20.10.0/bin/npm install js-beautify --global
+  ansible.builtin.shell: export NVM_DIR="$HOME/.nvm" && . "$(brew --prefix nvm)/nvm.sh" && $HOME/.nvm/versions/node/v20.10.0/bin/npm install js-beautify --global
 
 - name: Install vim plugin
-  git: repo={{ item.repo }} dest=~/.vim/bundle/{{ item.dest }}
-  with_items:
-    - {repo: "https://github.com/pangloss/vim-javascript.git", dest: vim-javascript}
+  ansible.builtin.git:
+    repo: https://github.com/pangloss/vim-javascript.git
+    dest: ~/.vim/bundle/vim-javascript

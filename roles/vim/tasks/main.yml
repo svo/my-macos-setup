@@ -1,18 +1,28 @@
 - name: Install vim text editor
-  homebrew: name=vim
+  community.general.homebrew:
+    name: vim
 
 - name: Setup paths for vim
-  file: path={{ item }} state=directory
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    mode: "0755"
   with_items:
     - ~/.vim/autoload
     - ~/.vim/bundle
     - ~/.vim/ftplugin
 
 - name: Install pathogen vim plugin/configuration manager
-  get_url: url=https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim dest=~/.vim/autoload/pathogen.vim
+  ansible.builtin.get_url:
+    url: https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
+    dest: ~/.vim/autoload/pathogen.vim
+    mode: "0644"
 
 - name: Install vim plugin
-  git: repo={{ item.repo }} dest=~/.vim/bundle/{{ item.dest }} force=yes
+  ansible.builtin.git:
+    repo: "{{ item.repo }}"
+    dest: "~/.vim/bundle/{{ item.dest }}"
+    force: true
   with_items:
     - {repo: "https://github.com/scrooloose/nerdtree.git", dest: nerdtree}
     - {repo: "https://github.com/Xuyuanp/nerdtree-git-plugin.git", dest: nerdtree-git-plugin}
@@ -21,13 +31,13 @@
     - {repo: "https://github.com/airblade/vim-gitgutter.git", dest: vim-gitgutter}
     - {repo: "https://github.com/plasticboy/vim-markdown.git", dest: vim-markdown}
     - {repo: "https://github.com/IN3D/vim-raml.git", dest: vim-raml}
-    - {repo: "https://github.com/Valloric/YouCompleteMe.git", dest: YouCompleteMe}
 
 - name: Update .vimrc
-  blockinfile:
-    create: yes
+  ansible.builtin.blockinfile:
+    create: true
     path: ~/.vimrc
     marker: "\" {mark} ANSIBLE MANAGED BLOCK"
+    mode: "0644"
     block: |
       execute pathogen#infect()
       syntax on
@@ -44,9 +54,3 @@
       autocmd BufEnter * EnableStripWhitespaceOnSave
       autocmd FileType Markdown setlocal spell spelllang=en_au
       set encoding=utf-8
-
-- name: Install cmake
-  homebrew: name=cmake
-
-- name: Install YouCompleteMe
-  shell: PATH=/usr/local/bin:$PATH ./install.py chdir=~/.vim/bundle/YouCompleteMe

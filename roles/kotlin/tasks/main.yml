@@ -1,11 +1,12 @@
 - name: Set kotlin vim settings
-  copy:
+  ansible.builtin.copy:
     dest: ~/.vim/ftplugin/kotlin.vim
+    mode: "0644"
     content: |
       setlocal  tabstop=4
       setlocal  shiftwidth=4
 
 - name: Install vim plugin
-  git: repo={{ item.repo }} dest=~/.vim/bundle/{{ item.dest }}
-  with_items:
-    - {repo: "https://github.com/udalov/kotlin-vim.git", dest: kotlin-vim}
+  ansible.builtin.git:
+    repo: https://github.com/udalov/kotlin-vim.git
+    dest: ~/.vim/bundle/kotlin-vim

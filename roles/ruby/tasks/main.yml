@@ -1,19 +1,21 @@
 - name: Install rbenv for ruby version management
-  homebrew: name=rbenv
+  community.general.homebrew:
+    name: rbenv
 
 - name: Install default ruby
-  shell: rbenv install 3.2.2
+  ansible.builtin.command: rbenv install 3.2.2
   args:
     creates: ~/.rbenv/versions/3.2.2
 
 - name: Set default ruby
-  shell: rbenv global 3.2.2
+  ansible.builtin.command: rbenv global 3.2.2
 
 - name: Update .zshrc
-  blockinfile:
-    create: yes
+  ansible.builtin.blockinfile:
+    create: true
     path: ~/.zshrc
     marker: "# {mark} ANSIBLE MANAGED BLOCK FOR RBENV"
+    mode: "0644"
     block: |
       eval "$(rbenv init -)"
       export PATH="$HOME/.rbenv/versions/3.2.2/bin:$PATH"

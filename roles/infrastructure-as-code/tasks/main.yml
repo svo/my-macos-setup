@@ -1,53 +1,69 @@
 - name: Install Ansible
-  pip:
+  ansible.builtin.pip:
     name: ansible
     executable: pipx
     extra_args: --include-deps
 
 - name: Install Ansible
-  pip:
+  ansible.builtin.pip:
     name: ansible-lint
     executable: pipx
 
 - name: Install AWS CLI tools
-  pip: name=awscli extra_args="--ignore-installed six"
-  become: yes
+  ansible.builtin.pip:
+    name: awscli
+    extra_args: --ignore-installed six
+  become: true
 
 - name: Install Vagrant
-  homebrew_cask: name=vagrant
+  community.general.homebrew_cask:
+    name: vagrant
 
 - name: Install Google Cloud SDK
-  homebrew_cask: name=google-cloud-sdk
+  community.general.homebrew_cask:
+    name: google-cloud-sdk
 
 - name: Install Terraform
-  homebrew: name=terraform
+  community.general.homebrew:
+    name: terraform
 
 - name: Install bundler
-  gem: name=bundler executable=~/.rbenv/shims/gem
+  gem:
+    name: bundler
+    executable: ~/.rbenv/shims/gem
 
 - name: Install direnv
-  homebrew: name=direnv
+  community.general.homebrew:
+    name: direnv
 
 - name: Install tflint
-  homebrew: name=tflint
+  community.general.homebrew:
+    name: tflint
 
 - name: Install terraform-docs
-  homebrew: name=terraform-docs
+  community.general.homebrew:
+    name: terraform-docs
 
 - name: Install Packer
-  homebrew: name=packer
+  community.general.homebrew:
+    name: packer
 
 - name: Install templates for Kubernetes manifests
-  homebrew: name=ktmpl
+  community.general.homebrew:
+    name: ktmpl
 
 - name: Install Kuberenetes command line
-  homebrew: name=kubernetes-cli
+  community.general.homebrew:
+    name: kubernetes-cli
 
 - name: Install Act for testing local GitHub workflows
-  homebrew: name=act
+  community.general.homebrew:
+    name: act
 
 - name: Install vim plugins
-  git: repo={{ item.repo }} dest=~/.vim/bundle/{{ item.dest }}
+  ansible.builtin.git:
+    repo: "{{ item.repo }}"
+    dest: "~/.vim/bundle/{{ item.dest }}"
   with_items:
     - {repo: "https://github.com/pearofducks/ansible-vim.git", dest: ansible-vim}
     - {repo: "https://github.com/hashivim/vim-terraform.git", dest: vim-terraform}

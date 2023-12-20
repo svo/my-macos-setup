@@ -1,7 +1,8 @@
 - name: Install PlantUML CLI diagramming tool
-  homebrew: name=plantuml
+  community.general.homebrew:
+    name: plantuml
 
 - name: Install vim plugin
-  git: repo={{ item.repo }} dest=~/.vim/bundle/{{ item.dest }}
-  with_items:
-    - {repo: "https://github.com/aklt/plantuml-syntax.git", dest: plantuml-syntax}
+  ansible.builtin.git:
+    repo: https://github.com/aklt/plantuml-syntax.git
+    dest: ~/.vim/bundle/plantuml-syntax

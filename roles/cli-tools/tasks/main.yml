@@ -1,68 +1,85 @@
 - name: Install newer bash
-  homebrew: name=bash
+  community.general.homebrew:
+    name: bash
 
 - name: Install ohmyzsh
-  shell: /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  ansible.builtin.shell: /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
   args:
     creates: ~/.oh-my-zsh
 
 - name: Setup ohmyzsh theme
-  lineinfile:
+  ansible.builtin.lineinfile:
     path: ~/.zshrc
     regexp: '^(.*)ZSH_THEME="(.*)"$'
     line: 'ZSH_THEME="gnzh"'
-    backrefs: yes
+    backrefs: true
 
 - name: Install jq command-line JSON processor
-  homebrew: name=jq
+  community.general.homebrew:
+    name: jq
 
 - name: Install yq XML/YAML query procesor
-  pip: name=yq
+  ansible.builtin.pip:
+    name: yq
 
 - name: Install XmlStarlet
-  homebrew: name=xmlstarlet
+  community.general.homebrew:
+    name: xmlstarlet
 
 - name: Install Taskwarrior command line task management tool
-  homebrew: name=task
+  community.general.homebrew:
+    name: task
 
 - name: Install docutils for processing documentation
-  pip: name=docutils
+  ansible.builtin.pip:
+    name: docutils
 
 - name: Install python-json2csv
-  pip: name=python-json2csv
+  ansible.builtin.pip:
+    name: python-json2csv
 
 - name: Install cloc lines of code utility
-  homebrew: name=cloc
+  community.general.homebrew:
+    name: cloc
 
 - name: Install scc code counter
-  homebrew: name=scc
+  community.general.homebrew:
+    name: scc
 
 - name: Install petname command line name generator
-  pip: name=petname
+  ansible.builtin.pip:
+    name: petname
 
 - name: Install core GNU utilities
-  homebrew: name=coreutils
+  community.general.homebrew:
+    name: coreutils
 
 - name: Install GNU implementation of sed
-  homebrew: name=gnu-sed
+  community.general.homebrew:
+    name: gnu-sed
 
 - name: Install tool for working with Architecture Decision Records
-  homebrew: name=adr-tools
+  community.general.homebrew:
+    name: adr-tools
 
 - name: Install git-quick-stats
-  homebrew: name=git-quick-stats
+  community.general.homebrew:
+    name: git-quick-stats
 
 - name: Install GitHub tools
-  homebrew: name=gh,git-lfs,git-filter-repo,bfg
+  community.general.homebrew:
+    name: gh,git-lfs,git-filter-repo,bfg
 
 - name: Install zsh-completions
-  homebrew: name=zsh-completions
+  community.general.homebrew:
+    name: zsh-completions
 
 - name: Setup zsh-completions
-  blockinfile:
-    create: yes
+  ansible.builtin.blockinfile:
+    create: true
     path: ~/.zshrc
     marker: "# {mark} ANSIBLE MANAGED BLOCK (BASH_COMPLETION)"
+    mode: "0644"
     block: |
       if type brew &>/dev/null; then
       FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
@@ -72,19 +89,21 @@
       fi
 
 - name: Install tmux terminal multiplexer
-  homebrew: name=tmux
+  community.general.homebrew:
+    name: tmux
 
 - name: Setup tmux
-  blockinfile:
-    create: yes
+  ansible.builtin.blockinfile:
+    create: true
     path: ~/.tmux.conf
+    mode: "0644"
     block: |
       bind c new-window -c "#{pane_current_path}"
       bind '"' split-window -c "#{pane_current_path}"
       bind % split-window -h -c "#{pane_current_path}"
 
 - name: Start tmux by default in Terminal.app
-  blockinfile:
+  ansible.builtin.blockinfile:
     path: ~/.zshrc
     marker: "# {mark} ANSIBLE MANAGED BLOCK (tmux start)"
     block: |
@@ -92,37 +111,49 @@
       if [ "$TMUX" = "" ]; then tmux; fi
 
 - name: Install Midnight Commander command line file manager
-  homebrew: name=midnight-commander
+  community.general.homebrew:
+    name: midnight-commander
 
 - name: Install icdiff side-by-side diff tool
-  homebrew: name=icdiff
+  community.general.homebrew:
+    name: icdiff
 
 - name: Install telnet
-  homebrew: name=telnet
+  community.general.homebrew:
+    name: telnet
 
 - name: Install HTTPie cURL wrapper
-  homebrew: name=httpie
+  community.general.homebrew:
+    name: httpie
 
 - name: Install watch for repeating command line commands
-  homebrew: name=watch
+  community.general.homebrew:
+    name: watch
 
 - name: Install topgrade
-  homebrew: name=topgrade
+  community.general.homebrew:
+    name: topgrade
 
 - name: Install letsencrypt command line tools
-  homebrew: name=letsencrypt
+  community.general.homebrew:
+    name: letsencrypt
 
 - name: Install htop for process monitoring
-  homebrew: name=htop
+  community.general.homebrew:
+    name: htop
 
 - name: Install iftop for network monitoring
-  homebrew: name=iftop
+  community.general.homebrew:
+    name: iftop
 
 - name: Install NCurses Disk Usage utility
-  homebrew: name=ncdu
+  community.general.homebrew:
+    name: ncdu
 
 - name: Install Traceroute
-  homebrew: name=tcptraceroute
+  community.general.homebrew:
+    name: tcptraceroute
 
 - name: Install pqrs command line tool for inspecting Parquet files
-  homebrew: name=manojkarthick/tap/pqrs
+  community.general.homebrew:
+    name: manojkarthick/tap/pqrs

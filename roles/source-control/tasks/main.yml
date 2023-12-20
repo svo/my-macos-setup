@@ -1,2 +1,3 @@
 - name: Install git source control
-  homebrew: name=git
+  community.general.homebrew:
+    name: git
