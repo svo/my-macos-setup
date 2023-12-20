@@ -4,6 +4,11 @@
     executable: pipx
     extra_args: --include-deps
 
+- name: Install Ansible
+  pip:
+    name: ansible-lint
+    executable: pipx
+
 - name: Install AWS CLI tools
   pip: name=awscli extra_args="--ignore-installed six"
   become: yes
@@ -18,7 +23,7 @@
   homebrew: name=terraform
 
 - name: Install bundler
-  gem: name=bundler executable=/Users/svo/.rbenv/shims/gem
+  gem: name=bundler executable=~/.rbenv/shims/gem
 
 - name: Install direnv
   homebrew: name=direnv

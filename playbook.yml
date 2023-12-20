@@ -3,8 +3,12 @@
 
   pre_tasks:
 
+    - name: Get brew path
+      shell: brew --prefix
+      register: brew_path
+
     - name: Add brew to shell
-      lineinfile: path=~/.zprofile line='eval "$(/opt/homebrew/bin/brew shellenv)"' create=yes
+      lineinfile: path=~/.zprofile line='eval "$({{ brew_path.stdout_lines[0] }}/bin/brew shellenv)"' create=yes
 
     - name: Install brew versions tap
       shell: brew tap homebrew/cask-versions
@@ -13,7 +17,7 @@
       lineinfile: path=/etc/paths line='/usr/local/sbin' insertbefore='/usr/sbin'
       become: yes
 
-    - hostname: name=svo-mac
+    - hostname: name={{ ansible_user_id }}-mac
       become: yes
 
   roles:
@@ -46,5 +50,5 @@
   post_tasks:
 
     - name: Change .local ownership and permissions
-      file: path=/opt/homebrew/share owner={{ ansible_user_id }} recurse=yes mode='0755'
+      file: path={{ brew_path.stdout_lines[0] }}/share owner={{ ansible_user_id }} recurse=yes mode='0755'
       become: yes

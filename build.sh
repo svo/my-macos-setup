@@ -1,5 +1,7 @@
 #!/bin/bash
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
+brew_path=`brew --prefix`
 
-ansible-playbook -i "localhost," -c local -K -e 'ansible_python_interpreter=/opt/homebrew/bin/python3.11' playbook.yml
+eval "$(/${brew_path}/bin/brew shellenv)"
+
+ansible-playbook -i "localhost," -c local -K -e "ansible_python_interpreter=${brew_path}/bin/python3.11" playbook.yml

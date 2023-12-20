@@ -4,7 +4,9 @@ chsh -s /bin/zsh
 
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" &&
 
-eval "$(/opt/homebrew/bin/brew shellenv)" &&
+brew_path=`brew --prefix`
+
+eval "$(/${brew_path}/bin/brew shellenv)" &&
 
 /usr/sbin/softwareupdate --install-rosetta --agree-to-license &&
 
