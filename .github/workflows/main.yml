@@ -9,13 +9,15 @@ on:
 
 jobs:
   build:
-    runs-on: macos-latest-xlarge
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
 
-      - name: Remove existing brew
+      - name: Remove existing setup
         run: |
           ./uninstall-homebrew.sh
+          sudo rm -rf /Applications/Google\ Chrome.app
+          sudo rm -rf /Library/Frameworks/Python.framework
 
       - name: Provision
         run: |
