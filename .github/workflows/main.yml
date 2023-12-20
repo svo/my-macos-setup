@@ -13,11 +13,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Remove existing setup
+      - name: Remove existing brew
         run: |
           ./uninstall-homebrew.sh
-          sudo rm -rf /Applications/Google\ Chrome.app
-          sudo rm -rf /Library/Frameworks/Python.framework
 
       - name: Provision
         run: |
