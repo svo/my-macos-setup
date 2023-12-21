@@ -23,6 +23,7 @@ jobs:
           sudo rm 2to3 &&
           sudo rm 2to3-3.11 &&
           sudo rm idle3 &&
+          sudo rm idle3.11 &&
           ls -l | grep "/Library/Frameworks/Python.framework/Versions/${python_version_number}" | awk '{print $9}' | sudo xargs rm &&
           popd &&
           ./uninstall-homebrew.sh
