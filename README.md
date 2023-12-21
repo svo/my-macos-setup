@@ -24,7 +24,7 @@ vagrant provision
 ./prepare.sh && ./build.sh
 ```
 
-Above sets up `brew`, `python`, `pip` and `ansible` before running the `playbook.yml`.
+Above sets up `brew`, `python`, `pipx` and `ansible` before running the `playbook.yml`.
 
 ### Ansible Only
 
