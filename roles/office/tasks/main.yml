@@ -82,3 +82,7 @@
 - name: Install Wireshark packet analyzer
   community.general.homebrew_cask:
     name: wireshark
+
+- name: Install loom for screen recording
+  community.general.homebrew_cask:
+    name: loom

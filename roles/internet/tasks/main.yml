@@ -2,10 +2,6 @@
   community.general.homebrew_cask:
     name: franz
 
-- name: Install loom for screen recording
-  community.general.homebrew_cask:
-    name: loom
-
 - name: Install zoom for internet telephony
   community.general.homebrew_cask:
     name: zoom
