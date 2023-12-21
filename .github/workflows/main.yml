@@ -15,11 +15,10 @@ jobs:
 
       - name: Uninstall existing components
         run: |
-          ./uninstall-homebrew.sh
+          ./bin/prepare-github.sh
 
       - name: Provision
         run: |
-          ./prepare.sh &&
           ./build.sh
         env:
           ANSIBLE_FORCE_COLOR: '1'
