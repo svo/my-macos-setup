@@ -17,9 +17,6 @@
         block: |
           eval "$({{ brew_path.stdout_lines[0] }}/bin/brew shellenv)"
 
-    - name: Install brew versions tap
-      ansible.builtin.command: brew tap homebrew/cask-versions
-
     - name: Add /usr/local/sbin to path
       ansible.builtin.lineinfile:
         path: /etc/paths
