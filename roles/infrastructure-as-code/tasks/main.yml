@@ -1,10 +1,10 @@
-- name: Install Ansible
+- name: Install Ansible for configuration management
   ansible.builtin.pip:
     name: ansible
     executable: pipx
     extra_args: --include-deps
 
-- name: Install Ansible
+- name: Install Ansible linting tool
   ansible.builtin.pip:
     name: ansible-lint
     executable: pipx
@@ -15,7 +15,7 @@
     extra_args: --ignore-installed six
   become: true
 
-- name: Install Vagrant
+- name: Install Vagrant for managing development environments
   community.general.homebrew_cask:
     name: vagrant
 
@@ -23,28 +23,28 @@
   community.general.homebrew_cask:
     name: google-cloud-sdk
 
-- name: Install Terraform
+- name: Install Terraform for resource management
   community.general.homebrew:
     name: terraform
 
-- name: Install bundler
+- name: Install bundler for managing ruby
   gem:
     name: bundler
     executable: ~/.rbenv/shims/gem
 
-- name: Install direnv
+- name: Install direnv for environment management
   community.general.homebrew:
     name: direnv
 
-- name: Install tflint
+- name: Install tflint Terraform linting tool
   community.general.homebrew:
     name: tflint
 
-- name: Install terraform-docs
+- name: Install terraform-docs for generating Terraform documentation
   community.general.homebrew:
     name: terraform-docs
 
-- name: Install Packer
+- name: Install Packer for building multiple artifacts from configuration management
   community.general.homebrew:
     name: packer
 

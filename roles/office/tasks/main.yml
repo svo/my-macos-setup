@@ -1,22 +1,14 @@
-- name: Install IntelliJ
+- name: Install IntelliJ IDE
   community.general.homebrew_cask:
     name: intellij-idea
 
-- name: Install Cocoapods
+- name: Install Cocoapods dependency manager
   community.general.homebrew:
     name: cocoapods
 
 - name: Install 1Password password manager
   community.general.homebrew_cask:
     name: 1password
-
-- name: Install postman
-  community.general.homebrew_cask:
-    name: postman
-
-- name: Install MySQL Workbench for working with MySQL
-  community.general.homebrew_cask:
-    name: mysqlworkbench
 
 - name: Install TablePlus database management tool
   community.general.homebrew_cask:

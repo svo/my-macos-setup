@@ -2,7 +2,7 @@
   community.general.homebrew:
     name: bash
 
-- name: Install ohmyzsh
+- name: Install ohmyzsh shell experience
   ansible.builtin.shell: /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
   args:
     creates: ~/.oh-my-zsh
@@ -22,7 +22,7 @@
   ansible.builtin.pip:
     name: yq
 
-- name: Install XmlStarlet
+- name: Install XmlStarlet XML toolkit
   community.general.homebrew:
     name: xmlstarlet
 
@@ -30,7 +30,7 @@
   ansible.builtin.pip:
     name: docutils
 
-- name: Install python-json2csv
+- name: Install python-json2csv for JSON to CSV
   ansible.builtin.pip:
     name: python-json2csv
 
@@ -126,11 +126,11 @@
   community.general.homebrew:
     name: watch
 
-- name: Install topgrade
+- name: Install topgrade upgrade manager
   community.general.homebrew:
     name: topgrade
 
-- name: Install letsencrypt command line tools
+- name: Install letsencrypt SSL certificate command line tools
   community.general.homebrew:
     name: letsencrypt
 
@@ -146,7 +146,7 @@
   community.general.homebrew:
     name: ncdu
 
-- name: Install Traceroute
+- name: Install traceroute for network diagnostics
   community.general.homebrew:
     name: tcptraceroute
 

@@ -1,11 +1,11 @@
-- name: Install Spotify
+- name: Install Spotify for music
   community.general.homebrew_cask:
     name: spotify
 
-- name: Install VLC
+- name: Install VLC media player
   community.general.homebrew_cask:
     name: vlc
 
-- name: Install handbrake
+- name: Install handbrake for video transcoding
   community.general.homebrew_cask:
     name: handbrake

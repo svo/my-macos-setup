@@ -12,10 +12,6 @@
       export PATH="$HOME/.jenv/bin:$PATH"
       eval "$(jenv init -)"
 
-- name: Install temurin 11
-  community.general.homebrew_cask:
-    name: temurin11
-
 - name: Install temurin 17
   community.general.homebrew_cask:
     name: temurin17
