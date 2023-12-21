@@ -15,19 +15,6 @@ jobs:
 
       - name: Uninstall existing components
         run: |
-          sudo pip uninstall -y pip &&
-          python_version_number=3.12 &&
-          sudo rm -rf /Library/Frameworks/Python.framework/Versions/${python_version_number}/ &&
-          sudo rm -rf "/Applications/Python ${python_version_number}/" &&
-          pushd /usr/local/bin &&
-          sudo rm 2to3 &&
-          sudo rm 2to3-3.11 &&
-          sudo rm idle3 &&
-          sudo rm idle3.11 &&
-          sudo rm pydoc3.11 &&
-          sudo rm python* &&
-          ls -l | grep "/Library/Frameworks/Python.framework/Versions/${python_version_number}" | awk '{print $9}' | sudo xargs rm &&
-          popd &&
           ./uninstall-homebrew.sh
 
       - name: Provision
