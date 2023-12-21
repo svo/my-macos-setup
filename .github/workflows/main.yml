@@ -13,10 +13,16 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Remove existing brew
+      - name: Uninstall existing components
         run: |
-          ./uninstall-homebrew.sh &&
-          sudo pip uninstall pip
+          sudo pip uninstall -y pip &&
+          python_version_number=3.12 &&
+          sudo rm -rf /Library/Frameworks/Python.framework/Versions/${python_version_number}/ &&
+          sudo rm -rf "/Applications/Python ${python_version_number}/" &&
+          pushd /usr/local/bin &&
+          ls -l | grep "/Library/Frameworks/Python.framework/Versions/${python_version_number}" | awk '{print $9}' | sudo xargs rm &&
+          popd &&
+          ./uninstall-homebrew.sh
 
       - name: Provision
         run: |
