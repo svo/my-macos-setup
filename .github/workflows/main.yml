@@ -21,7 +21,9 @@ jobs:
           sudo rm -rf "/Applications/Python ${python_version_number}/" &&
           pushd /usr/local/bin &&
           ls -l | grep "/Library/Frameworks/Python.framework/Versions/${python_version_number}" | awk '{print $9}' | sudo xargs rm &&
+          sudo rm 2to3 &&
           sudo rm 2to3-3.11 &&
+          sudo rm idle3 &&
           popd &&
           ./uninstall-homebrew.sh
 
