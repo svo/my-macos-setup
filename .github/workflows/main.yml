@@ -25,6 +25,7 @@ jobs:
           sudo rm idle3 &&
           sudo rm idle3.11 &&
           sudo rm pydoc3.11 &&
+          sudo rm python* &&
           ls -l | grep "/Library/Frameworks/Python.framework/Versions/${python_version_number}" | awk '{print $9}' | sudo xargs rm &&
           popd &&
           ./uninstall-homebrew.sh
