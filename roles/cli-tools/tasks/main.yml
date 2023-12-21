@@ -26,10 +26,6 @@
   community.general.homebrew:
     name: xmlstarlet
 
-- name: Install Taskwarrior command line task management tool
-  community.general.homebrew:
-    name: task
-
 - name: Install docutils for processing documentation
   ansible.builtin.pip:
     name: docutils
