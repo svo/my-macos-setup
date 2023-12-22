@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export PATH="$PATH:/opt/homebrew/bin/:/Users/svo/Library/Application Support/pipx/venvs/ansible/bin/"
+
 brew_path=`brew --prefix`
 
 eval "$(/${brew_path}/bin/brew shellenv)"
