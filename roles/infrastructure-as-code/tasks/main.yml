@@ -4,6 +4,15 @@
     executable: pipx
     extra_args: --include-deps
 
+- name: Update .zshrc
+  ansible.builtin.blockinfile:
+    create: true
+    path: ~/.zshrc
+    marker: "# {mark} ANSIBLE MANAGED BLOCK FOR ANSIBLE"
+    mode: "0644"
+    block: |
+      export PATH="$HOME/Library/Application Support/pipx/venvs/ansible/bin/:$PATH"
+
 - name: Install Ansible linting tool
   ansible.builtin.pip:
     name: ansible-lint
