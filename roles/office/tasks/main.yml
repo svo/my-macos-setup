@@ -86,3 +86,7 @@
 - name: Install loom for screen recording
   community.general.homebrew_cask:
     name: loom
+
+- name: Install notion
+  community.general.homebrew_cask:
+    name: notion
