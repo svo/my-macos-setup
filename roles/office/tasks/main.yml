@@ -5,6 +5,7 @@
 - name: Install Cocoapods dependency manager
   community.general.homebrew:
     name: cocoapods
+  ignore_errors: yes
 
 - name: Install 1Password password manager
   community.general.homebrew_cask:
