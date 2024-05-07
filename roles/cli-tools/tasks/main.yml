@@ -121,6 +121,7 @@
 - name: Install HTTPie cURL wrapper
   community.general.homebrew:
     name: httpie
+  ignore_errors: yes
 
 - name: Install watch for repeating command line commands
   community.general.homebrew:
