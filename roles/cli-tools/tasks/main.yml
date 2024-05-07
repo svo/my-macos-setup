@@ -150,7 +150,3 @@
 - name: Install traceroute for network diagnostics
   community.general.homebrew:
     name: tcptraceroute
-
-- name: Install pqrs command line tool for inspecting Parquet files
-  community.general.homebrew:
-    name: manojkarthick/tap/pqrs
