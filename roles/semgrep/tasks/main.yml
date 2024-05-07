@@ -1,8 +1,3 @@
 - name: Install Semgrep static analysis for finding bugs and enforcing code standards
   community.general.homebrew:
     name: semgrep
-
-- name: Install vim plugin
-  ansible.builtin.git:
-    repo: https://github.com/returntocorp/semgrep.vim.git
-    dest: ~/.vim/bundle/semgrep.vim
