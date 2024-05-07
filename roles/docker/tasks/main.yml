@@ -1,6 +1,11 @@
-- name: Install docker container engine
+- name: Install docker
   community.general.homebrew:
-    name: docker,docker-compose,colima
+    name: docker
+  ignore_errors: yes
+
+- name: Install additional docker packages
+  community.general.homebrew:
+    name: docker-compose,colima
 
 - name: Add colima socket as DOCKER_HOST
   ansible.builtin.blockinfile:
