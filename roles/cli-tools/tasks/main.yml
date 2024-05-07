@@ -133,7 +133,7 @@
 
 - name: Install letsencrypt SSL certificate command line tools
   community.general.homebrew:
-    name: letsencrypt
+    name: certbot
 
 - name: Install htop for process monitoring
   community.general.homebrew:
