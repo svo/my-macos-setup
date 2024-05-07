@@ -1,7 +1,5 @@
 - name: Install docker
-  community.general.homebrew:
-    name: docker
-  ignore_errors: yes
+  ansible.builtin.command: brew install docker
 
 - name: Install additional docker packages
   community.general.homebrew:

@@ -119,9 +119,7 @@
     name: telnet
 
 - name: Install HTTPie cURL wrapper
-  community.general.homebrew:
-    name: httpie
-  ignore_errors: yes
+  ansible.builtin.command: brew install httpie
 
 - name: Install watch for repeating command line commands
   community.general.homebrew:

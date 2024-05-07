@@ -3,9 +3,7 @@
     name: intellij-idea
 
 - name: Install Cocoapods dependency manager
-  community.general.homebrew:
-    name: cocoapods
-  ignore_errors: yes
+  ansible.builtin.command: brew install cocoapods
 
 - name: Install 1Password password manager
   community.general.homebrew_cask:

@@ -7,9 +7,7 @@
     name: zoom
 
 - name: Install lynx command line browser
-  community.general.homebrew:
-    name: lynx
-  ignore_errors: yes
+  ansible.builtin.command: brew install lynx
 
 - name: Install Chrome browser
   community.general.homebrew_cask:
