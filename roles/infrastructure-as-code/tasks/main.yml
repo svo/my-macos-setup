@@ -88,3 +88,7 @@
 - name: Install vault
   community.general.homebrew:
     name: hashicorp/tap/vault
+
+- name: Install kustomize
+  community.general.homebrew:
+    name: kustomize
