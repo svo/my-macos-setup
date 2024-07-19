@@ -1,6 +1,6 @@
-- name: Install franz for aggregating messaging platforms
+- name: Install ferdium for aggregating messaging platforms
   community.general.homebrew_cask:
-    name: franz
+    name: ferdium
 
 - name: Install zoom for internet telephony
   community.general.homebrew_cask:
