@@ -1,3 +1,8 @@
+- name: Install tap for hashicorp
+  community.general.homebrew_tap:
+    name: hashicorp/tap
+    state: present
+
 - name: Install Ansible for configuration management
   ansible.builtin.pip:
     name: ansible
@@ -34,7 +39,7 @@
 
 - name: Install Terraform for resource management
   community.general.homebrew:
-    name: terraform
+    name: hashicorp/tap/terraform
 
 - name: Install bundler for managing ruby
   gem:
@@ -78,12 +83,6 @@
     - {repo: "https://github.com/hashivim/vim-terraform.git", dest: vim-terraform}
     - {repo: "https://github.com/rodjek/vim-puppet.git", dest: vim-puppet}
     - {repo: "https://github.com/hashivim/vim-packer.git", dest: vim-packer}
-
-
-- name: Install tap for hashicorp
-  community.general.homebrew_tap:
-    name: hashicorp/tap
-    state: present
 
 - name: Install vault
   community.general.homebrew:
