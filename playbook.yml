@@ -1,5 +1,5 @@
 ---
-- name: Play for setting up my-osx-setup
+- name: Play for setting up my-macos-setup
   hosts: all
 
   pre_tasks:
