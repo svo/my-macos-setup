@@ -39,6 +39,9 @@
 - name: Install js-beautify
   ansible.builtin.shell: export NVM_DIR="$HOME/.nvm" && . "$(brew --prefix nvm)/nvm.sh" && $HOME/.nvm/versions/node/v20.10.0/bin/npm install js-beautify --global
 
+- name: Install action-validator
+  ansible.builtin.shell: export NVM_DIR="$HOME/.nvm" && . "$(brew --prefix nvm)/nvm.sh" && $HOME/.nvm/versions/node/v20.10.0/bin/npm install @action-validator/core @action-validator/cli --global
+
 - name: Install vim plugin
   ansible.builtin.git:
     repo: https://github.com/pangloss/vim-javascript.git
