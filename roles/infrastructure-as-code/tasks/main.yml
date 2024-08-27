@@ -16,7 +16,7 @@
     marker: "# {mark} ANSIBLE MANAGED BLOCK FOR ANSIBLE"
     mode: "0644"
     block: |
-      export PATH="$HOME/Library/Application Support/pipx/venvs/ansible/bin/:$PATH"
+      export PATH="$HOME/.local/bin:$PATH"
 
 - name: Install Ansible linting tool
   ansible.builtin.pip:

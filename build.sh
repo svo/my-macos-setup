@@ -1,7 +1,6 @@
 #!/bin/bash
 
-user=`whoami`
-export PATH="$PATH:/opt/homebrew/bin/:/Users/${user}/Library/Application Support/pipx/venvs/ansible/bin/" &&
+export PATH="$PATH:/opt/homebrew/bin/:~/.local/bin" &&
 
 brew_path=`brew --prefix` &&
 
