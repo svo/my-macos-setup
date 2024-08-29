@@ -9,6 +9,15 @@
 - name: Install flutter
   ansible.builtin.command: fvm install 3.19.5
 
+- name: Update .zshrc
+  ansible.builtin.blockinfile:
+    create: true
+    path: ~/.zshrc
+    marker: "# {mark} ANSIBLE MANAGED BLOCK FOR FVM"
+    mode: "0644"
+    block: |
+      export PATH="$HOME/fvm/versions/3.19.5/bin:$PATH"
+
 - name: Install lcov for code coverage
   community.general.homebrew:
     name: lcov
