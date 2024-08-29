@@ -27,4 +27,4 @@
 
 - name: Install PyCharm IDE
   community.general.homebrew_cask:
-    name: pycharm
+    name: pycharm-ce
