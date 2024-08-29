@@ -1,10 +1,15 @@
-- name: Install tap for flutter version manager
-  community.general.homebrew_tap:
-    name: leoafarias/fvm
-
-- name: Install flutter version manager
-  community.general.homebrew:
-    name: fvm
-
 - name: Install flutter
-  ansible.builtin.command: fvm install 3.19.5
+  community.general.homebrew_cask:
+    name: flutter
+
+- name: Precache
+  ansible.builtin.command: flutter precache
+
+- name: Install lcov for code coverage
+  community.general.homebrew:
+    name: lcov
+
+- name: Install vim plugin
+  ansible.builtin.git:
+    repo: https://github.com/dart-lang/dart-vim-plugin.git
+    dest: ~/.vim/bundle/dart-vim-plugin
