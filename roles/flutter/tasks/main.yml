@@ -1,9 +1,13 @@
-- name: Install flutter
-  community.general.homebrew_cask:
-    name: flutter
+- name: Install tap for flutter version manager
+  community.general.homebrew_tap:
+    name: leoafarias/fvm
 
-- name: Precache
-  ansible.builtin.command: flutter precache
+- name: Install flutter version manager
+  community.general.homebrew:
+    name: fvm
+
+- name: Install flutter
+  ansible.builtin.command: fvm install 3.19.5
 
 - name: Install lcov for code coverage
   community.general.homebrew:
