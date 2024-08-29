@@ -1,6 +1,6 @@
 - name: Install IntelliJ IDE
   community.general.homebrew_cask:
-    name: intellij-idea
+    name: intellij-idea-ce
 
 - name: Install Cocoapods dependency manager
   ansible.builtin.command: brew install cocoapods
