@@ -1,3 +1,7 @@
 - name: Install Android Studio
   community.general.homebrew_cask:
     name: android-studio
+
+- name: Install Android SDK Command-line Tools
+  community.general.homebrew_cask:
+    name: android-commandlinetools
