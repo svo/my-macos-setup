@@ -10,7 +10,7 @@
 
 - name: Install python
   community.general.homebrew:
-    name: python@3.11
+    name: python@3.12
 
 - name: Install pipx
   community.general.homebrew:
