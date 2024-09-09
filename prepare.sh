@@ -16,9 +16,9 @@ brew update && brew upgrade && brew upgrade --cask &&
 
 brew doctor || true &&
 
-brew install python@3.12
+brew install python@3.11
 
-brew link --overwrite python@3.12
+brew link --overwrite python@3.11
 
 brew install pipx
 
