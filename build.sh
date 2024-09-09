@@ -6,4 +6,7 @@ brew_path=`brew --prefix` &&
 
 eval "$(/${brew_path}/bin/brew shellenv)" &&
 
-ansible-playbook -i "localhost," -c local -K -e "ansible_python_interpreter='$HOME/Library/Application Support/pipx/venvs/ansible/bin/python3'" playbook.yml
+ansible_path=`which ansible`
+interpreter_directory=`readlink -f ${ansible_path} | sed 's|\(.*\)/.*|\1|'`
+
+ansible-playbook -i "localhost," -c local -K -e "ansible_python_interpreter='${interpreter_directory}/python3'" playbook.yml
