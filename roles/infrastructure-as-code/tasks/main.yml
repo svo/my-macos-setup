@@ -60,7 +60,7 @@
 
 - name: Install Packer for building multiple artifacts from configuration management
   community.general.homebrew:
-    name: packer
+    name: hashicorp/tap/packer
 
 - name: Install templates for Kubernetes manifests
   community.general.homebrew:
