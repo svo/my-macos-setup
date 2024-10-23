@@ -97,6 +97,7 @@
       bind c new-window -c "#{pane_current_path}"
       bind '"' split-window -c "#{pane_current_path}"
       bind % split-window -h -c "#{pane_current_path}"
+      setw -g mode-keys vi
 
 - name: Start tmux by default in Terminal.app
   ansible.builtin.blockinfile:
