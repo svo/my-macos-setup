@@ -46,10 +46,6 @@
     name: bundler
     executable: ~/.rbenv/shims/gem
 
-- name: Install direnv for environment management
-  community.general.homebrew:
-    name: direnv
-
 - name: Install tflint Terraform linting tool
   community.general.homebrew:
     name: tflint
@@ -91,3 +87,15 @@
 - name: Install kustomize
   community.general.homebrew:
     name: kustomize
+
+- name: Install direnv for environment management
+  community.general.homebrew:
+    name: direnv
+
+- name: Install pre-commit for managing multi-language pre-commit hooks
+  community.general.homebrew:
+    name: pre-commit
+
+- name: Install asdf extendable version manager
+  community.general.homebrew:
+    name: asdf
