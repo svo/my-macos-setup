@@ -17,3 +17,7 @@ Above sets up `brew`, `python`, `pipx` and `ansible` before running the `playboo
 ```
 ./build.sh
 ```
+
+### Additional Steps
+
+* if you encounter "Ignore insecure directories and continue [y] or abort compinit [n]?" in your terminal try: `compaudit | xargs chmod g-w`
