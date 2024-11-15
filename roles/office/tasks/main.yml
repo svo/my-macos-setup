@@ -93,3 +93,7 @@
 - name: Install postman
   community.general.homebrew_cask:
     name: postman
+
+- name: Install ChatGPT
+  community.general.homebrew_cask:
+    name: chatgpt
