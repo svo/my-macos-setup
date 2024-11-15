@@ -149,12 +149,3 @@
 - name: Install traceroute for network diagnostics
   community.general.homebrew:
     name: tcptraceroute
-
-- name: Install python 3.11 for posting
-  community.general.homebrew:
-    name: python@3.11
-
-- name: Install posting terminal HTTP client
-  ansible.builtin.pip:
-    name: posting
-    executable: pipx
