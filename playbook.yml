@@ -33,9 +33,9 @@
 
     - source-control
     - docker
+    - python
     - cli-tools
     - vim
-    - python
     - system
     - java
     - gradle
