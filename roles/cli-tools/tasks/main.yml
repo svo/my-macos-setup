@@ -149,3 +149,8 @@
 - name: Install traceroute for network diagnostics
   community.general.homebrew:
     name: tcptraceroute
+
+- name: Install posting terminal HTTP client
+  ansible.builtin.pip:
+    name: posting
+    executable: pipx
