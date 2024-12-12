@@ -97,3 +97,7 @@
 - name: Install ChatGPT
   community.general.homebrew_cask:
     name: chatgpt
+
+- name: Install gnuplot for interactive function plotting
+  community.general.homebrew:
+    name: gnuplot
