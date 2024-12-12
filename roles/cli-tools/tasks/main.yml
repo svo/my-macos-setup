@@ -149,3 +149,11 @@
 - name: Install traceroute for network diagnostics
   community.general.homebrew:
     name: tcptraceroute
+
+- name: Install gnuplot for interactive function plotting
+  community.general.homebrew:
+    name: gnuplot
+
+- name: Install spark for generating Sparklines
+  community.general.homebrew:
+    name: spark
