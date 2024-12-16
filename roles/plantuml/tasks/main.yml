@@ -6,3 +6,4 @@
   ansible.builtin.git:
     repo: https://github.com/aklt/plantuml-syntax.git
     dest: ~/.vim/bundle/plantuml-syntax
+    force: true

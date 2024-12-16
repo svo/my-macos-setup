@@ -6,3 +6,4 @@
   ansible.builtin.git:
     repo: https://github.com/fatih/vim-go.git
     dest: ~/.vim/bundle/vim-go
+    force: true

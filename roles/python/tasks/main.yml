@@ -24,6 +24,7 @@
   ansible.builtin.git:
     repo: https://github.com/python-mode/python-mode.git
     dest: ~/.vim/bundle/python-mode
+    force: true
 
 - name: Install PyCharm IDE
   community.general.homebrew_cask:

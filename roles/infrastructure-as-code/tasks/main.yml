@@ -74,6 +74,7 @@
   ansible.builtin.git:
     repo: "{{ item.repo }}"
     dest: "~/.vim/bundle/{{ item.dest }}"
+    force: true
   with_items:
     - {repo: "https://github.com/pearofducks/ansible-vim.git", dest: ansible-vim}
     - {repo: "https://github.com/hashivim/vim-terraform.git", dest: vim-terraform}

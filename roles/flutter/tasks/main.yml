@@ -28,3 +28,4 @@
   ansible.builtin.git:
     repo: https://github.com/dart-lang/dart-vim-plugin.git
     dest: ~/.vim/bundle/dart-vim-plugin
+    force: true

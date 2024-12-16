@@ -46,3 +46,4 @@
   ansible.builtin.git:
     repo: https://github.com/pangloss/vim-javascript.git
     dest: ~/.vim/bundle/vim-javascript
+    force: true

@@ -10,3 +10,4 @@
   ansible.builtin.git:
     repo: https://github.com/udalov/kotlin-vim.git
     dest: ~/.vim/bundle/kotlin-vim
+    force: true

@@ -6,3 +6,4 @@
   ansible.builtin.git:
     repo: https://github.com/tfnico/vim-gradle.git
     dest: ~/.vim/bundle/vim-gradle
+    force: true
