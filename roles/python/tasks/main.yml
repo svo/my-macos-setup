@@ -22,9 +22,11 @@
 
 - name: Install vim plugin
   ansible.builtin.git:
-    repo: https://github.com/python-mode/python-mode.git
-    dest: ~/.vim/bundle/python-mode
+    repo: "{{ item.repo }}"
+    dest: "~/.vim/bundle/{{ item.dest }}"
     force: true
+  with_items:
+    - {repo: "https://github.com/Vimjas/vim-python-pep8-indent.git", dest: vim-python-pep8-indent}
 
 - name: Install PyCharm IDE
   community.general.homebrew_cask:
