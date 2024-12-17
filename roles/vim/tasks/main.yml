@@ -24,9 +24,9 @@
     dest: "~/.vim/bundle/{{ item.dest }}"
     force: true
   with_items:
-    - {repo: "https://github.com/scrooloose/nerdtree.git", dest: nerdtree}
-    - {repo: "https://github.com/Xuyuanp/nerdtree-git-plugin.git", dest: nerdtree-git-plugin}
-    - {repo: "https://github.com/ctrlpvim/ctrlp.vim.git", dest: ctrlp}
+    - {repo: "https://github.com/lambdalisue/vim-fern.git", dest: vim-fern}
+    - {repo: "https://github.com/lambdalisue/vim-fern-hijack.git", dest: vim-fern-hijack}
+    - {repo: "https://github.com/junegunn/fzf.git", dest: fzf}
     - {repo: "https://github.com/ntpeters/vim-better-whitespace.git", dest: vim-better-whitespace}
     - {repo: "https://github.com/airblade/vim-gitgutter.git", dest: vim-gitgutter}
     - {repo: "https://github.com/plasticboy/vim-markdown.git", dest: vim-markdown}
@@ -47,8 +47,7 @@
       :set expandtab
       :set nobackup
       :set noswapfile
-      let g:ctrlp_map = '<c-p>'
-      let g:ctrlp_cmd = 'CtrlP'
+      nmap <C-P> :FZF<CR>
       autocmd BufEnter * EnableStripWhitespaceOnSave
       autocmd FileType Markdown setlocal spell spelllang=en_au
       set encoding=utf-8
