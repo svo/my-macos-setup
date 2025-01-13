@@ -12,7 +12,7 @@ for tmux_directory in */; do
   tmux new-session -d -s "${tmux_directory}"
 
   if [ -f $tmux_file ]; then
-     ./tmux.sh
+     ./start-tmux-sessions-for
   fi
 
   popd

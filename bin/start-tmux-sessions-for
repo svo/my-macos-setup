@@ -12,5 +12,5 @@ for project in ${projects[@]}; do
 
   tmux new-session -d -s "${workspace}-${project}"
 
-  tmux send-keys -t "${workspace}-${project}" C-z "cd /Users/svo/Documents/workspace/svo/$project" ENTER 'tmux split-window -v' ENTER 'tmux split-window -h' Enter
+  tmux send-keys -t "${workspace}-${project}" C-z "cd ${PWD}/${project}" ENTER 'tmux split-window -v' ENTER 'tmux split-window -h' Enter
 done
