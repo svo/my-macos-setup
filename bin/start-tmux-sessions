@@ -1,0 +1,19 @@
+#!/bin/bash
+
+tmux_directories=``
+
+tmux_file="start-tmux-sessions-for"
+
+colima start --cpu 2 --memory 16  --disk 512 --vm-type=vz --mount-type=virtiofs &&
+
+for tmux_directory in */; do
+  pushd ${tmux_directory}
+
+  tmux new-session -d -s "${tmux_directory}"
+
+  if [ -f $tmux_file ]; then
+     ./tmux.sh
+  fi
+
+  popd
+done

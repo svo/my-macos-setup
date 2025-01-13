@@ -1,0 +1,16 @@
+#!/bin/bash
+
+projects=(
+  "my-macos-setup"
+  "my-debian-setup"
+)
+
+workspace=${PWD##*/}
+
+for project in ${projects[@]}; do
+  echo "project: ${project}"
+
+  tmux new-session -d -s "${workspace}-${project}"
+
+  tmux send-keys -t "${workspace}-${project}" C-z "cd /Users/svo/Documents/workspace/svo/$project" ENTER 'tmux split-window -v' ENTER 'tmux split-window -h' Enter
+done
