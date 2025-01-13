@@ -96,14 +96,3 @@
 - name: Install pre-commit for managing multi-language pre-commit hooks
   community.general.homebrew:
     name: pre-commit
-
-- name: Install asdf extendable version manager
-  community.general.homebrew:
-    name: asdf
-
-- name: Setup asdf for zshrc
-  ansible.builtin.blockinfile:
-    path: ~/.zshrc
-    marker: "# {mark} ANSIBLE MANAGED BLOCK FOR ASDF"
-    block: |
-      . /opt/homebrew/opt/asdf/libexec/asdf.sh
