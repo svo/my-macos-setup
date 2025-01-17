@@ -113,3 +113,16 @@
 - name: Install pre-commit for managing multi-language pre-commit hooks
   community.general.homebrew:
     name: pre-commit
+
+- name: Install mise
+  community.general.homebrew:
+    name: mise
+
+- name: Update .zshrc for mise
+  ansible.builtin.blockinfile:
+    create: true
+    path: ~/.zshrc
+    marker: "# {mark} ANSIBLE MANAGED BLOCK FOR MISE"
+    mode: "0644"
+    block: |
+      echo 'eval "$(mise activate zsh)"' >> "${ZDOTDIR-$HOME}/.zshrc"
