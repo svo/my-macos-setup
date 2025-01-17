@@ -67,6 +67,10 @@
   community.general.homebrew:
     name: terraform-docs
 
+- name: Install terracognita for generating terraform from infrastructure
+  community.general.homebrew:
+    name: terracognita
+
 - name: Install Packer for building multiple artifacts from configuration management
   community.general.homebrew:
     name: hashicorp/tap/packer
