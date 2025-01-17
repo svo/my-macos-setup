@@ -9,7 +9,7 @@
     executable: pipx
     extra_args: --include-deps
 
-- name: Update .zshrc
+- name: Update .zshrc for ansible
   ansible.builtin.blockinfile:
     create: true
     path: ~/.zshrc
