@@ -37,9 +37,9 @@
   community.general.homebrew_cask:
     name: google-cloud-sdk
 
-- name: Install Terraform for resource management
+- name: Install OpenTofu open source replacement for Terraform
   community.general.homebrew:
-    name: hashicorp/tap/terraform
+    name: opentofu
 
 - name: Install Terragrunt OpenTofu/Terraform orchestration tool
   community.general.homebrew:
