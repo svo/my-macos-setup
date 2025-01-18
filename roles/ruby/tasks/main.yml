@@ -3,12 +3,12 @@
     name: rbenv
 
 - name: Install default ruby
-  ansible.builtin.command: rbenv install 3.2.2
+  ansible.builtin.command: rbenv install 3.4.1
   args:
-    creates: ~/.rbenv/versions/3.2.2
+    creates: ~/.rbenv/versions/3.4.1
 
 - name: Set default ruby
-  ansible.builtin.command: rbenv global 3.2.2
+  ansible.builtin.command: rbenv global 3.4.1
 
 - name: Update .zshrc
   ansible.builtin.blockinfile:
@@ -18,5 +18,5 @@
     mode: "0644"
     block: |
       eval "$(rbenv init -)"
-      export PATH="$HOME/.rbenv/versions/3.2.2/bin:$PATH"
-      export PATH="$HOME/.gem/ruby/3.2.2/bin:$PATH"
+      export PATH="$HOME/.rbenv/versions/3.4.1/bin:$PATH"
+      export PATH="$HOME/.gem/ruby/3.4.1/bin:$PATH"
