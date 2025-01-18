@@ -125,4 +125,4 @@
     marker: "# {mark} ANSIBLE MANAGED BLOCK FOR MISE"
     mode: "0644"
     block: |
-      echo 'eval "$(mise activate zsh)"' >> "${ZDOTDIR-$HOME}/.zshrc"
+      eval "$(mise activate zsh)"
