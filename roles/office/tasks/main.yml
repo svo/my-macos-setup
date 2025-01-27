@@ -97,3 +97,7 @@
 - name: Install ChatGPT
   community.general.homebrew_cask:
     name: chatgpt
+
+- name: Install ios-deploy
+  community.general.homebrew:
+    name: ios-deploy
