@@ -157,3 +157,7 @@
 - name: Install spark for generating Sparklines
   community.general.homebrew:
     name: spark
+
+- name: Install watchman
+  community.general.homebrew:
+    name: watchman
