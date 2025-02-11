@@ -12,6 +12,10 @@
   community.general.homebrew:
     name: python
 
+- name: Install python-packaging
+  community.general.homebrew:
+    name: python-packaging
+
 - name: Install pipx
   community.general.homebrew:
     name: pipx
