@@ -134,10 +134,6 @@
   community.general.homebrew:
     name: topgrade
 
-- name: Install letsencrypt SSL certificate command line tools
-  community.general.homebrew:
-    name: certbot
-
 - name: Install htop for process monitoring
   community.general.homebrew:
     name: htop

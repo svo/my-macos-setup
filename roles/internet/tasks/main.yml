@@ -16,7 +16,3 @@
 - name: Install Brave browser
   community.general.homebrew_cask:
     name: brave-browser
-
-- name: Install Firefox browser
-  community.general.homebrew_cask:
-    name: firefox
