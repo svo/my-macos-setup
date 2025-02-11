@@ -25,6 +25,7 @@
     force: true
   with_items:
     - {repo: "https://github.com/lambdalisue/vim-fern.git", dest: vim-fern}
+    - {repo: "https://github.com/lambdalisue/vim-fern-git-status.git", dest: vim-fern-git-status}
     - {repo: "https://github.com/lambdalisue/vim-fern-hijack.git", dest: vim-fern-hijack}
     - {repo: "https://github.com/junegunn/fzf.git", dest: fzf}
     - {repo: "https://github.com/ntpeters/vim-better-whitespace.git", dest: vim-better-whitespace}
