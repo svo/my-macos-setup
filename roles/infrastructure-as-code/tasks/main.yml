@@ -32,15 +32,6 @@
   community.general.homebrew:
     name: terragrunt
 
-- name: Install tap for Terraspace
-  community.general.homebrew_tap:
-    name: boltops-tools/software
-    state: present
-
-- name: Install Terraspace OpenTofu/Terraform orchestration tool
-  community.general.homebrew:
-    name: terraspace
-
 - name: Install bundler for managing ruby
   gem:
     name: bundler
