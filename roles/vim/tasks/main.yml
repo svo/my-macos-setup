@@ -30,6 +30,7 @@
     - {repo: "https://github.com/ntpeters/vim-better-whitespace.git", dest: vim-better-whitespace}
     - {repo: "https://github.com/airblade/vim-gitgutter.git", dest: vim-gitgutter}
     - {repo: "https://github.com/plasticboy/vim-markdown.git", dest: vim-markdown}
+    - {repo: "https://github.com/Exafunction/codeium.vim.git", dest: codeium}
 
 - name: Update .vimrc
   ansible.builtin.blockinfile:
