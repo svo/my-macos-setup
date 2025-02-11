@@ -14,8 +14,7 @@
 - name: Install AWS CLI tools
   ansible.builtin.pip:
     name: awscli
-    extra_args: --ignore-installed six
-  become: true
+    executable: pipx
 
 - name: Install Vagrant for managing development environments
   community.general.homebrew_cask:
