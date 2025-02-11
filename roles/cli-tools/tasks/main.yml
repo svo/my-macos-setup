@@ -110,10 +110,6 @@
       TERM=xterm &&
       if [ "$TMUX" = "" ]; then tmux; fi
 
-- name: Install Midnight Commander command line file manager
-  community.general.homebrew:
-    name: midnight-commander
-
 - name: Install icdiff side-by-side diff tool
   community.general.homebrew:
     name: icdiff
