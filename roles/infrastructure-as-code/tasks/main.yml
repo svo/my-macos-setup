@@ -4,24 +4,12 @@
     state: present
 
 - name: Install Ansible for configuration management
-  ansible.builtin.pip:
+  community.general.homebrew:
     name: ansible
-    executable: pipx
-    extra_args: --include-deps
-
-- name: Update .zshrc for ansible
-  ansible.builtin.blockinfile:
-    create: true
-    path: ~/.zshrc
-    marker: "# {mark} ANSIBLE MANAGED BLOCK FOR ANSIBLE"
-    mode: "0644"
-    block: |
-      export PATH="$HOME/.local/bin:$PATH"
 
 - name: Install Ansible linting tool
-  ansible.builtin.pip:
+  community.general.homebrew:
     name: ansible-lint
-    executable: pipx
 
 - name: Install AWS CLI tools
   ansible.builtin.pip:

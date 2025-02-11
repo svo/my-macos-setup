@@ -10,15 +10,11 @@
 
 - name: Install python
   community.general.homebrew:
-    name: python@3.13
+    name: python
 
 - name: Install pipx
   community.general.homebrew:
     name: pipx
-
-- name: Install python setuptools
-  ansible.builtin.pip:
-    name: setuptools
 
 - name: Install vim plugin
   ansible.builtin.git:
@@ -27,7 +23,3 @@
     force: true
   with_items:
     - {repo: "https://github.com/Vimjas/vim-python-pep8-indent.git", dest: vim-python-pep8-indent}
-
-- name: Install PyCharm IDE
-  community.general.homebrew_cask:
-    name: pycharm-ce

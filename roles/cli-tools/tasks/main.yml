@@ -21,6 +21,7 @@
 - name: Install yq XML/YAML query procesor
   ansible.builtin.pip:
     name: yq
+    executable: pipx
 
 - name: Install XmlStarlet XML toolkit
   community.general.homebrew:
@@ -29,10 +30,12 @@
 - name: Install docutils for processing documentation
   ansible.builtin.pip:
     name: docutils
+    executable: pipx
 
 - name: Install python-json2csv for JSON to CSV
   ansible.builtin.pip:
     name: python-json2csv
+    executable: pipx
 
 - name: Install cloc lines of code utility
   community.general.homebrew:
@@ -45,6 +48,7 @@
 - name: Install petname command line name generator
   ansible.builtin.pip:
     name: petname
+    executable: pipx
 
 - name: Install core GNU utilities
   community.general.homebrew:

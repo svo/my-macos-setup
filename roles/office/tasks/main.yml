@@ -70,10 +70,6 @@
   community.general.homebrew_cask:
     name: clocker
 
-- name: Install Stopwatch, alarm clock, and clock utility
-  community.general.homebrew_cask:
-    name: timer
-
 - name: Install Google Drive
   community.general.homebrew_cask:
     name: google-drive
