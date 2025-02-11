@@ -18,10 +18,9 @@
   community.general.homebrew:
     name: jq
 
-- name: Install yq XML/YAML query procesor
-  ansible.builtin.pip:
+- name: Install yq YAML query procesor
+  community.general.homebrew:
     name: yq
-    executable: pipx
 
 - name: Install XmlStarlet XML toolkit
   community.general.homebrew:
