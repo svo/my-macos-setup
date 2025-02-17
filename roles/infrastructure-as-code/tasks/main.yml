@@ -88,6 +88,15 @@
   community.general.homebrew:
     name: direnv
 
+- name: Update .zshrc for direnv
+  ansible.builtin.blockinfile:
+    create: true
+    path: ~/.zshrc
+    marker: "# {mark} ANSIBLE MANAGED BLOCK FOR DIRENV"
+    mode: "0644"
+    block: |
+      eval "$(direnv hook zsh)"
+
 - name: Install pre-commit for managing multi-language pre-commit hooks
   community.general.homebrew:
     name: pre-commit
