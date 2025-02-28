@@ -53,6 +53,7 @@
     - internet
     - infrastructure-as-code
     - media
+    - claude-code
 
   post_tasks:
 
