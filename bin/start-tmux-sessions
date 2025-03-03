@@ -1,10 +1,10 @@
 #!/bin/bash
 
-tmux_directories=``
+tmux_directories=""
 
 tmux_file="start-tmux-sessions-for"
 
-colima start --cpu 2 --memory 16  --disk 512 --vm-type=vz --mount-type=virtiofs &&
+colima start --dns 8.8.8.8 --dns 8.8.4.4 --cpu 2 --memory 16 --disk 512 --vm-type=vz --mount-type=virtiofs &&
 
 for tmux_directory in */; do
   pushd ${tmux_directory}
