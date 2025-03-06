@@ -21,3 +21,7 @@
 - name: Install slowhttptest denial of service attack tool
   community.general.homebrew:
     name: slowhttptest
+
+- name: Install OWASP Zap
+  community.general.homebrew_cask:
+    name: zap
