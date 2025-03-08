@@ -156,3 +156,7 @@
 - name: Install watchman
   community.general.homebrew:
     name: watchman
+
+- name: Install thefuck
+  community.general.homebrew:
+    name: thefuck
