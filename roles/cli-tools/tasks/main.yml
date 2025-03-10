@@ -160,3 +160,10 @@
 - name: Install thefuck
   community.general.homebrew:
     name: thefuck
+
+- name: Setup thefuck
+  ansible.builtin.blockinfile:
+    path: ~/.zshrc
+    marker: "# {mark} ANSIBLE MANAGED BLOCK (thefuck)"
+    block: |
+      eval $(thefuck --alias)
