@@ -53,3 +53,7 @@
       autocmd BufEnter * EnableStripWhitespaceOnSave
       autocmd FileType Markdown setlocal spell spelllang=en_au
       set encoding=utf-8
+      let mapleader = ","
+      imap <Leader>[ <Cmd>call codeium#CycleCompletions(1)<CR>
+      imap <Leader>] <Cmd>call codeium#CycleCompletions(-1)<CR>
+      imap <Leader>. <Cmd>call codeium#Complete()<CR>
