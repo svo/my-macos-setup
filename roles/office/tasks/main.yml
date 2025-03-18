@@ -1,5 +1,6 @@
 - name: Install Cocoapods dependency manager
-  ansible.builtin.command: brew install cocoapods
+  community.general.homebrew:
+    name: cocoapods
 
 - name: Install 1Password password manager
   community.general.homebrew_cask:
@@ -20,6 +21,7 @@
 - name: Get psql client path
   ansible.builtin.command: brew --prefix libpq
   register: psql_client_path
+  changed_when: false
 
 - name: Add psql to bin
   ansible.builtin.blockinfile:

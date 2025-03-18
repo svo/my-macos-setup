@@ -1,2 +1,7 @@
 - name: Install Claude Code
-  ansible.builtin.shell: export NVM_DIR="$HOME/.nvm" && . "$(brew --prefix nvm)/nvm.sh" && $HOME/.nvm/versions/node/v20.10.0/bin/npm install @anthropic-ai/claude-code --global
+  ansible.builtin.shell: >
+    export NVM_DIR="$HOME/.nvm" &&
+    . "$(brew --prefix nvm)/nvm.sh" &&
+    $HOME/.nvm/versions/node/v20.10.0/bin/npm install @anthropic-ai/claude-code --global
+  register: npm_install_claude
+  changed_when: "'added' in npm_install_claude.stdout"

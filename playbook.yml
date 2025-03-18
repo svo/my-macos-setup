@@ -3,10 +3,10 @@
   hosts: all
 
   pre_tasks:
-
     - name: Get brew path
       ansible.builtin.command: brew --prefix
       register: brew_path
+      changed_when: false
 
     - name: Add brew to shell
       ansible.builtin.blockinfile:

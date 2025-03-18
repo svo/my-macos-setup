@@ -1,7 +1,6 @@
 - name: Install tap for hashicorp
   community.general.homebrew_tap:
     name: hashicorp/tap
-    state: present
 
 - name: Install Ansible for configuration management
   community.general.homebrew:

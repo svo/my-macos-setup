@@ -9,6 +9,8 @@
 
 - name: Set default ruby
   ansible.builtin.command: rbenv global 3.4.1
+  register: rbenv_global
+  changed_when: false
 
 - name: Update .zshrc
   ansible.builtin.blockinfile:

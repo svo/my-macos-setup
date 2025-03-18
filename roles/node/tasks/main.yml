@@ -14,36 +14,82 @@
 
 - name: Install Node.js LTS
   ansible.builtin.shell: export NVM_DIR="$HOME/.nvm" && . "$(brew --prefix nvm)/nvm.sh" && nvm install v20.10.0
+  register: nvm_install
+  changed_when: "'already installed' not in nvm_install.stdout"
 
 - name: Setup to use LTS
   ansible.builtin.shell: export NVM_DIR="$HOME/.nvm" && . "$(brew --prefix nvm)/nvm.sh" && nvm use v20.10.0
+  register: nvm_use
+  changed_when: "'Now using' in nvm_use.stdout"
 
 - name: Set default node version for NVM
   ansible.builtin.shell: export NVM_DIR="$HOME/.nvm" && . "$(brew --prefix nvm)/nvm.sh" && nvm alias default node
+  register: nvm_alias
+  changed_when: "'default -> node' in nvm_alias.stdout"
 
 - name: Install Electron Packager
-  ansible.builtin.shell: export NVM_DIR="$HOME/.nvm" && . "$(brew --prefix nvm)/nvm.sh" && $HOME/.nvm/versions/node/v20.10.0/bin/npm install electron-packager --global
+  ansible.builtin.shell: >
+    export NVM_DIR="$HOME/.nvm" &&
+    . "$(brew --prefix nvm)/nvm.sh" &&
+    $HOME/.nvm/versions/node/v20.10.0/bin/npm install electron-packager --global
+  register: npm_install_electron
+  changed_when: "'added' in npm_install_electron.stdout"
 
 - name: Install Yarn
-  ansible.builtin.shell: export NVM_DIR="$HOME/.nvm" && . "$(brew --prefix nvm)/nvm.sh" && $HOME/.nvm/versions/node/v20.10.0/bin/npm install yarn --global
+  ansible.builtin.shell: >
+    export NVM_DIR="$HOME/.nvm" &&
+    . "$(brew --prefix nvm)/nvm.sh" &&
+    $HOME/.nvm/versions/node/v20.10.0/bin/npm install yarn --global
+  register: npm_install_yarn
+  changed_when: "'added' in npm_install_yarn.stdout"
 
 - name: Install Gitinspector
-  ansible.builtin.shell: export NVM_DIR="$HOME/.nvm" && . "$(brew --prefix nvm)/nvm.sh" && $HOME/.nvm/versions/node/v20.10.0/bin/npm install gitinspector --global
+  ansible.builtin.shell: >
+    export NVM_DIR="$HOME/.nvm" &&
+    . "$(brew --prefix nvm)/nvm.sh" &&
+    $HOME/.nvm/versions/node/v20.10.0/bin/npm install gitinspector --global
+  register: npm_install_gitinspector
+  changed_when: "'added' in npm_install_gitinspector.stdout"
 
 - name: Install git-stats
-  ansible.builtin.shell: export NVM_DIR="$HOME/.nvm" && . "$(brew --prefix nvm)/nvm.sh" && $HOME/.nvm/versions/node/v20.10.0/bin/npm install git-stats-html --global
+  ansible.builtin.shell: >
+    export NVM_DIR="$HOME/.nvm" &&
+    . "$(brew --prefix nvm)/nvm.sh" &&
+    $HOME/.nvm/versions/node/v20.10.0/bin/npm install git-stats-html --global
+  register: npm_install_git_stats
+  changed_when: "'added' in npm_install_git_stats.stdout"
 
 - name: Install Markdown to Confluence converter
-  ansible.builtin.shell: export NVM_DIR="$HOME/.nvm" && . "$(brew --prefix nvm)/nvm.sh" && $HOME/.nvm/versions/node/v20.10.0/bin/npm install markdown2confluence-cws --global
+  ansible.builtin.shell: >
+    export NVM_DIR="$HOME/.nvm" &&
+    . "$(brew --prefix nvm)/nvm.sh" &&
+    $HOME/.nvm/versions/node/v20.10.0/bin/npm install markdown2confluence-cws --global
+  register: npm_install_md2conf
+  changed_when: "'added' in npm_install_md2conf.stdout"
 
 - name: Install js-beautify
-  ansible.builtin.shell: export NVM_DIR="$HOME/.nvm" && . "$(brew --prefix nvm)/nvm.sh" && $HOME/.nvm/versions/node/v20.10.0/bin/npm install js-beautify --global
+  ansible.builtin.shell: >
+    export NVM_DIR="$HOME/.nvm" &&
+    . "$(brew --prefix nvm)/nvm.sh" &&
+    $HOME/.nvm/versions/node/v20.10.0/bin/npm install js-beautify --global
+  register: npm_install_jsbeautify
+  changed_when: "'added' in npm_install_jsbeautify.stdout"
 
 - name: Install action-validator
-  ansible.builtin.shell: export NVM_DIR="$HOME/.nvm" && . "$(brew --prefix nvm)/nvm.sh" && $HOME/.nvm/versions/node/v20.10.0/bin/npm install @action-validator/core @action-validator/cli --global
+  ansible.builtin.shell: >
+    export NVM_DIR="$HOME/.nvm" &&
+    . "$(brew --prefix nvm)/nvm.sh" &&
+    $HOME/.nvm/versions/node/v20.10.0/bin/npm install @action-validator/core @action-validator/cli --global
+  register: npm_install_action_validator
+  changed_when: "'added' in npm_install_action_validator.stdout"
 
 - name: Install md-to-pdf
-  ansible.builtin.shell: export NVM_DIR="$HOME/.nvm" && . "$(brew --prefix nvm)/nvm.sh" && $HOME/.nvm/versions/node/v20.10.0/bin/npm install md-to-pdf --global
+  ansible.builtin.shell: >
+    export NVM_DIR="$HOME/.nvm" &&
+    . "$(brew --prefix nvm)/nvm.sh" &&
+    $HOME/.nvm/versions/node/v20.10.0/bin/npm install md-to-pdf --global
+  register: npm_install_md2pdf
+  changed_when: "'added' in npm_install_md2pdf.stdout"
 
 - name: Install vim plugin
   ansible.builtin.git:
