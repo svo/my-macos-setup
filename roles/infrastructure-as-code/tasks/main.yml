@@ -32,7 +32,7 @@
     name: terragrunt
 
 - name: Install bundler for managing ruby
-  gem:
+  community.general.gem:
     name: bundler
     executable: ~/.rbenv/shims/gem
 

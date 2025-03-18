@@ -7,7 +7,6 @@ on:
   schedule:
     - cron: '0 0 * * *'
 
-
 jobs:
   build:
     runs-on: macos-latest
@@ -23,4 +22,3 @@ jobs:
           ./build.sh
         env:
           ANSIBLE_FORCE_COLOR: '1'
-

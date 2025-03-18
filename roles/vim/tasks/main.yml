@@ -32,6 +32,7 @@
     - {repo: "https://github.com/airblade/vim-gitgutter.git", dest: vim-gitgutter}
     - {repo: "https://github.com/plasticboy/vim-markdown.git", dest: vim-markdown}
     - {repo: "https://github.com/Exafunction/codeium.vim.git", dest: codeium}
+    - {repo: "https://github.com/junegunn/vader.vim.git", dest: vader}
 
 - name: Update .vimrc
   ansible.builtin.blockinfile:

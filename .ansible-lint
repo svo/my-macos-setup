@@ -1,6 +1,7 @@
 ---
 skip_list:
   - 'latest[git]'
+  - 'role-name'
 
 exclude_paths:
   - .git/
