@@ -23,6 +23,10 @@
   community.general.homebrew_cask:
     name: google-cloud-sdk
 
+- name: Install Firebase CLI
+  community.general.homebrew:
+    name: firebase-cli
+
 - name: Install OpenTofu open source replacement for Terraform
   community.general.homebrew:
     name: opentofu
