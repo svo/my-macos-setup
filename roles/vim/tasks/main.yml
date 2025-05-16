@@ -50,6 +50,7 @@
       :set expandtab
       :set nobackup
       :set noswapfile
+      let $FZF_DEFAULT_COMMAND = 'find . -type f -not -path "*/\.git/*" -not -path "*/__pycache__/*" -not -path "*/.mypy_cache/*"'
       nmap <C-P> :FZF<CR>
       autocmd BufEnter * EnableStripWhitespaceOnSave
       autocmd FileType Markdown setlocal spell spelllang=en_au
