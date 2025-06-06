@@ -2,6 +2,7 @@
   ansible.builtin.shell: >
     export NVM_DIR="$HOME/.nvm" &&
     . "$(brew --prefix nvm)/nvm.sh" &&
-    $HOME/.nvm/versions/node/v22.14.0/bin/npm install @anthropic-ai/claude-code --global
+    nvm use v22.14.0 &&
+    npm install @anthropic-ai/claude-code --global
   register: npm_install_claude
   changed_when: "'added' in npm_install_claude.stdout"

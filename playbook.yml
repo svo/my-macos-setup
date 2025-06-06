@@ -55,6 +55,7 @@
     - infrastructure-as-code
     - media
     - claude-code
+    - codex
 
   post_tasks:
 
