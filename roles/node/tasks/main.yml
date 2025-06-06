@@ -31,7 +31,8 @@
   ansible.builtin.shell: >
     export NVM_DIR="$HOME/.nvm" &&
     . "$(brew --prefix nvm)/nvm.sh" &&
-    $HOME/.nvm/versions/node/v22.14.0/bin/npm install electron-packager --global
+    nvm use v22.14.0 &&
+    npm install electron-packager --global
   register: npm_install_electron
   changed_when: "'added' in npm_install_electron.stdout"
 
@@ -39,7 +40,8 @@
   ansible.builtin.shell: >
     export NVM_DIR="$HOME/.nvm" &&
     . "$(brew --prefix nvm)/nvm.sh" &&
-    $HOME/.nvm/versions/node/v22.14.0/bin/npm install yarn --global
+    nvm use v22.14.0 &&
+    npm install yarn --global
   register: npm_install_yarn
   changed_when: "'added' in npm_install_yarn.stdout"
 
@@ -47,7 +49,8 @@
   ansible.builtin.shell: >
     export NVM_DIR="$HOME/.nvm" &&
     . "$(brew --prefix nvm)/nvm.sh" &&
-    $HOME/.nvm/versions/node/v22.14.0/bin/npm install gitinspector --global
+    nvm use v22.14.0 &&
+    npm install gitinspector --global
   register: npm_install_gitinspector
   changed_when: "'added' in npm_install_gitinspector.stdout"
 
@@ -55,7 +58,8 @@
   ansible.builtin.shell: >
     export NVM_DIR="$HOME/.nvm" &&
     . "$(brew --prefix nvm)/nvm.sh" &&
-    $HOME/.nvm/versions/node/v22.14.0/bin/npm install git-stats-html --global
+    nvm use v22.14.0 &&
+    npm install git-stats-html --global
   register: npm_install_git_stats
   changed_when: "'added' in npm_install_git_stats.stdout"
 
@@ -63,7 +67,8 @@
   ansible.builtin.shell: >
     export NVM_DIR="$HOME/.nvm" &&
     . "$(brew --prefix nvm)/nvm.sh" &&
-    $HOME/.nvm/versions/node/v22.14.0/bin/npm install markdown2confluence-cws --global
+    nvm use v22.14.0 &&
+    npm install markdown2confluence-cws --global
   register: npm_install_md2conf
   changed_when: "'added' in npm_install_md2conf.stdout"
 
@@ -71,7 +76,8 @@
   ansible.builtin.shell: >
     export NVM_DIR="$HOME/.nvm" &&
     . "$(brew --prefix nvm)/nvm.sh" &&
-    $HOME/.nvm/versions/node/v22.14.0/bin/npm install js-beautify --global
+    nvm use v22.14.0 &&
+    npm install js-beautify --global
   register: npm_install_jsbeautify
   changed_when: "'added' in npm_install_jsbeautify.stdout"
 
@@ -79,7 +85,8 @@
   ansible.builtin.shell: >
     export NVM_DIR="$HOME/.nvm" &&
     . "$(brew --prefix nvm)/nvm.sh" &&
-    $HOME/.nvm/versions/node/v22.14.0/bin/npm install @action-validator/core @action-validator/cli --global
+    nvm use v22.14.0 &&
+    npm install @action-validator/core @action-validator/cli --global
   register: npm_install_action_validator
   changed_when: "'added' in npm_install_action_validator.stdout"
 
@@ -87,7 +94,8 @@
   ansible.builtin.shell: >
     export NVM_DIR="$HOME/.nvm" &&
     . "$(brew --prefix nvm)/nvm.sh" &&
-    $HOME/.nvm/versions/node/v22.14.0/bin/npm install md-to-pdf --global
+    nvm use v22.14.0 &&
+    npm install md-to-pdf --global
   register: npm_install_md2pdf
   changed_when: "'added' in npm_install_md2pdf.stdout"
 
