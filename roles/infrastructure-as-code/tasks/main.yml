@@ -116,3 +116,11 @@
     mode: "0644"
     block: |
       eval "$(mise activate zsh)"
+
+- name: Install tap for pipedream
+  community.general.homebrew_tap:
+    name: pipedreamhq/pd-cli
+
+- name: Install pipedream CLI
+  community.general.homebrew:
+    name: pipedreamhq/pd-cli/pipedream
