@@ -6,6 +6,10 @@
   community.general.homebrew:
     name: docker-compose,colima
 
+- name: Install lima-additional-guestagents
+  community.general.homebrew:
+    name: lima-additional-guestagents
+
 - name: Add colima socket as DOCKER_HOST
   ansible.builtin.blockinfile:
     create: true
