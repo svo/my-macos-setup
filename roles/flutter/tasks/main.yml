@@ -18,7 +18,7 @@
     marker: "# {mark} ANSIBLE MANAGED BLOCK FOR FVM"
     mode: "0644"
     block: |
-      export PATH="$HOME/fvm/versions/3.19.5/bin:$PATH"
+      export PATH="$HOME/fvm/default/bin:$PATH"
 
 - name: Install lcov for code coverage
   community.general.homebrew:
