@@ -13,3 +13,10 @@
   register: claude_mcp_add_context7
   changed_when: "'Added MCP server' in claude_mcp_add_context7.stdout or 'Successfully added' in claude_mcp_add_context7.stdout"
   failed_when: false
+
+- name: Add Sequential Thinking MCP Server to Claude Code
+  ansible.builtin.shell: >
+    claude mcp add --scope user sequential-thinking npx -- -y @modelcontextprotocol/server-sequential-thinking
+  register: claude_mcp_add_sequential
+  changed_when: "'Added MCP server' in claude_mcp_add_sequential.stdout or 'Successfully added' in claude_mcp_add_sequential.stdout"
+  failed_when: false
