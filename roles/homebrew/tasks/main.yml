@@ -1,0 +1,24 @@
+- name: Configure Homebrew environment variables
+  ansible.builtin.blockinfile:
+    create: true
+    path: ~/.zshrc
+    marker: "# {mark} ANSIBLE MANAGED BLOCK FOR HOMEBREW"
+    mode: "0644"
+    block: |
+      export HOMEBREW_CELLAR=/opt/homebrew/Cellar
+      export HOMEBREW_PREFIX=/opt/homebrew
+      export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
+
+- name: Get brew path
+  ansible.builtin.command: brew --prefix
+  register: brew_path
+  changed_when: false
+
+- name: Add brew to shell
+  ansible.builtin.blockinfile:
+    create: true
+    path: ~/.zprofile
+    marker: "# {mark} ANSIBLE MANAGED BLOCK FOR BREW"
+    mode: "0644"
+    block: |
+      eval "$({{ brew_path.stdout | trim | regex_replace('^/+', '/') }}/bin/brew shellenv)"

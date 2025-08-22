@@ -30,7 +30,7 @@
     marker: "# {mark} ANSIBLE MANAGED BLOCK FOR PSQL"
     mode: "0644"
     block: |
-      export PATH="{{ psql_client_path.stdout_lines[0] }}/bin:$PATH"
+      export PATH="{{ psql_client_path.stdout_lines[0] | regex_replace('^/+', '/') }}/bin:$PATH"
 
 - name: Install miro collaboration whiteboard
   community.general.homebrew_cask:
