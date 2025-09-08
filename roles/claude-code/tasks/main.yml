@@ -20,3 +20,17 @@
   register: claude_mcp_add_sequential
   changed_when: "'Added MCP server' in claude_mcp_add_sequential.stdout or 'Successfully added' in claude_mcp_add_sequential.stdout"
   failed_when: false
+
+- name: Add Figma MCP Server to Claude Code
+  ansible.builtin.shell: >
+    claude mcp add --scope user figma npx -- -y figma-developer-mcp --stdio
+  register: claude_mcp_add_figma
+  changed_when: "'Added MCP server' in claude_mcp_add_figma.stdout or 'Successfully added' in claude_mcp_add_figma.stdout"
+  failed_when: false
+
+- name: Add Notion MCP Server to Claude Code
+  ansible.builtin.shell: >
+    claude mcp add --scope user notion npx -- -y @notionhq/notion-mcp-server
+  register: claude_mcp_add_notion
+  changed_when: "'Added MCP server' in claude_mcp_add_notion.stdout or 'Successfully added' in claude_mcp_add_notion.stdout"
+  failed_when: false
