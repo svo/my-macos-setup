@@ -95,3 +95,7 @@
 - name: Install ios-deploy
   community.general.homebrew:
     name: ios-deploy
+
+- name: Install Figma design tool
+  community.general.homebrew_cask:
+    name: figma
