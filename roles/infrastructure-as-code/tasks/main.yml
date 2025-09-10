@@ -21,7 +21,7 @@
 
 - name: Install Google Cloud SDK
   community.general.homebrew_cask:
-    name: google-cloud-sdk
+    name: gcloud-cli
 
 - name: Install Firebase CLI
   community.general.homebrew:
