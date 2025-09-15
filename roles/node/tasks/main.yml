@@ -23,29 +23,29 @@
   ansible.builtin.shell: |
     source /tmp/nvm_setup.sh
     nvm install {{ node_version }}
-  register: nvm_install
-  changed_when: "'already installed' not in nvm_install.stdout"
+  register: node_nvm_install
+  changed_when: "'already installed' not in node_nvm_install.stdout"
 
 - name: Setup to use Node.js version
   ansible.builtin.shell: |
     source /tmp/nvm_setup.sh
     nvm use {{ node_version }}
-  register: nvm_use
-  changed_when: "'Now using' in nvm_use.stdout"
+  register: node_nvm_use
+  changed_when: "'Now using' in node_nvm_use.stdout"
 
 - name: Set default node version for NVM
   ansible.builtin.shell: |
     source /tmp/nvm_setup.sh
     nvm alias default node
-  register: nvm_alias
-  changed_when: "'default -> node' in nvm_alias.stdout"
+  register: node_nvm_alias
+  changed_when: "'default -> node' in node_nvm_alias.stdout"
 
 - name: Install global npm packages
   ansible.builtin.shell: |
     source /tmp/nvm_setup.sh
     npm install {{ item }} --global
-  register: npm_install_result
-  changed_when: "'added' in npm_install_result.stdout"
+  register: node_npm_install_result
+  changed_when: "'added' in node_npm_install_result.stdout"
   loop: "{{ node_npm_global_packages }}"
 
 - name: Clean up temporary NVM setup script

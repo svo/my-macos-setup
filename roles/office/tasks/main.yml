@@ -20,7 +20,7 @@
 
 - name: Get psql client path
   ansible.builtin.command: brew --prefix libpq
-  register: psql_client_path
+  register: office_psql_client_path
   changed_when: false
 
 - name: Add psql to bin
@@ -30,7 +30,7 @@
     marker: "# {mark} ANSIBLE MANAGED BLOCK FOR PSQL"
     mode: "0644"
     block: |
-      export PATH="{{ psql_client_path.stdout_lines[0] | regex_replace('^/+', '/') }}/bin:$PATH"
+      export PATH="{{ office_psql_client_path.stdout_lines[0] | regex_replace('^/+', '/') }}/bin:$PATH"
 
 - name: Install miro collaboration whiteboard
   community.general.homebrew_cask:
