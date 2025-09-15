@@ -1,3 +1,4 @@
+---
 - name: Install nvm for node version management
   community.general.homebrew:
     name: nvm
@@ -12,92 +13,45 @@
       export NVM_DIR="$HOME/.nvm"
       . "$(brew --prefix nvm)/nvm.sh"
 
-- name: Install Node.js LTS
-  ansible.builtin.shell: export NVM_DIR="$HOME/.nvm" && . "$(brew --prefix nvm)/nvm.sh" && nvm install v22.14.0
+- name: Create NVM setup script from template
+  ansible.builtin.template:
+    src: nvm_setup.sh.j2
+    dest: /tmp/nvm_setup.sh
+    mode: '0755'
+
+- name: Install Node.js version
+  ansible.builtin.shell: |
+    source /tmp/nvm_setup.sh
+    nvm install {{ node_version }}
   register: nvm_install
   changed_when: "'already installed' not in nvm_install.stdout"
 
-- name: Setup to use LTS
-  ansible.builtin.shell: export NVM_DIR="$HOME/.nvm" && . "$(brew --prefix nvm)/nvm.sh" && nvm use v22.14.0
+- name: Setup to use Node.js version
+  ansible.builtin.shell: |
+    source /tmp/nvm_setup.sh
+    nvm use {{ node_version }}
   register: nvm_use
   changed_when: "'Now using' in nvm_use.stdout"
 
 - name: Set default node version for NVM
-  ansible.builtin.shell: export NVM_DIR="$HOME/.nvm" && . "$(brew --prefix nvm)/nvm.sh" && nvm alias default node
+  ansible.builtin.shell: |
+    source /tmp/nvm_setup.sh
+    nvm alias default node
   register: nvm_alias
   changed_when: "'default -> node' in nvm_alias.stdout"
 
-- name: Install Electron Packager
-  ansible.builtin.shell: >
-    export NVM_DIR="$HOME/.nvm" &&
-    . "$(brew --prefix nvm)/nvm.sh" &&
-    nvm use v22.14.0 &&
-    npm install electron-packager --global
-  register: npm_install_electron
-  changed_when: "'added' in npm_install_electron.stdout"
+- name: Install global npm packages
+  ansible.builtin.shell: |
+    source /tmp/nvm_setup.sh
+    npm install {{ item }} --global
+  register: npm_install_result
+  changed_when: "'added' in npm_install_result.stdout"
+  loop: "{{ node_npm_global_packages }}"
 
-- name: Install Yarn
-  ansible.builtin.shell: >
-    export NVM_DIR="$HOME/.nvm" &&
-    . "$(brew --prefix nvm)/nvm.sh" &&
-    nvm use v22.14.0 &&
-    npm install yarn --global
-  register: npm_install_yarn
-  changed_when: "'added' in npm_install_yarn.stdout"
-
-- name: Install Gitinspector
-  ansible.builtin.shell: >
-    export NVM_DIR="$HOME/.nvm" &&
-    . "$(brew --prefix nvm)/nvm.sh" &&
-    nvm use v22.14.0 &&
-    npm install gitinspector --global
-  register: npm_install_gitinspector
-  changed_when: "'added' in npm_install_gitinspector.stdout"
-
-- name: Install git-stats
-  ansible.builtin.shell: >
-    export NVM_DIR="$HOME/.nvm" &&
-    . "$(brew --prefix nvm)/nvm.sh" &&
-    nvm use v22.14.0 &&
-    npm install git-stats-html --global
-  register: npm_install_git_stats
-  changed_when: "'added' in npm_install_git_stats.stdout"
-
-- name: Install Markdown to Confluence converter
-  ansible.builtin.shell: >
-    export NVM_DIR="$HOME/.nvm" &&
-    . "$(brew --prefix nvm)/nvm.sh" &&
-    nvm use v22.14.0 &&
-    npm install markdown2confluence-cws --global
-  register: npm_install_md2conf
-  changed_when: "'added' in npm_install_md2conf.stdout"
-
-- name: Install js-beautify
-  ansible.builtin.shell: >
-    export NVM_DIR="$HOME/.nvm" &&
-    . "$(brew --prefix nvm)/nvm.sh" &&
-    nvm use v22.14.0 &&
-    npm install js-beautify --global
-  register: npm_install_jsbeautify
-  changed_when: "'added' in npm_install_jsbeautify.stdout"
-
-- name: Install action-validator
-  ansible.builtin.shell: >
-    export NVM_DIR="$HOME/.nvm" &&
-    . "$(brew --prefix nvm)/nvm.sh" &&
-    nvm use v22.14.0 &&
-    npm install @action-validator/core @action-validator/cli --global
-  register: npm_install_action_validator
-  changed_when: "'added' in npm_install_action_validator.stdout"
-
-- name: Install md-to-pdf
-  ansible.builtin.shell: >
-    export NVM_DIR="$HOME/.nvm" &&
-    . "$(brew --prefix nvm)/nvm.sh" &&
-    nvm use v22.14.0 &&
-    npm install md-to-pdf --global
-  register: npm_install_md2pdf
-  changed_when: "'added' in npm_install_md2pdf.stdout"
+- name: Clean up temporary NVM setup script
+  ansible.builtin.file:
+    path: /tmp/nvm_setup.sh
+    state: absent
 
 - name: Install vim plugin
   ansible.builtin.git:
