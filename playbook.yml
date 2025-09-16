@@ -50,7 +50,7 @@
 
     - name: Change .local ownership and permissions
       ansible.builtin.file:
-        path: "{{ homebrew_brew_path.stdout | trim }}/share"
+        path: "{{ brew_brew_path.stdout | trim }}/share"
         owner: "{{ ansible_user_id }}"
         recurse: true
         mode: '0755'
