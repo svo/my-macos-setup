@@ -1,36 +1,44 @@
+- name: Install ChatGPT
+  community.general.homebrew_cask:
+    name: chatgpt
+
+- name: Install Codex
+  community.general.homebrew:
+    name: codex
+
 - name: Install Claude Code
   ansible.builtin.shell: >
     export NVM_DIR="$HOME/.nvm" &&
     . "$(brew --prefix nvm)/nvm.sh" &&
     nvm use v22.14.0 &&
     npm install @anthropic-ai/claude-code --global
-  register: npm_install_claude
-  changed_when: "'added' in npm_install_claude.stdout"
+  register: ai_npm_install_claude
+  changed_when: "'added' in ai_npm_install_claude.stdout"
 
 - name: Add Context7 MCP Server to Claude Code
   ansible.builtin.shell: >
     claude mcp add --transport http --scope user context7 https://mcp.context7.com/mcp
-  register: claude_mcp_add_context7
-  changed_when: "'Added MCP server' in claude_mcp_add_context7.stdout or 'Successfully added' in claude_mcp_add_context7.stdout"
+  register: ai_claude_mcp_add_context7
+  changed_when: "'Added MCP server' in ai_claude_mcp_add_context7.stdout or 'Successfully added' in ai_claude_mcp_add_context7.stdout"
   failed_when: false
 
 - name: Add Sequential Thinking MCP Server to Claude Code
   ansible.builtin.shell: >
     claude mcp add --scope user sequential-thinking npx -- -y @modelcontextprotocol/server-sequential-thinking
-  register: claude_mcp_add_sequential
-  changed_when: "'Added MCP server' in claude_mcp_add_sequential.stdout or 'Successfully added' in claude_mcp_add_sequential.stdout"
+  register: ai_claude_mcp_add_sequential
+  changed_when: "'Added MCP server' in ai_claude_mcp_add_sequential.stdout or 'Successfully added' in ai_claude_mcp_add_sequential.stdout"
   failed_when: false
 
 - name: Add Figma MCP Server to Claude Code
   ansible.builtin.shell: >
     claude mcp add --scope user figma npx -- -y figma-developer-mcp --stdio
-  register: claude_mcp_add_figma
-  changed_when: "'Added MCP server' in claude_mcp_add_figma.stdout or 'Successfully added' in claude_mcp_add_figma.stdout"
+  register: ai_claude_mcp_add_figma
+  changed_when: "'Added MCP server' in ai_claude_mcp_add_figma.stdout or 'Successfully added' in ai_claude_mcp_add_figma.stdout"
   failed_when: false
 
 - name: Add Notion MCP Server to Claude Code
   ansible.builtin.shell: >
     claude mcp add --scope user notion npx -- -y @notionhq/notion-mcp-server
-  register: claude_mcp_add_notion
-  changed_when: "'Added MCP server' in claude_mcp_add_notion.stdout or 'Successfully added' in claude_mcp_add_notion.stdout"
+  register: ai_claude_mcp_add_notion
+  changed_when: "'Added MCP server' in ai_claude_mcp_add_notion.stdout or 'Successfully added' in ai_claude_mcp_add_notion.stdout"
   failed_when: false

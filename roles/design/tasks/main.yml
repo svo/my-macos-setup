@@ -1,0 +1,3 @@
+- name: Install Figma design tool
+  community.general.homebrew_cask:
+    name: figma

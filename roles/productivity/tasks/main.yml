@@ -1,0 +1,59 @@
+- name: Install 1Password password manager
+  community.general.homebrew_cask:
+    name: 1password
+
+- name: Install TablePlus database management tool
+  community.general.homebrew_cask:
+    name: tableplus
+
+- name: Install dbvisualizer
+  community.general.homebrew_cask:
+    name: dbvisualizer
+
+- name: Install miro collaboration whiteboard
+  community.general.homebrew_cask:
+    name: miro
+
+- name: Install Alfred productivity utility
+  community.general.homebrew_cask:
+    name: alfred
+
+- name: Install Dropbox for online storage
+  community.general.homebrew_cask:
+    name: dropbox
+
+- name: Install mounty for NTFS volumes
+  community.general.homebrew_cask:
+    name: mounty
+
+- name: Install The Unarchiver
+  community.general.homebrew_cask:
+    name: the-unarchiver
+
+- name: Install App Cleaner
+  community.general.homebrew_cask:
+    name: appcleaner
+
+- name: Install flycut clipboard manager
+  community.general.homebrew_cask:
+    name: flycut
+
+- name: Install lastpass password manager
+  community.general.homebrew_cask:
+    name: lastpass
+
+- name: Install clocker timezone menu
+  community.general.homebrew_cask:
+    name: clocker
+
+- name: Install Google Drive
+  community.general.homebrew_cask:
+    name: google-drive
+
+- name: Install loom for screen recording
+  community.general.homebrew_cask:
+    name: loom
+
+- name: Install notion
+  community.general.homebrew_cask:
+    name: notion

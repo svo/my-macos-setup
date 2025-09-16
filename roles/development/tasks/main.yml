@@ -1,0 +1,25 @@
+- name: Install psql client
+  community.general.homebrew:
+    name: libpq
+
+- name: Get psql client path
+  ansible.builtin.command: brew --prefix libpq
+  register: development_tools_psql_client_path
+  changed_when: false
+
+- name: Add psql to bin
+  ansible.builtin.blockinfile:
+    create: true
+    path: ~/.zshrc
+    marker: "# {mark} ANSIBLE MANAGED BLOCK FOR PSQL"
+    mode: "0644"
+    block: |
+      export PATH="{{ development_tools_psql_client_path.stdout_lines[0] | regex_replace('^/+', '/') }}/bin:$PATH"
+
+- name: Install Wireshark packet analyzer
+  community.general.homebrew_cask:
+    name: wireshark
+
+- name: Install postman
+  community.general.homebrew_cask:
+    name: postman

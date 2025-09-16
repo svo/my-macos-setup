@@ -17,32 +17,34 @@
 
   roles:
 
-    - homebrew
-    - source-control
-    - docker
-    - python
-    - cli-tools
+    - brew
+    - git
     - vim
-    - system
     - java
-    - gradle
-    - maven
     - node
-    - clojure
+    - ruby
     - golang
     - kotlin
-    - ruby
+    - clojure
     - flutter
-    - android
-    - office
-    - plantuml
-    - semgrep
+    - python
+    - gradle
+    - maven
+    - iac
+    - system
+    - docker
+    - terminal
     - security
-    - internet
-    - infrastructure-as-code
+    - android
+    - semgrep
+    - ai
     - media
-    - claude-code
-    - codex
+    - design
+    - internet
+    - development
+    - productivity
+    - plantuml
+    - office
 
   post_tasks:
 

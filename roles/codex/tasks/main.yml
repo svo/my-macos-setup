@@ -1,3 +1,0 @@
-- name: Install Codex
-  community.general.homebrew:
-    name: codex
