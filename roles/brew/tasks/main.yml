@@ -11,7 +11,7 @@
 
 - name: Get brew path
   ansible.builtin.command: brew --prefix
-  register: homebrew_brew_path
+  register: brew_brew_path
   changed_when: false
 
 - name: Add brew to shell
@@ -21,4 +21,4 @@
     marker: "# {mark} ANSIBLE MANAGED BLOCK FOR BREW"
     mode: "0644"
     block: |
-      eval "$({{ homebrew_brew_path.stdout | trim | regex_replace('^/+', '/') }}/bin/brew shellenv)"
+      eval "$({{ brew_brew_path.stdout | trim | regex_replace('^/+', '/') }}/bin/brew shellenv)"
