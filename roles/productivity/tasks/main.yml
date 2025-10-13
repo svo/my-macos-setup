@@ -6,17 +6,29 @@
   community.general.homebrew_cask:
     name: lastpass
 
-- name: Install miro collaboration whiteboard
-  community.general.homebrew_cask:
-    name: miro
-
 - name: Install Alfred productivity utility
   community.general.homebrew_cask:
     name: alfred
 
+- name: Install miro collaboration whiteboard
+  community.general.homebrew_cask:
+    name: miro
+
+- name: Install loom for screen recording
+  community.general.homebrew_cask:
+    name: loom
+
+- name: Install notion
+  community.general.homebrew_cask:
+    name: notion
+
 - name: Install Dropbox for online storage
   community.general.homebrew_cask:
     name: dropbox
+
+- name: Install Google Drive
+  community.general.homebrew_cask:
+    name: google-drive
 
 - name: Install mounty for NTFS volumes
   community.general.homebrew_cask:
@@ -37,15 +49,3 @@
 - name: Install clocker timezone menu
   community.general.homebrew_cask:
     name: clocker
-
-- name: Install Google Drive
-  community.general.homebrew_cask:
-    name: google-drive
-
-- name: Install loom for screen recording
-  community.general.homebrew_cask:
-    name: loom
-
-- name: Install notion
-  community.general.homebrew_cask:
-    name: notion
