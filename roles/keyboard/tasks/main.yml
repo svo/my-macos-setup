@@ -1,0 +1,37 @@
+- name: Check if Karabiner-Elements is already installed
+  ansible.builtin.stat:
+    path: /Applications/Karabiner-Elements.app
+  register: karabiner_installed
+
+- name: Download Karabiner-Elements DMG
+  ansible.builtin.get_url:
+    url: https://github.com/pqrs-org/Karabiner-Elements/releases/download/v15.5.0/Karabiner-Elements-15.5.0.dmg
+    dest: /tmp/Karabiner-Elements.dmg
+    mode: '0644'
+  when: not karabiner_installed.stat.exists
+
+- name: Mount Karabiner-Elements DMG
+  ansible.builtin.command:
+    cmd: hdiutil attach /tmp/Karabiner-Elements.dmg -nobrowse -quiet
+  when: not karabiner_installed.stat.exists
+  changed_when: true
+
+- name: Install Karabiner-Elements
+  ansible.builtin.command:
+    cmd: /usr/sbin/installer -pkg /Volumes/Karabiner-Elements-15.5.0/Karabiner-Elements.pkg -target /
+  become: true
+  when: not karabiner_installed.stat.exists
+  changed_when: true
+
+- name: Unmount DMG
+  ansible.builtin.command:
+    cmd: hdiutil detach /Volumes/Karabiner-Elements-15.5.0 -quiet
+  when: not karabiner_installed.stat.exists
+  changed_when: false
+  failed_when: false
+
+- name: Remove DMG file
+  ansible.builtin.file:
+    path: /tmp/Karabiner-Elements.dmg
+    state: absent
+  when: not karabiner_installed.stat.exists

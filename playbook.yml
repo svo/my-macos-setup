@@ -32,6 +32,7 @@
     - maven
     - iac
     - system
+    - keyboard
     - docker
     - terminal
     - security
