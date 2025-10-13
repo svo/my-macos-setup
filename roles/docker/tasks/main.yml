@@ -17,4 +17,4 @@
     marker: "# {mark} ANSIBLE MANAGED BLOCK FOR DOCKER_HOST"
     mode: "0644"
     block: |
-      export DOCKER_HOST="unix://$HOME/.colima/docker.sock"
+      export DOCKER_HOST="unix://$HOME/.colima/default/docker.sock"
