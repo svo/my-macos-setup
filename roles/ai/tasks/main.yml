@@ -6,6 +6,10 @@
   community.general.homebrew:
     name: codex
 
+- name: Install Claude
+  community.general.homebrew_cask:
+    name: claude
+
 - name: Install Claude Code
   ansible.builtin.shell: >
     export NVM_DIR="$HOME/.nvm" &&
