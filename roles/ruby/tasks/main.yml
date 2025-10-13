@@ -2,6 +2,11 @@
   community.general.homebrew:
     name: rbenv
 
+- name: Install ruby-build ruby version provider
+  community.general.homebrew:
+    name: ruby-build
+    state: latest
+
 - name: Install ruby version 3.4.7
   ansible.builtin.command: rbenv install 3.4.7
   args:
