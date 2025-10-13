@@ -1,13 +1,13 @@
-- name: Install psql client
+- name: Install libpq PostgreSQL client
   community.general.homebrew:
     name: libpq
 
-- name: Get psql client path
+- name: Query libpq installation path
   ansible.builtin.command: brew --prefix libpq
   register: development_tools_psql_client_path
   changed_when: false
 
-- name: Add psql to bin
+- name: Configure libpq PATH variable
   ansible.builtin.blockinfile:
     create: true
     path: ~/.zshrc
@@ -16,53 +16,53 @@
     block: |
       export PATH="{{ development_tools_psql_client_path.stdout_lines[0] | regex_replace('^/+', '/') }}/bin:$PATH"
 
-- name: Install Wireshark packet analyzer
+- name: Install wireshark packet analyzer
   community.general.homebrew_cask:
     name: wireshark
 
-- name: Install postman
+- name: Install postman API testing tool
   community.general.homebrew_cask:
     name: postman
 
-- name: Install TablePlus database management tool
+- name: Install tableplus database management tool
   community.general.homebrew_cask:
     name: tableplus
 
-- name: Install dbvisualizer
+- name: Install dbvisualizer database tool
   community.general.homebrew_cask:
     name: dbvisualizer
 
-- name: Install PlantUML CLI diagramming tool
+- name: Install plantuml CLI diagramming tool
   community.general.homebrew:
     name: plantuml
 
-- name: Install PlantUML vim plugin
+- name: Install plantuml-syntax vim plugin
   ansible.builtin.git:
     repo: https://github.com/aklt/plantuml-syntax.git
     dest: ~/.vim/bundle/plantuml-syntax
     force: true
 
-- name: Install Semgrep static analysis for finding bugs and enforcing code standards
+- name: Install semgrep static analysis tool
   community.general.homebrew:
     name: semgrep
 
-- name: Install cloc lines of code utility
+- name: Install cloc code metrics tool
   community.general.homebrew:
     name: cloc
 
-- name: Install scc code counter
+- name: Install scc code counter tool
   community.general.homebrew:
     name: scc
 
-- name: Install tool for working with Architecture Decision Records
+- name: Install adr-tools architecture decision record tool
   community.general.homebrew:
     name: adr-tools
 
-- name: Install HTTPie cURL wrapper
+- name: Install httpie HTTP client
   community.general.homebrew:
     name: httpie
     state: present
 
-- name: Install watchman
+- name: Install watchman file watching service
   community.general.homebrew:
     name: watchman

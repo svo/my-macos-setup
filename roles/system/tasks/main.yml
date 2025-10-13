@@ -1,15 +1,15 @@
-- name: Install logitech options software
+- name: Install logitech-options peripheral software
   community.general.homebrew_cask:
     name: logitech-options
 
-- name: Install balena etcher bootable USB creator
+- name: Install balenaetcher bootable USB creator
   community.general.homebrew_cask:
     name: balenaetcher
 
-- name: Install testdisk
+- name: Install testdisk data recovery tool
   community.general.homebrew:
     name: testdisk
 
-- name: System monitor for the menu bar
+- name: Install stats system monitor
   community.general.homebrew_cask:
     name: stats

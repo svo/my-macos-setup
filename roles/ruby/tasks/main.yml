@@ -1,18 +1,18 @@
-- name: Install rbenv for ruby version management
+- name: Install rbenv ruby version manager
   community.general.homebrew:
     name: rbenv
 
-- name: Install default ruby
+- name: Install ruby version 3.4.7
   ansible.builtin.command: rbenv install 3.4.7
   args:
     creates: ~/.rbenv/versions/3.4.7
 
-- name: Set default ruby
+- name: Configure rbenv default ruby version
   ansible.builtin.command: rbenv global 3.4.7
   register: ruby_rbenv_global
   changed_when: false
 
-- name: Update .zshrc
+- name: Configure rbenv shell integration
   ansible.builtin.blockinfile:
     create: true
     path: ~/.zshrc

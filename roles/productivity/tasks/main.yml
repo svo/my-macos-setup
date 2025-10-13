@@ -1,4 +1,4 @@
-- name: Install 1Password password manager
+- name: Install 1password password manager
   community.general.homebrew_cask:
     name: 1password
 
@@ -6,7 +6,7 @@
   community.general.homebrew_cask:
     name: lastpass
 
-- name: Install Alfred productivity utility
+- name: Install alfred launcher and productivity tool
   community.general.homebrew_cask:
     name: alfred
 
@@ -14,39 +14,39 @@
   community.general.homebrew_cask:
     name: miro
 
-- name: Install loom for screen recording
+- name: Install loom screen recorder
   community.general.homebrew_cask:
     name: loom
 
-- name: Install ferdium for aggregating messaging platforms
+- name: Install ferdium messaging aggregator
   community.general.homebrew_cask:
     name: ferdium
 
-- name: Install zoom for internet telephony
+- name: Install zoom video conferencing tool
   community.general.homebrew_cask:
     name: zoom
 
-- name: Install notion
+- name: Install notion note-taking and collaboration tool
   community.general.homebrew_cask:
     name: notion
 
-- name: Install Dropbox for online storage
+- name: Install dropbox cloud storage
   community.general.homebrew_cask:
     name: dropbox
 
-- name: Install Google Drive
+- name: Install google-drive cloud storage
   community.general.homebrew_cask:
     name: google-drive
 
-- name: Install mounty for NTFS volumes
+- name: Install mounty NTFS volume manager
   community.general.homebrew_cask:
     name: mounty
 
-- name: Install The Unarchiver
+- name: Install the-unarchiver archive extractor
   community.general.homebrew_cask:
     name: the-unarchiver
 
-- name: Install App Cleaner
+- name: Install appcleaner application uninstaller
   community.general.homebrew_cask:
     name: appcleaner
 
@@ -54,6 +54,6 @@
   community.general.homebrew_cask:
     name: flycut
 
-- name: Install clocker timezone menu
+- name: Install clocker timezone menu bar tool
   community.general.homebrew_cask:
     name: clocker

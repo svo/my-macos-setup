@@ -1,33 +1,33 @@
-- name: Install Ansible for configuration management
+- name: Install ansible configuration management tool
   community.general.homebrew:
     name: ansible
 
-- name: Install Ansible linting tool
+- name: Install ansible-lint linting tool
   community.general.homebrew:
     name: ansible-lint
 
-- name: Install bundler for managing ruby
+- name: Install bundler ruby dependency manager
   community.general.gem:
     name: bundler
     executable: ~/.rbenv/shims/gem
 
-- name: Install tap for hashicorp
+- name: Add hashicorp homebrew tap
   community.general.homebrew_tap:
     name: hashicorp/tap
 
-- name: Install Packer for building multiple artifacts from configuration management
+- name: Install packer image builder
   community.general.homebrew:
     name: hashicorp/tap/packer
 
-- name: Install vault
+- name: Install vault secrets management tool
   community.general.homebrew:
     name: hashicorp/tap/vault
 
-- name: Install OpenTofu open source replacement for Terraform
+- name: Install opentofu infrastructure as code tool
   community.general.homebrew:
     name: opentofu
 
-- name: Install Terragrunt OpenTofu/Terraform orchestration tool
+- name: Install terragrunt infrastructure orchestration tool
   community.general.homebrew:
     name: terragrunt
 
@@ -35,47 +35,47 @@
   community.general.homebrew:
     name: tflint
 
-- name: Install terraform-docs for generating Terraform documentation
+- name: Install terraform-docs documentation generator
   community.general.homebrew:
     name: terraform-docs
 
-- name: Install hcledit for pre-commit terraform
+- name: Install hcledit HCL editor
   community.general.homebrew:
     name: hcledit
 
-- name: Install AWS CLI tools
+- name: Install awscli AWS command-line interface
   community.general.homebrew:
     name: awscli
 
-- name: Install Google Cloud SDK
+- name: Install gcloud-cli Google Cloud CLI
   community.general.homebrew_cask:
     name: gcloud-cli
 
-- name: Install Firebase CLI
+- name: Install firebase-cli Firebase command-line interface
   community.general.homebrew:
     name: firebase-cli
 
-- name: Install Kuberenetes command line
+- name: Install kubernetes-cli Kubernetes command-line tool
   community.general.homebrew:
     name: kubernetes-cli
 
-- name: Install kustomize
+- name: Install kustomize Kubernetes configuration tool
   community.general.homebrew:
     name: kustomize
 
-- name: Install templates for Kubernetes manifests
+- name: Install ktmpl Kubernetes manifest template tool
   community.general.homebrew:
     name: ktmpl
 
-- name: Install Vagrant for managing development environments
+- name: Install vagrant development environment manager
   community.general.homebrew_cask:
     name: vagrant
 
-- name: Install direnv for environment management
+- name: Install direnv environment variable manager
   community.general.homebrew:
     name: direnv
 
-- name: Update .zshrc for direnv
+- name: Configure direnv shell integration
   ansible.builtin.blockinfile:
     create: true
     path: ~/.zshrc
@@ -84,21 +84,34 @@
     block: |
       eval "$(direnv hook zsh)"
 
-- name: Install pre-commit for managing multi-language pre-commit hooks
+- name: Install pre-commit git hook manager
   community.general.homebrew:
     name: pre-commit
 
-- name: Install Act for testing local GitHub workflows
+- name: Install act GitHub Actions testing tool
   community.general.homebrew:
     name: act
 
-- name: Install vim plugins
+- name: Install ansible-vim vim plugin
   ansible.builtin.git:
-    repo: "{{ item.repo }}"
-    dest: "~/.vim/bundle/{{ item.dest }}"
+    repo: https://github.com/pearofducks/ansible-vim.git
+    dest: ~/.vim/bundle/ansible-vim
     force: true
-  with_items:
-    - {repo: "https://github.com/pearofducks/ansible-vim.git", dest: ansible-vim}
-    - {repo: "https://github.com/hashivim/vim-terraform.git", dest: vim-terraform}
-    - {repo: "https://github.com/rodjek/vim-puppet.git", dest: vim-puppet}
-    - {repo: "https://github.com/hashivim/vim-packer.git", dest: vim-packer}
+
+- name: Install vim-terraform vim plugin
+  ansible.builtin.git:
+    repo: https://github.com/hashivim/vim-terraform.git
+    dest: ~/.vim/bundle/vim-terraform
+    force: true
+
+- name: Install vim-puppet vim plugin
+  ansible.builtin.git:
+    repo: https://github.com/rodjek/vim-puppet.git
+    dest: ~/.vim/bundle/vim-puppet
+    force: true
+
+- name: Install vim-packer vim plugin
+  ansible.builtin.git:
+    repo: https://github.com/hashivim/vim-packer.git
+    dest: ~/.vim/bundle/vim-packer
+    force: true

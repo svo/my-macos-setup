@@ -1,11 +1,23 @@
-- name: Install git source control
+- name: Install git version control system
   community.general.homebrew:
     name: git
 
-- name: Install git-quick-stats
+- name: Install git-quick-stats git statistics tool
   community.general.homebrew:
     name: git-quick-stats
 
-- name: Install GitHub tools
+- name: Install gh GitHub CLI
   community.general.homebrew:
-    name: gh,git-lfs,git-filter-repo,bfg
+    name: gh
+
+- name: Install git-lfs large file storage
+  community.general.homebrew:
+    name: git-lfs
+
+- name: Install git-filter-repo repository filter tool
+  community.general.homebrew:
+    name: git-filter-repo
+
+- name: Install bfg repository cleaner
+  community.general.homebrew:
+    name: bfg

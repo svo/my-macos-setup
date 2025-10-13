@@ -2,7 +2,7 @@
   community.general.homebrew:
     name: jenv
 
-- name: Update .zshrc
+- name: Configure jenv shell integration
   ansible.builtin.blockinfile:
     create: true
     path: ~/.zshrc
@@ -12,23 +12,23 @@
       export PATH="$HOME/.jenv/bin:$PATH"
       eval "$(jenv init -)"
 
-- name: Install current temurin
+- name: Install temurin JDK distribution
   community.general.homebrew_cask:
     name: temurin
 
-- name: Install VisualVM
+- name: Install visualvm JVM profiler
   community.general.homebrew_cask:
     name: visualvm
 
-- name: Install Gradle
+- name: Install gradle build tool
   community.general.homebrew:
     name: gradle
 
-- name: Install Maven
+- name: Install maven build tool
   community.general.homebrew:
     name: maven
 
-- name: Install vim plugins
+- name: Install vim-gradle vim plugin
   ansible.builtin.git:
     repo: https://github.com/tfnico/vim-gradle.git
     dest: ~/.vim/bundle/vim-gradle

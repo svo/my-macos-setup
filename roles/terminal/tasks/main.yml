@@ -1,24 +1,24 @@
-- name: Install newer bash
+- name: Install bash shell
   community.general.homebrew:
     name: bash
 
-- name: Install ohmyzsh shell experience
+- name: Install ohmyzsh zsh enhancement
   ansible.builtin.shell: /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
   args:
     creates: ~/.oh-my-zsh
 
-- name: Setup ohmyzsh theme
+- name: Configure ohmyzsh theme
   ansible.builtin.lineinfile:
     path: ~/.zshrc
     regexp: '^(.*)ZSH_THEME="(.*)"$'
     line: 'ZSH_THEME="gnzh"'
     backrefs: true
 
-- name: Install zsh-completions
+- name: Install zsh-completions command completion
   community.general.homebrew:
     name: zsh-completions
 
-- name: Setup zsh-completions
+- name: Configure zsh-completions shell integration
   ansible.builtin.blockinfile:
     create: true
     path: ~/.zshrc
@@ -32,11 +32,11 @@
       compinit
       fi
 
-- name: Install thefuck
+- name: Install thefuck command correction tool
   community.general.homebrew:
     name: thefuck
 
-- name: Setup thefuck
+- name: Configure thefuck shell integration
   ansible.builtin.blockinfile:
     path: ~/.zshrc
     marker: "# {mark} ANSIBLE MANAGED BLOCK (thefuck)"
@@ -47,7 +47,7 @@
   community.general.homebrew:
     name: tmux
 
-- name: Setup tmux
+- name: Configure tmux default settings
   ansible.builtin.blockinfile:
     create: true
     path: ~/.tmux.conf
@@ -58,7 +58,7 @@
       bind % split-window -h -c "#{pane_current_path}"
       setw -g mode-keys vi
 
-- name: Start tmux by default in Terminal.app
+- name: Configure tmux auto-start in Terminal.app
   ansible.builtin.blockinfile:
     path: ~/.zshrc
     marker: "# {mark} ANSIBLE MANAGED BLOCK (tmux start)"
@@ -66,11 +66,11 @@
       TERM=xterm &&
       if [ "$TMUX" = "" ]; then tmux; fi
 
-- name: Install core GNU utilities
+- name: Install coreutils GNU utilities
   community.general.homebrew:
     name: coreutils
 
-- name: Install GNU implementation of sed
+- name: Install gnu-sed text stream editor
   community.general.homebrew:
     name: gnu-sed
 
@@ -78,15 +78,15 @@
   community.general.homebrew:
     name: jq
 
-- name: Install yq YAML query procesor
+- name: Install yq YAML query processor
   community.general.homebrew:
     name: yq
 
-- name: Install XmlStarlet XML toolkit
+- name: Install xmlstarlet XML toolkit
   community.general.homebrew:
     name: xmlstarlet
 
-- name: Install docutils for processing documentation
+- name: Install docutils documentation processor
   community.general.homebrew:
     name: docutils
 
@@ -94,35 +94,35 @@
   community.general.homebrew:
     name: icdiff
 
-- name: Install htop for process monitoring
+- name: Install htop process monitor
   community.general.homebrew:
     name: htop
 
-- name: Install iftop for network monitoring
+- name: Install iftop network monitor
   community.general.homebrew:
     name: iftop
 
-- name: Install NCurses Disk Usage utility
+- name: Install ncdu disk usage analyzer
   community.general.homebrew:
     name: ncdu
 
-- name: Install watch for repeating command line commands
+- name: Install watch command repeater
   community.general.homebrew:
     name: watch
 
-- name: Install telnet
+- name: Install telnet network protocol client
   community.general.homebrew:
     name: telnet
 
-- name: Install traceroute for network diagnostics
+- name: Install tcptraceroute network diagnostic tool
   community.general.homebrew:
     name: tcptraceroute
 
-- name: Install gnuplot for interactive function plotting
+- name: Install gnuplot function plotter
   community.general.homebrew:
     name: gnuplot
 
-- name: Install spark for generating Sparklines
+- name: Install spark sparkline generator
   community.general.homebrew:
     name: spark
 
@@ -130,6 +130,6 @@
   community.general.homebrew:
     name: topgrade
 
-- name: Install fortune for random quotes
+- name: Install fortune random quote generator
   community.general.homebrew:
     name: fortune

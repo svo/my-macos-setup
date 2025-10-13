@@ -1,15 +1,15 @@
-- name: Install lynx command line browser
+- name: Install lynx text-based web browser
   community.general.homebrew:
     name: lynx
 
-- name: Install Chrome browser
+- name: Install google-chrome web browser
   community.general.homebrew_cask:
     name: google-chrome
 
-- name: Install Brave browser
+- name: Install brave-browser web browser
   community.general.homebrew_cask:
     name: brave-browser
 
-- name: Install ExpressVPN
+- name: Install expressvpn VPN client
   community.general.homebrew_cask:
     name: expressvpn

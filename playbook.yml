@@ -1,16 +1,16 @@
 ---
-- name: Play for setting up my-macos-setup
+- name: Setup macOS development environment
   hosts: all
 
   pre_tasks:
-    - name: Add /usr/local/sbin to path
+    - name: Configure system PATH variable
       ansible.builtin.lineinfile:
         path: /etc/paths
         line: '/usr/local/sbin'
         insertbefore: '/usr/sbin'
       become: true
 
-    - name: Update hostname
+    - name: Configure system hostname
       ansible.builtin.hostname:
         name: "{{ ansible_user_id }}-mac"
       become: true
@@ -43,7 +43,7 @@
 
   post_tasks:
 
-    - name: Change .local ownership and permissions
+    - name: Configure homebrew share directory permissions
       ansible.builtin.file:
         path: "{{ brew_brew_path.stdout | trim }}/share"
         owner: "{{ ansible_user_id }}"
