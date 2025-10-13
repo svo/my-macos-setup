@@ -13,7 +13,3 @@
 - name: System monitor for the menu bar
   community.general.homebrew_cask:
     name: stats
-
-- name: Install ExpressVPN
-  community.general.homebrew_cask:
-    name: expressvpn

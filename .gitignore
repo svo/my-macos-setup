@@ -2,3 +2,4 @@
 *.swo
 *.retry
 *.log
+.DS_Store

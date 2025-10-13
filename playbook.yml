@@ -27,22 +27,18 @@
     - kotlin
     - clojure
     - python
-    - gradle
-    - maven
     - iac
     - system
     - keyboard
     - docker
     - terminal
     - security
-    - semgrep
     - ai
     - media
     - design
     - internet
     - development
     - productivity
-    - plantuml
     - ios
 
   post_tasks:

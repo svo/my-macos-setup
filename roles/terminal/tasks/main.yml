@@ -14,54 +14,6 @@
     line: 'ZSH_THEME="gnzh"'
     backrefs: true
 
-- name: Install jq command-line JSON processor
-  community.general.homebrew:
-    name: jq
-
-- name: Install yq YAML query procesor
-  community.general.homebrew:
-    name: yq
-
-- name: Install XmlStarlet XML toolkit
-  community.general.homebrew:
-    name: xmlstarlet
-
-- name: Install docutils for processing documentation
-  community.general.homebrew:
-    name: docutils
-
-- name: Install cloc lines of code utility
-  community.general.homebrew:
-    name: cloc
-
-- name: Install scc code counter
-  community.general.homebrew:
-    name: scc
-
-- name: Install fortune for random quotes
-  community.general.homebrew:
-    name: fortune
-
-- name: Install core GNU utilities
-  community.general.homebrew:
-    name: coreutils
-
-- name: Install GNU implementation of sed
-  community.general.homebrew:
-    name: gnu-sed
-
-- name: Install tool for working with Architecture Decision Records
-  community.general.homebrew:
-    name: adr-tools
-
-- name: Install git-quick-stats
-  community.general.homebrew:
-    name: git-quick-stats
-
-- name: Install GitHub tools
-  community.general.homebrew:
-    name: gh,git-lfs,git-filter-repo,bfg
-
 - name: Install zsh-completions
   community.general.homebrew:
     name: zsh-completions
@@ -79,6 +31,17 @@
       autoload -Uz compinit
       compinit
       fi
+
+- name: Install thefuck
+  community.general.homebrew:
+    name: thefuck
+
+- name: Setup thefuck
+  ansible.builtin.blockinfile:
+    path: ~/.zshrc
+    marker: "# {mark} ANSIBLE MANAGED BLOCK (thefuck)"
+    block: |
+      eval $(thefuck --alias)
 
 - name: Install tmux terminal multiplexer
   community.general.homebrew:
@@ -103,26 +66,33 @@
       TERM=xterm &&
       if [ "$TMUX" = "" ]; then tmux; fi
 
+- name: Install core GNU utilities
+  community.general.homebrew:
+    name: coreutils
+
+- name: Install GNU implementation of sed
+  community.general.homebrew:
+    name: gnu-sed
+
+- name: Install jq command-line JSON processor
+  community.general.homebrew:
+    name: jq
+
+- name: Install yq YAML query procesor
+  community.general.homebrew:
+    name: yq
+
+- name: Install XmlStarlet XML toolkit
+  community.general.homebrew:
+    name: xmlstarlet
+
+- name: Install docutils for processing documentation
+  community.general.homebrew:
+    name: docutils
+
 - name: Install icdiff side-by-side diff tool
   community.general.homebrew:
     name: icdiff
-
-- name: Install telnet
-  community.general.homebrew:
-    name: telnet
-
-- name: Install HTTPie cURL wrapper
-  community.general.homebrew:
-    name: httpie
-    state: present
-
-- name: Install watch for repeating command line commands
-  community.general.homebrew:
-    name: watch
-
-- name: Install topgrade upgrade manager
-  community.general.homebrew:
-    name: topgrade
 
 - name: Install htop for process monitoring
   community.general.homebrew:
@@ -136,6 +106,14 @@
   community.general.homebrew:
     name: ncdu
 
+- name: Install watch for repeating command line commands
+  community.general.homebrew:
+    name: watch
+
+- name: Install telnet
+  community.general.homebrew:
+    name: telnet
+
 - name: Install traceroute for network diagnostics
   community.general.homebrew:
     name: tcptraceroute
@@ -148,17 +126,10 @@
   community.general.homebrew:
     name: spark
 
-- name: Install watchman
+- name: Install topgrade upgrade manager
   community.general.homebrew:
-    name: watchman
+    name: topgrade
 
-- name: Install thefuck
+- name: Install fortune for random quotes
   community.general.homebrew:
-    name: thefuck
-
-- name: Setup thefuck
-  ansible.builtin.blockinfile:
-    path: ~/.zshrc
-    marker: "# {mark} ANSIBLE MANAGED BLOCK (thefuck)"
-    block: |
-      eval $(thefuck --alias)
+    name: fortune

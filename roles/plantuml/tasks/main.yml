@@ -1,9 +1,0 @@
-- name: Install PlantUML CLI diagramming tool
-  community.general.homebrew:
-    name: plantuml
-
-- name: Install vim plugin
-  ansible.builtin.git:
-    repo: https://github.com/aklt/plantuml-syntax.git
-    dest: ~/.vim/bundle/plantuml-syntax
-    force: true

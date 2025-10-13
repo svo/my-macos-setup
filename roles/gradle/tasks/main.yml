@@ -1,9 +1,0 @@
-- name: Install Gradle
-  community.general.homebrew:
-    name: gradle
-
-- name: Install vim plugins
-  ansible.builtin.git:
-    repo: https://github.com/tfnico/vim-gradle.git
-    dest: ~/.vim/bundle/vim-gradle
-    force: true

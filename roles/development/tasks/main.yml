@@ -31,3 +31,38 @@
 - name: Install dbvisualizer
   community.general.homebrew_cask:
     name: dbvisualizer
+
+- name: Install PlantUML CLI diagramming tool
+  community.general.homebrew:
+    name: plantuml
+
+- name: Install PlantUML vim plugin
+  ansible.builtin.git:
+    repo: https://github.com/aklt/plantuml-syntax.git
+    dest: ~/.vim/bundle/plantuml-syntax
+    force: true
+
+- name: Install Semgrep static analysis for finding bugs and enforcing code standards
+  community.general.homebrew:
+    name: semgrep
+
+- name: Install cloc lines of code utility
+  community.general.homebrew:
+    name: cloc
+
+- name: Install scc code counter
+  community.general.homebrew:
+    name: scc
+
+- name: Install tool for working with Architecture Decision Records
+  community.general.homebrew:
+    name: adr-tools
+
+- name: Install HTTPie cURL wrapper
+  community.general.homebrew:
+    name: httpie
+    state: present
+
+- name: Install watchman
+  community.general.homebrew:
+    name: watchman

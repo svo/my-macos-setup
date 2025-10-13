@@ -1,3 +1,0 @@
-- name: Install Maven
-  community.general.homebrew:
-    name: maven

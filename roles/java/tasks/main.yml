@@ -19,3 +19,17 @@
 - name: Install VisualVM
   community.general.homebrew_cask:
     name: visualvm
+
+- name: Install Gradle
+  community.general.homebrew:
+    name: gradle
+
+- name: Install Maven
+  community.general.homebrew:
+    name: maven
+
+- name: Install vim plugins
+  ansible.builtin.git:
+    repo: https://github.com/tfnico/vim-gradle.git
+    dest: ~/.vim/bundle/vim-gradle
+    force: true

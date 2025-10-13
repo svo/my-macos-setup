@@ -18,6 +18,14 @@
   community.general.homebrew_cask:
     name: loom
 
+- name: Install ferdium for aggregating messaging platforms
+  community.general.homebrew_cask:
+    name: ferdium
+
+- name: Install zoom for internet telephony
+  community.general.homebrew_cask:
+    name: zoom
+
 - name: Install notion
   community.general.homebrew_cask:
     name: notion
