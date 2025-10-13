@@ -2,13 +2,9 @@
   community.general.homebrew_cask:
     name: 1password
 
-- name: Install TablePlus database management tool
+- name: Install lastpass password manager
   community.general.homebrew_cask:
-    name: tableplus
-
-- name: Install dbvisualizer
-  community.general.homebrew_cask:
-    name: dbvisualizer
+    name: lastpass
 
 - name: Install miro collaboration whiteboard
   community.general.homebrew_cask:
@@ -37,10 +33,6 @@
 - name: Install flycut clipboard manager
   community.general.homebrew_cask:
     name: flycut
-
-- name: Install lastpass password manager
-  community.general.homebrew_cask:
-    name: lastpass
 
 - name: Install clocker timezone menu
   community.general.homebrew_cask:

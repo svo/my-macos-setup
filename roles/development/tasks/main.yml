@@ -23,3 +23,11 @@
 - name: Install postman
   community.general.homebrew_cask:
     name: postman
+
+- name: Install TablePlus database management tool
+  community.general.homebrew_cask:
+    name: tableplus
+
+- name: Install dbvisualizer
+  community.general.homebrew_cask:
+    name: dbvisualizer
