@@ -27,14 +27,8 @@
     name: xmlstarlet
 
 - name: Install docutils for processing documentation
-  ansible.builtin.pip:
+  community.general.homebrew:
     name: docutils
-    executable: pipx
-
-- name: Install python-json2csv for JSON to CSV
-  ansible.builtin.pip:
-    name: python-json2csv
-    executable: pipx
 
 - name: Install cloc lines of code utility
   community.general.homebrew:
@@ -44,10 +38,9 @@
   community.general.homebrew:
     name: scc
 
-- name: Install petname command line name generator
-  ansible.builtin.pip:
-    name: petname
-    executable: pipx
+- name: Install fortune for random quotes
+  community.general.homebrew:
+    name: fortune
 
 - name: Install core GNU utilities
   community.general.homebrew:
