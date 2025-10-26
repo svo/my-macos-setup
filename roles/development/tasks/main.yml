@@ -42,6 +42,19 @@
     dest: ~/.vim/bundle/plantuml-syntax
     force: true
 
+- name: Install mermaid-cli diagramming tool
+  community.general.homebrew:
+    name: mermaid-cli
+
+- name: Configure mermaid-cli to use Google Chrome
+  ansible.builtin.blockinfile:
+    create: true
+    path: ~/.zshrc
+    marker: "# {mark} ANSIBLE MANAGED BLOCK FOR MERMAID-CLI"
+    mode: "0644"
+    block: |
+      export PUPPETEER_EXECUTABLE_PATH="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+
 - name: Install semgrep static analysis tool
   community.general.homebrew:
     name: semgrep
