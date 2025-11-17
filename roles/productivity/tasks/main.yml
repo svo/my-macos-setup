@@ -22,10 +22,6 @@
   community.general.homebrew_cask:
     name: ferdium
 
-- name: Install zoom video conferencing tool
-  community.general.homebrew_cask:
-    name: zoom
-
 - name: Install notion note-taking and collaboration tool
   community.general.homebrew_cask:
     name: notion
