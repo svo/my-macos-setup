@@ -9,7 +9,3 @@
 - name: Install brave-browser web browser
   community.general.homebrew_cask:
     name: brave-browser
-
-- name: Install expressvpn VPN client
-  community.general.homebrew_cask:
-    name: expressvpn
