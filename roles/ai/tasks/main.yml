@@ -46,3 +46,12 @@
   register: ai_claude_mcp_add_notion
   changed_when: "'Added MCP server' in ai_claude_mcp_add_notion.stdout or 'Successfully added' in ai_claude_mcp_add_notion.stdout"
   failed_when: false
+
+- name: Install Copilot CLI
+  ansible.builtin.shell: >
+    export NVM_DIR="$HOME/.nvm" &&
+    . "$(brew --prefix nvm)/nvm.sh" &&
+    nvm use v22.14.0 &&
+    npm install @github/copilot --global
+  register: ai_npm_install_copilot
+  changed_when: "'added' in ai_npm_install_copilot.stdout"
