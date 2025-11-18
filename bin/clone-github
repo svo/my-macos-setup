@@ -1,0 +1,18 @@
+#!/bin/bash
+
+gh repo list --limit 4000 | while read -r repo _; do
+  path=`echo $repo | sed 's/svo\///g'`
+
+  echo "----------------"
+
+  if ! [ -d $path ]; then
+    echo "Clone ${path}"
+    gh repo clone "$repo"
+  else
+    echo "Fetch ${path}"
+    pushd $path
+    git fetch --all
+    git pull --rebase
+    popd
+  fi
+done

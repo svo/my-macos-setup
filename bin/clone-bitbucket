@@ -1,0 +1,65 @@
+#!/bin/bash
+
+set -e
+
+if [ -z "$BITBUCKET_EMAIL" ]; then
+  echo "Error: BITBUCKET_EMAIL environment variable is not set"
+  exit 1
+fi
+
+if [ -z "$BITBUCKET_API_TOKEN" ]; then
+  echo "Error: BITBUCKET_API_TOKEN environment variable is not set"
+  echo "Create an API token at: https://bitbucket.org/account/settings/api-tokens/"
+  exit 1
+fi
+
+if ! command -v jq &> /dev/null; then
+  echo "Error: jq is not installed"
+  exit 1
+fi
+
+if ! command -v git &> /dev/null; then
+  echo "Error: git is not installed"
+  exit 1
+fi
+
+process_repos() {
+  local api_url="$1"
+
+  response=$(curl -s -u "$BITBUCKET_EMAIL:$BITBUCKET_API_TOKEN" "$api_url")
+
+  if [ $? -ne 0 ]; then
+    echo "Error: Failed to fetch repositories from Bitbucket API"
+    exit 1
+  fi
+
+  repos=$(echo "$response" | jq -r '.values[] | "\(.workspace.slug)/\(.slug)|\(.links.clone[] | select(.name == "ssh") | .href)"')
+
+  while IFS='|' read -r repo_path clone_url; do
+    if [ -z "$repo_path" ] || [ -z "$clone_url" ]; then
+      continue
+    fi
+
+    echo "----------------"
+
+    if ! [ -d "$repo_path" ]; then
+      echo "Clone ${repo_path}"
+      git clone "$clone_url" "$repo_path"
+    else
+      echo "Fetch ${repo_path}"
+      pushd "$repo_path" > /dev/null
+      git fetch --all
+      git pull --rebase
+      popd > /dev/null
+    fi
+  done <<< "$repos"
+
+  next_url=$(echo "$response" | jq -r '.next // empty')
+
+  if [ -n "$next_url" ]; then
+    process_repos "$next_url"
+  fi
+}
+
+initial_url="https://api.bitbucket.org/2.0/repositories?role=member&pagelen=100"
+process_repos "$initial_url"
