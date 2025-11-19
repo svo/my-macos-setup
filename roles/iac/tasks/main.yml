@@ -70,6 +70,8 @@
 - name: Install vagrant development environment manager
   community.general.homebrew_cask:
     name: vagrant
+  environment:
+    SUDO_ASKPASS: /tmp/ansible-askpass.sh
 
 - name: Install direnv environment variable manager
   community.general.homebrew:

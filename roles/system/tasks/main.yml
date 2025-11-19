@@ -1,10 +1,14 @@
 - name: Install logitech-options peripheral software
   community.general.homebrew_cask:
     name: logitech-options
+  environment:
+    SUDO_ASKPASS: /tmp/ansible-askpass.sh
 
 - name: Install balenaetcher bootable USB creator
   community.general.homebrew_cask:
     name: balenaetcher
+  environment:
+    SUDO_ASKPASS: /tmp/ansible-askpass.sh
 
 - name: Install testdisk data recovery tool
   community.general.homebrew:

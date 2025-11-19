@@ -15,6 +15,8 @@
 - name: Install temurin JDK distribution
   community.general.homebrew_cask:
     name: temurin
+  environment:
+    SUDO_ASKPASS: /tmp/ansible-askpass.sh
 
 - name: Install visualvm JVM profiler
   community.general.homebrew_cask:

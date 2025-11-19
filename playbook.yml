@@ -3,6 +3,14 @@
   hosts: all
 
   pre_tasks:
+    - name: Create sudo askpass helper script
+      ansible.builtin.copy:
+        dest: /tmp/ansible-askpass.sh
+        mode: '0700'
+        content: |
+          #!/bin/sh
+          echo "{{ lookup('env', 'ANSIBLE_BECOME_PASS') }}"
+
     - name: Configure system PATH variable
       ansible.builtin.lineinfile:
         path: /etc/paths
@@ -50,3 +58,8 @@
         recurse: true
         mode: '0755'
       become: true
+
+    - name: Remove sudo askpass helper script
+      ansible.builtin.file:
+        path: /tmp/ansible-askpass.sh
+        state: absent
