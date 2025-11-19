@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -e
-
 if [ -z "$BITBUCKET_EMAIL" ]; then
   echo "Error: BITBUCKET_EMAIL environment variable is not set"
   exit 1
@@ -49,7 +47,7 @@ process_repos() {
       echo "Fetch ${repo_path}"
       pushd "$repo_path" > /dev/null
       git fetch --all
-      git pull --rebase
+      git pull --rebase || true
       popd > /dev/null
     fi
   done <<< "$repos"
