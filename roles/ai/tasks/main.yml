@@ -55,3 +55,35 @@
     npm install @github/copilot --global
   register: ai_npm_install_copilot
   changed_when: "'added' in ai_npm_install_copilot.stdout"
+
+- name: Ensure Rovo Dev MCP config directory exists
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/.rovodev"
+    state: directory
+    mode: '0755'
+
+- name: Configure MCP servers for Rovo Dev CLI
+  ansible.builtin.copy:
+    dest: "{{ ansible_env.HOME }}/.rovodev/mcp.json"
+    content: |
+      {
+        "mcpServers": {
+          "context7": {
+            "url": "https://mcp.context7.com/mcp",
+            "transport": "http"
+          },
+          "sequential-thinking": {
+            "command": "npx",
+            "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"],
+            "transport": "stdio"
+          },
+          "figma": {
+            "command": "npx",
+            "args": ["-y", "figma-developer-mcp", "--stdio"],
+            "transport": "stdio"
+          }
+        }
+      }
+    mode: '0644'
+  register: ai_rovodev_mcp_config
+  changed_when: ai_rovodev_mcp_config.changed
