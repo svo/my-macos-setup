@@ -18,4 +18,6 @@ brew doctor || true &&
 
 brew install python &&
 
-brew install ansible
+brew install ansible &&
+
+ansible-galaxy collection install -r requirements.yml
