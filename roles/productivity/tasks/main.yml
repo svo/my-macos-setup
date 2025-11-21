@@ -1,11 +1,3 @@
-- name: Install 1password password manager
-  community.general.homebrew_cask:
-    name: 1password
-
-- name: Install lastpass password manager
-  community.general.homebrew_cask:
-    name: lastpass
-
 - name: Install alfred launcher and productivity tool
   community.general.homebrew_cask:
     name: alfred
