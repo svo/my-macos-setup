@@ -10,10 +10,6 @@
   community.general.homebrew_cask:
     name: loom
 
-- name: Install dropbox cloud storage
-  community.general.homebrew_cask:
-    name: dropbox
-
 - name: Install google-drive cloud storage
   community.general.homebrew_cask:
     name: google-drive
