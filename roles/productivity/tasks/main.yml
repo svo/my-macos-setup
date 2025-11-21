@@ -10,10 +10,6 @@
   community.general.homebrew_cask:
     name: loom
 
-- name: Install notion note-taking and collaboration tool
-  community.general.homebrew_cask:
-    name: notion
-
 - name: Install dropbox cloud storage
   community.general.homebrew_cask:
     name: dropbox
