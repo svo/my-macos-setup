@@ -1,11 +1,3 @@
-- name: Install ChatGPT
-  community.general.homebrew_cask:
-    name: chatgpt
-
-- name: Install Codex
-  community.general.homebrew:
-    name: codex
-
 - name: Install Claude
   community.general.homebrew_cask:
     name: claude
@@ -38,13 +30,6 @@
     claude mcp add --scope user figma npx -- -y figma-developer-mcp --stdio
   register: ai_claude_mcp_add_figma
   changed_when: "'Added MCP server' in ai_claude_mcp_add_figma.stdout or 'Successfully added' in ai_claude_mcp_add_figma.stdout"
-  failed_when: false
-
-- name: Add Notion MCP Server to Claude Code
-  ansible.builtin.shell: >
-    claude mcp add --scope user notion npx -- -y @notionhq/notion-mcp-server
-  register: ai_claude_mcp_add_notion
-  changed_when: "'Added MCP server' in ai_claude_mcp_add_notion.stdout or 'Successfully added' in ai_claude_mcp_add_notion.stdout"
   failed_when: false
 
 - name: Install Copilot CLI
