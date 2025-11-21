@@ -51,10 +51,6 @@
   community.general.homebrew_cask:
     name: gcloud-cli
 
-- name: Install firebase-cli Firebase command-line interface
-  community.general.homebrew:
-    name: firebase-cli
-
 - name: Install kubernetes-cli Kubernetes command-line tool
   community.general.homebrew:
     name: kubernetes-cli
