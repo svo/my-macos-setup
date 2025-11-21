@@ -10,10 +10,6 @@
   community.general.homebrew_cask:
     name: loom
 
-- name: Install ferdium messaging aggregator
-  community.general.homebrew_cask:
-    name: ferdium
-
 - name: Install notion note-taking and collaboration tool
   community.general.homebrew_cask:
     name: notion
