@@ -61,11 +61,6 @@
             "command": "npx",
             "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"],
             "transport": "stdio"
-          },
-          "figma": {
-            "command": "npx",
-            "args": ["-y", "figma-developer-mcp", "--stdio"],
-            "transport": "stdio"
           }
         }
       }
