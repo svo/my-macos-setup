@@ -56,3 +56,8 @@
       autocmd FileType Markdown setlocal spell spelllang=en_au
       set encoding=utf-8
       let mapleader = ","
+      imap <silent><script><expr> <Leader><Tab> copilot#Accept("\<CR>")
+      let g:copilot_no_tab_map = v:true
+      imap <Leader>[ <Plug>(copilot-previous)
+      imap <Leader>] <Plug>(copilot-next)
+      imap <Leader>. <Plug>(copilot-suggest)
