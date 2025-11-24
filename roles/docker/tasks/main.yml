@@ -4,7 +4,7 @@
 
 - name: Install additional docker packages
   community.general.homebrew:
-    name: docker-compose,colima
+    name: docker-compose,docker-credential-helper,colima
 
 - name: Install lima-additional-guestagents
   community.general.homebrew:
