@@ -18,6 +18,12 @@
   environment:
     SUDO_ASKPASS: /tmp/ansible-askpass.sh
 
+- name: Install temurin JDK distribution 21
+  community.general.homebrew_cask:
+    name: temurin@21
+  environment:
+    SUDO_ASKPASS: /tmp/ansible-askpass.sh
+
 - name: Install visualvm JVM profiler
   community.general.homebrew_cask:
     name: visualvm
