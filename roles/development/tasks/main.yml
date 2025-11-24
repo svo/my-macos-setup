@@ -82,3 +82,11 @@
 - name: Install watchman file watching service
   community.general.homebrew:
     name: watchman
+
+- name: Add Snyk homebrew tap
+  community.general.homebrew_tap:
+    name: snyk/tap
+
+- name: Install Snyk CLI
+  community.general.homebrew:
+    name: snyk-cli
