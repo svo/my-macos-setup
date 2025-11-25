@@ -1,20 +1,8 @@
-- name: Install docker
-  community.general.homebrew:
+- name: Install Docker Desktop
+  community.general.homebrew_cask:
     name: docker
+    state: present
 
 - name: Install additional docker packages
   community.general.homebrew:
-    name: docker-compose,docker-credential-helper,colima
-
-- name: Install lima-additional-guestagents
-  community.general.homebrew:
-    name: lima-additional-guestagents
-
-- name: Add colima socket as DOCKER_HOST
-  ansible.builtin.blockinfile:
-    create: true
-    path: ~/.zprofile
-    marker: "# {mark} ANSIBLE MANAGED BLOCK FOR DOCKER_HOST"
-    mode: "0644"
-    block: |
-      export DOCKER_HOST="unix://$HOME/.colima/default/docker.sock"
+    name: docker-compose,docker-credential-helper
