@@ -98,3 +98,7 @@
 - name: Install Atlassian CLI
   community.general.homebrew:
     name: acli
+
+- name: Install Cross-platform make
+  community.general.homebrew:
+    name: cmake
