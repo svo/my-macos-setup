@@ -2,6 +2,16 @@
   community.general.homebrew:
     name: pyenv
 
+- name: Install Python 3.10 with pyenv
+  ansible.builtin.shell: |
+    eval "$(~/.pyenv/bin/pyenv init - zsh)"
+    pyenv install 3.10 || pyenv install --skip-existing 3.10
+  args:
+    executable: /bin/zsh
+  environment:
+    PYENV_ROOT: "{{ ansible_env.HOME }}/.pyenv"
+    PATH: "{{ ansible_env.HOME }}/.pyenv/bin:{{ ansible_env.PATH }}"
+
 - name: Add pip3 as pip and configure pyenv to .zshrc
   ansible.builtin.blockinfile:
     create: true
