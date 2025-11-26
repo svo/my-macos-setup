@@ -24,6 +24,12 @@
   environment:
     SUDO_ASKPASS: /tmp/ansible-askpass.sh
 
+- name: Install corretto JDK distribution 21
+  community.general.homebrew_cask:
+    name: corretto@21
+  environment:
+    SUDO_ASKPASS: /tmp/ansible-askpass.sh
+
 - name: Install visualvm JVM profiler
   community.general.homebrew_cask:
     name: visualvm
