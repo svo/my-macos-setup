@@ -38,6 +38,14 @@
   community.general.homebrew:
     name: gradle
 
+- name: Install gng tap for Gradle Native Generator
+  community.general.homebrew_tap:
+    name: gdubw/gng
+
+- name: Install gng Gradle Native Generator
+  community.general.homebrew:
+    name: gng
+
 - name: Install mvnvm maven version manager
   community.general.homebrew:
     name: mvnvm
