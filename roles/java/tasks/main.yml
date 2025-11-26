@@ -38,9 +38,9 @@
   community.general.homebrew:
     name: gradle
 
-- name: Install maven build tool
+- name: Install mvnvm maven version manager
   community.general.homebrew:
-    name: maven
+    name: mvnvm
 
 - name: Install vim-gradle vim plugin
   ansible.builtin.git:
