@@ -102,3 +102,11 @@
 - name: Install Cross-platform make
   community.general.homebrew:
     name: cmake
+
+- name: Add Luca Grulla homebrew tap for cw
+  community.general.homebrew_tap:
+    name: lucagrulla/tap
+
+- name: Install cw AWS CloudWatch Logs tailer
+  community.general.homebrew:
+    name: cw
