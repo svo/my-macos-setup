@@ -1,4 +1,8 @@
-- name: Add pip3 as pip to .zshrc
+- name: Install pyenv
+  community.general.homebrew:
+    name: pyenv
+
+- name: Add pip3 as pip and configure pyenv to .zshrc
   ansible.builtin.blockinfile:
     create: true
     path: ~/.zshrc
@@ -7,6 +11,10 @@
     block: |
       alias pip=pip3
       alias python=python3
+
+      export PYENV_ROOT="$HOME/.pyenv"
+      [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+      eval "$(pyenv init - zsh)"
 
 - name: Install python
   community.general.homebrew:
