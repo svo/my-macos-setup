@@ -82,3 +82,31 @@
 - name: Install watchman file watching service
   community.general.homebrew:
     name: watchman
+
+- name: Add Snyk homebrew tap
+  community.general.homebrew_tap:
+    name: snyk/tap
+
+- name: Install Snyk CLI
+  community.general.homebrew:
+    name: snyk-cli
+
+- name: Add Atlassian homebrew tap
+  community.general.homebrew_tap:
+    name: atlassian/homebrew-acli
+
+- name: Install Atlassian CLI
+  community.general.homebrew:
+    name: acli
+
+- name: Install Cross-platform make
+  community.general.homebrew:
+    name: cmake
+
+- name: Add Luca Grulla homebrew tap for cw
+  community.general.homebrew_tap:
+    name: lucagrulla/tap
+
+- name: Install cw AWS CloudWatch Logs tailer
+  community.general.homebrew:
+    name: cw

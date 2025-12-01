@@ -133,11 +133,3 @@
 - name: Install fortune random quote generator
   community.general.homebrew:
     name: fortune
-
-- name: Add atlassian homebrew tap
-  community.general.homebrew_tap:
-    name: atlassian/homebrew-acli
-
-- name: Install Atlassian CLI
-  community.general.homebrew:
-    name: acli

@@ -18,7 +18,7 @@ my-macos-setup/
 │   ├── git/              # Git version control
 │   ├── vim/              # Vim text editor
 │   ├── terminal/         # Shell and terminal utilities
-│   ├── docker/           # Docker and Colima
+│   ├── docker/           # Docker Desktop
 │   ├── java/             # Java ecosystem (JDK, Gradle, Maven)
 │   ├── node/             # Node.js and npm
 │   ├── ruby/             # Ruby and rbenv

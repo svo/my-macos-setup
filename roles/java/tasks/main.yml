@@ -24,6 +24,12 @@
   environment:
     SUDO_ASKPASS: /tmp/ansible-askpass.sh
 
+- name: Install corretto JDK distribution 21
+  community.general.homebrew_cask:
+    name: corretto@21
+  environment:
+    SUDO_ASKPASS: /tmp/ansible-askpass.sh
+
 - name: Install visualvm JVM profiler
   community.general.homebrew_cask:
     name: visualvm
@@ -32,9 +38,17 @@
   community.general.homebrew:
     name: gradle
 
-- name: Install maven build tool
+- name: Install gng tap for Gradle Native Generator
+  community.general.homebrew_tap:
+    name: gdubw/gng
+
+- name: Install gng Gradle Native Generator
   community.general.homebrew:
-    name: maven
+    name: gng
+
+- name: Install mvnvm maven version manager
+  community.general.homebrew:
+    name: mvnvm
 
 - name: Install vim-gradle vim plugin
   ansible.builtin.git:
