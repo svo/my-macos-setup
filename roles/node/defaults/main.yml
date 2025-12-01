@@ -2,7 +2,6 @@
 node_version: "22.14.0"
 node_npm_global_packages:
   - electron-packager
-  - yarn
   - gitinspector
   - git-stats-html
   - markdown2confluence-cws
