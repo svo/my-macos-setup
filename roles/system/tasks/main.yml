@@ -1,6 +1,6 @@
-- name: Install logitech-options peripheral software
+- name: Install logi-options+ peripheral software
   community.general.homebrew_cask:
-    name: logitech-options
+    name: logi-options+
   environment:
     SUDO_ASKPASS: /tmp/ansible-askpass.sh
 
