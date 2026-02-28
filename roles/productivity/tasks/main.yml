@@ -53,3 +53,7 @@
 - name: Install clocker timezone menu bar tool
   community.general.homebrew_cask:
     name: clocker
+
+- name: Install gcalcli Google Calendar command line interface
+  community.general.homebrew:
+    name: gcalcli
