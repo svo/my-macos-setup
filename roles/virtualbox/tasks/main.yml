@@ -1,0 +1,6 @@
+- name: Install VirtualBox virtualization platform
+  community.general.homebrew_cask:
+    name: virtualbox
+    state: present
+  environment:
+    SUDO_ASKPASS: /tmp/ansible-askpass.sh

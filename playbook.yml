@@ -39,6 +39,7 @@
     - system
     - keyboard
     - docker
+    - virtualbox
     - terminal
     - security
     - ai
