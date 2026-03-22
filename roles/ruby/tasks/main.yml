@@ -7,13 +7,13 @@
     name: ruby-build
     state: latest
 
-- name: Install ruby version 3.4.7
-  ansible.builtin.command: rbenv install 3.4.7
+- name: Install ruby version 4.0.2
+  ansible.builtin.command: rbenv install 4.0.2
   args:
-    creates: ~/.rbenv/versions/3.4.7
+    creates: ~/.rbenv/versions/4.0.2
 
 - name: Configure rbenv default ruby version
-  ansible.builtin.command: rbenv global 3.4.7
+  ansible.builtin.command: rbenv global 4.0.2
   register: ruby_rbenv_global
   changed_when: false
 
@@ -25,5 +25,5 @@
     mode: "0644"
     block: |
       eval "$(rbenv init -)"
-      export PATH="$HOME/.rbenv/versions/3.4.7/bin:$PATH"
-      export PATH="$HOME/.gem/ruby/3.4.7/bin:$PATH"
+      export PATH="$HOME/.rbenv/versions/4.0.2/bin:$PATH"
+      export PATH="$HOME/.gem/ruby/4.0.2/bin:$PATH"
