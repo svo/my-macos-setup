@@ -10,10 +10,6 @@
   community.general.homebrew_cask:
     name: miro
 
-- name: Install loom screen recorder
-  community.general.homebrew_cask:
-    name: loom
-
 - name: Install ferdium messaging aggregator
   community.general.homebrew_cask:
     name: ferdium
