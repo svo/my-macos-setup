@@ -18,10 +18,6 @@
   community.general.homebrew_cask:
     name: notion
 
-- name: Install dropbox cloud storage
-  community.general.homebrew_cask:
-    name: dropbox
-
 - name: Install google-drive cloud storage
   community.general.homebrew_cask:
     name: google-drive
