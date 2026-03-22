@@ -6,7 +6,7 @@
   ansible.builtin.shell: >
     export NVM_DIR="$HOME/.nvm" &&
     . "$(brew --prefix nvm)/nvm.sh" &&
-    nvm use v22.14.0 &&
+    nvm use v24.14.0 &&
     npm install @anthropic-ai/claude-code --global
   register: ai_npm_install_claude
   changed_when: "'added' in ai_npm_install_claude.stdout"
@@ -43,7 +43,7 @@
   ansible.builtin.shell: >
     export NVM_DIR="$HOME/.nvm" &&
     . "$(brew --prefix nvm)/nvm.sh" &&
-    nvm use v22.14.0 &&
+    nvm use v24.14.0 &&
     npm install @github/copilot --global
   register: ai_npm_install_copilot
   changed_when: "'added' in ai_npm_install_copilot.stdout"

@@ -1,5 +1,5 @@
 ---
-node_version: "22.14.0"
+node_version: "24.14.0"
 node_npm_global_packages:
   - electron-packager
   - yarn
