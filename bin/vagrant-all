@@ -1,0 +1,19 @@
+#!/bin/bash
+
+if [ $# -eq 0 ]; then
+  echo "Usage: vagrant-all <vagrant-command>"
+  echo "Example: vagrant-all up"
+  echo "Example: vagrant-all destroy -f"
+  exit 1
+fi
+
+for vagrantfile in "${PWD}"/*/Vagrantfile; do
+  project_dir=$(dirname "${vagrantfile}")
+  project=$(basename "${project_dir}")
+
+  if grep -q "VAGRANT_DEFAULT_PROVIDER.*docker" "${vagrantfile}"; then
+    echo "=== ${project} ==="
+    (cd "${project_dir}" && vagrant "$@")
+    echo
+  fi
+done
