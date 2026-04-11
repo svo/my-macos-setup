@@ -19,6 +19,16 @@
   community.general.homebrew:
     name: hashicorp/tap/packer
 
+- name: Install packer docker plugin
+  ansible.builtin.command:
+    cmd: packer plugins install github.com/hashicorp/docker
+  changed_when: true
+
+- name: Install packer ansible plugin
+  ansible.builtin.command:
+    cmd: packer plugins install github.com/hashicorp/ansible
+  changed_when: true
+
 - name: Install vault secrets management tool
   community.general.homebrew:
     name: hashicorp/tap/vault
