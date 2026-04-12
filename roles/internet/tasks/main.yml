@@ -5,7 +5,3 @@
 - name: Install google-chrome web browser
   community.general.homebrew_cask:
     name: google-chrome
-
-- name: Install brave-browser web browser
-  community.general.homebrew_cask:
-    name: brave-browser
