@@ -77,6 +77,12 @@
   community.general.homebrew:
     name: ktmpl
 
+- name: Install virtualbox virtualization tool
+  community.general.homebrew_cask:
+    name: virtualbox
+  environment:
+    SUDO_ASKPASS: /tmp/ansible-askpass.sh
+
 - name: Install vagrant development environment manager
   community.general.homebrew_cask:
     name: vagrant
