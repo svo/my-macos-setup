@@ -4,8 +4,7 @@ tmux_directories=""
 
 tmux_file="start-tmux-sessions-for"
 
-colima stop --force
-colima start --dns 8.8.8.8 --dns 8.8.4.4 --cpu 2 --memory 16 --disk 512 --vm-type=vz --mount-type=sshfs &&
+open -a Docker && echo "Waiting for Docker Desktop to be ready..." && while ! docker info > /dev/null 2>&1; do sleep 1; done &&
 
 for tmux_directory in */; do
   pushd ${tmux_directory}

@@ -1,16 +1,16 @@
-- name: Install Colima and related tools
-  community.general.homebrew:
-    name: colima,docker,docker-compose,docker-credential-helper
+- name: Install Docker Desktop
+  community.general.homebrew_cask:
+    name: docker
+    state: present
+  environment:
+    SUDO_ASKPASS: /tmp/ansible-askpass.sh
 
-- name: Install lima-additional-guestagents
+- name: Install Docker CLI tools
   community.general.homebrew:
-    name: lima-additional-guestagents
+    name: docker-compose,docker-credential-helper
 
-- name: Add colima socket as DOCKER_HOST
+- name: Remove Colima DOCKER_HOST override if present
   ansible.builtin.blockinfile:
-    create: true
     path: ~/.zprofile
     marker: "# {mark} ANSIBLE MANAGED BLOCK FOR DOCKER_HOST"
-    mode: "0644"
-    block: |
-      export DOCKER_HOST="unix://$HOME/.colima/default/docker.sock"
+    state: absent
