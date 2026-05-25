@@ -41,9 +41,13 @@
   community.general.homebrew:
     name: terragrunt
 
+- name: Add tflint homebrew tap
+  community.general.homebrew_tap:
+    name: terraform-linters/tap
+
 - name: Install tflint Terraform linting tool
   community.general.homebrew:
-    name: tflint
+    name: terraform-linters/tap/tflint
 
 - name: Install terraform-docs documentation generator
   community.general.homebrew:
