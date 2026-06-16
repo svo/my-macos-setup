@@ -17,3 +17,7 @@
 - name: Install stats system monitor
   community.general.homebrew_cask:
     name: stats
+
+- name: Install caffeine sleep prevention tool
+  community.general.homebrew_cask:
+    name: caffeine
