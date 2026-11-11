@@ -1,6 +1,6 @@
 repos:
   - repo: https://github.com/ansible/ansible-lint
-    rev: v25.1.3
+    rev: v26.10.1
     hooks:
       - id: ansible-lint
         additional_dependencies:
