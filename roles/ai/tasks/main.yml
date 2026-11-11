@@ -39,6 +39,45 @@
   changed_when: "'Added MCP server' in ai_claude_mcp_add_notion.stdout or 'Successfully added' in ai_claude_mcp_add_notion.stdout"
   failed_when: false
 
+- name: Create Claude Code configuration directory
+  ansible.builtin.file:
+    path: "{{ ai_claude_code_settings_path | dirname }}"
+    state: directory
+    mode: "0755"
+
+- name: Check Claude Code user settings file
+  ansible.builtin.stat:
+    path: "{{ ai_claude_code_settings_path }}"
+  register: ai_claude_code_settings_stat
+
+- name: Read Claude Code user settings file
+  ansible.builtin.slurp:
+    src: "{{ ai_claude_code_settings_path }}"
+  register: ai_claude_code_settings_file
+  when: ai_claude_code_settings_stat.stat.exists
+
+- name: Merge Claude Code tmux-agent-status hooks
+  ansible.builtin.command:
+    argv:
+      - jq
+      - --null-input
+      - --arg
+      - script
+      - "{{ ai_tmux_agent_status_path }}"
+      - --from-file
+      - "{{ role_path }}/files/claude-code-hooks.jq"
+    stdin: "{{ ai_claude_code_settings_file.content | default('') | b64decode | default('{}', true) }}"
+  register: ai_claude_code_settings_merged
+  changed_when: false
+  check_mode: false
+
+- name: Configure Claude Code tmux-agent-status hooks
+  ansible.builtin.copy:
+    content: "{{ ai_claude_code_settings_merged.stdout }}\n"
+    dest: "{{ ai_claude_code_settings_path }}"
+    mode: "{{ ai_claude_code_settings_stat.stat.mode | default('0644') }}"
+  when: ai_claude_code_settings_merged.stdout | length > 0
+
 - name: Install Copilot CLI
   ansible.builtin.shell: >
     export NVM_DIR="$HOME/.nvm" &&
