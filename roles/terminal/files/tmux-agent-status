@@ -4,6 +4,8 @@ exec >/dev/null 2>&1
 
 [ -n "$TMUX" ] && [ -n "$TMUX_PANE" ] || exit 0
 
+suffix=' (#{?@agent_title,#{@agent_title} ,}waiting...)'
+
 case $1 in
 waiting)
     label=${2:-Agent}
@@ -16,9 +18,11 @@ EOF
 
     tmux set-option -w -o -t "$window" @agent_waiting "$(date +%s)" \; \
         set-option -w -F -t "$window" @agent_name '#{window_name}' \; \
+        set-option -w -F -t "$TMUX_PANE" @agent_title \
+            '#{?#{m/r:^[^A-Za-z0-9 ]+ ,#{pane_title}},#{s/^[^A-Za-z0-9 ]+ //:pane_title},}' \; \
         set-option -w -t "$window" @agent_auto "${automatic_rename:-inherit}" \; \
         set-option -w -t "$window" @agent_label "$label" \; \
-        rename-window -t "$window" '#{window_name} (waiting...)' || exit 0
+        rename-window -t "$window" "#{window_name}$suffix" || exit 0
 
     tmux list-clients -F '#{client_name}' | while IFS= read -r client; do
         tmux display-message -c "$client" -t "$window" -d 5000 \
@@ -28,7 +32,7 @@ EOF
 clear)
     read -r window waiting untouched suffixed automatic_rename <<EOF
 $(tmux display-message -p -t "$TMUX_PANE" \
-    '#{window_id} #{?@agent_waiting,1,0} #{==:#{window_name},#{@agent_name} (waiting...)} #{m:* (waiting...),#{window_name}} #{@agent_auto}')
+    "#{window_id} #{?@agent_waiting,1,0} #{==:#{window_name},#{@agent_name}$suffix} #{==:#{=/-#{w:$suffix}:window_name},$suffix} #{@agent_auto}")
 EOF
     [ -n "$window" ] && [ "$waiting" = 1 ] || exit 0
 
@@ -40,17 +44,19 @@ EOF
         inherit) set -- "$@" ';' set-option -w -u -t "$window" automatic-rename ;;
         esac
     elif [ "$suffixed" = 1 ]; then
-        set -- "$@" ';' rename-window -t "$window" '#{s/ \(waiting\.\.\.\)$//:window_name}'
+        set -- "$@" ';' rename-window -t "$window" "#{=/#{e|-:#{w:window_name},#{w:$suffix}}:window_name}"
     fi
     tmux "$@" ';' \
         set-option -w -u -t "$window" @agent_waiting ';' \
         set-option -w -u -t "$window" @agent_name ';' \
+        set-option -w -u -t "$window" @agent_title ';' \
         set-option -w -u -t "$window" @agent_auto ';' \
         set-option -w -u -t "$window" @agent_label
     ;;
 sessions)
     client=$2
     tab=$(printf '\t')
+    unit=$(printf '\037')
 
     read -r height total current <<EOF
 $(tmux display-message -p -c "$client" -t "$TMUX_PANE" '#{client_height} #{server_sessions} #{session_id}')
@@ -77,24 +83,31 @@ EOF
         listed=$((listed + 1))
     done <<EOF
 $(tmux list-sessions -O index \
-    -F "#{W:#{@agent_waiting} }$tab#{session_id}$tab#{?session_attached,(attached),}$tab#{session_name}" |
-    awk -F '\t' -v now="$(date +%s)" '
+    -F "#{W:#{?@agent_waiting,#{@agent_waiting} #{@agent_title}$unit,}}$tab#{session_id}$tab#{?session_attached,(attached),}$tab#{session_name}" |
+    awk -F '\t' -v now="$(date +%s)" -v unit="$unit" '
         {
             since = 0
-            for (count = split($1, starts, " "); count > 0; count--)
-                if (!since || starts[count] + 0 < since)
-                    since = starts[count] + 0
+            for (count = split($1, waits, unit); count > 0; count--) {
+                start = waits[count] + 0
+                if (start && (!since || start < since)) {
+                    since = start
+                    title = waits[count]
+                    sub(/^[0-9]+ /, "", title)
+                }
+            }
             name = $4
             gsub(/#/, "##", name)
+            row = (name ~ /^-/ ? "#[default]" : "") name
             notes = $3
             if (since) {
                 minutes = int((now - since) / 60)
                 age = minutes < 60 ? minutes "m" : sprintf("%dh%02dm", minutes / 60, minutes % 60)
-                notes = (notes ? notes " " : "") "#[fg=themeblack,bg=darkorange](waiting " age ")"
+                gsub(/#/, "##", title)
+                notes = (notes ? notes " " : "") "#[fg=themeblack,bg=darkorange](" (title ? title " " : "") "waiting " age ")"
             }
             if (notes)
-                name = name "  #[align=right]" notes
-            printf "%d\t%d\t%s\t#[default]%s\n", !since, since ? since : NR, $2, name
+                row = row "  #[align=right]" notes
+            printf "%d\t%d\t%s\t%s\n", !since, since ? since : NR, $2, row
         }
     ' | sort -k 1,1n -k 2,2n)
 EOF
