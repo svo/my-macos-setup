@@ -57,14 +57,15 @@ sessions)
     client=$2
     tab=$(printf '\t')
     unit=$(printf '\037')
+    leave="if -F -t $TMUX_PANE '##{==:##{pane_mode},tree-mode}' 'send-keys -t $TMUX_PANE q'"
 
     read -r height total current <<EOF
 $(tmux display-message -p -c "$client" -t "$TMUX_PANE" '#{client_height} #{server_sessions} #{session_id}')
 EOF
     [ -n "$current" ] || exit 0
 
-    capacity=$((height - 3))
-    [ "$total" -le "$capacity" ] || capacity=$((capacity - 2))
+    capacity=$((height - 5))
+    [ "$total" -le "$capacity" ] || capacity=$((capacity - 1))
 
     set --
     listed=0
@@ -79,7 +80,7 @@ EOF
         elif [ "$waiting" = 0 ] && [ "$session" = "$current" ]; then
             choice=$listed
         fi
-        set -- "$@" "$name" '' "switch-client -t '$session'"
+        set -- "$@" "$name" '' "$leave ; switch-client -t '$session'"
         listed=$((listed + 1))
     done <<EOF
 $(tmux list-sessions -O index \
@@ -111,8 +112,9 @@ $(tmux list-sessions -O index \
         }
     ' | sort -k 1,1n -k 2,2n)
 EOF
-    [ "$listed" = "$total" ] ||
-        set -- "$@" '' 'All sessions' '' "choose-tree -Zs -F '##{E:@agent_session_tree_format}'"
+    set -- "$@" ''
+    [ "$listed" = "$total" ] || set -- "$@" 'All sessions' '' ''
+    set -- "$@" 'Close' q "$leave"
 
     tmux display-menu -c "$client" -t "$TMUX_PANE" -C "$choice" -T ' Sessions ' -x C -y C "$@"
     ;;
