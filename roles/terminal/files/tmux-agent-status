@@ -14,7 +14,7 @@ $(tmux display-message -p -t "$TMUX_PANE" '#{window_id} #{?@agent_waiting,1,0}' 
 EOF
     [ -n "$window" ] && [ "$waiting" = 0 ] || exit 0
 
-    tmux set-option -w -o -t "$window" @agent_waiting 1 \; \
+    tmux set-option -w -o -t "$window" @agent_waiting "$(date +%s)" \; \
         set-option -w -F -t "$window" @agent_name '#{window_name}' \; \
         set-option -w -t "$window" @agent_auto "${automatic_rename:-inherit}" \; \
         set-option -w -t "$window" @agent_label "$label" \; \
@@ -47,6 +47,61 @@ EOF
         set-option -w -u -t "$window" @agent_name ';' \
         set-option -w -u -t "$window" @agent_auto ';' \
         set-option -w -u -t "$window" @agent_label
+    ;;
+sessions)
+    client=$2
+    tab=$(printf '\t')
+
+    read -r height total current <<EOF
+$(tmux display-message -p -c "$client" -t "$TMUX_PANE" '#{client_height} #{server_sessions} #{session_id}')
+EOF
+    [ -n "$current" ] || exit 0
+
+    capacity=$((height - 3))
+    [ "$total" -le "$capacity" ] || capacity=$((capacity - 2))
+
+    set --
+    listed=0
+    waiting=0
+    choice=0
+    while IFS=$tab read -r group _ session name; do
+        [ "$listed" -lt "$capacity" ] || break
+        if [ "$group" = 0 ]; then
+            waiting=$((waiting + 1))
+        elif [ "$waiting" -gt 0 ] && [ "$listed" = "$waiting" ]; then
+            set -- "$@" ''
+        elif [ "$waiting" = 0 ] && [ "$session" = "$current" ]; then
+            choice=$listed
+        fi
+        set -- "$@" "$name" '' "switch-client -t '$session'"
+        listed=$((listed + 1))
+    done <<EOF
+$(tmux list-sessions -O index \
+    -F "#{W:#{@agent_waiting} }$tab#{session_id}$tab#{?session_attached,(attached),}$tab#{session_name}" |
+    awk -F '\t' -v now="$(date +%s)" '
+        {
+            since = 0
+            for (count = split($1, starts, " "); count > 0; count--)
+                if (!since || starts[count] + 0 < since)
+                    since = starts[count] + 0
+            name = $4
+            gsub(/#/, "##", name)
+            notes = $3
+            if (since) {
+                minutes = int((now - since) / 60)
+                age = minutes < 60 ? minutes "m" : sprintf("%dh%02dm", minutes / 60, minutes % 60)
+                notes = (notes ? notes " " : "") "#[fg=themeblack,bg=darkorange](waiting " age ")"
+            }
+            if (notes)
+                name = name "  #[align=right]" notes
+            printf "%d\t%d\t%s\t#[default]%s\n", !since, since ? since : NR, $2, name
+        }
+    ' | sort -k 1,1n -k 2,2n)
+EOF
+    [ "$listed" = "$total" ] ||
+        set -- "$@" '' 'All sessions' '' "choose-tree -Zs -F '##{E:@agent_session_tree_format}'"
+
+    tmux display-menu -c "$client" -t "$TMUX_PANE" -C "$choice" -T ' Sessions ' -x C -y C "$@"
     ;;
 esac
 
