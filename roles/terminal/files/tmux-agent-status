@@ -5,36 +5,14 @@ exec >/dev/null 2>&1
 [ -n "$TMUX" ] && [ -n "$TMUX_PANE" ] || exit 0
 
 suffix=' (#{?@agent_title,#{@agent_title} ,}waiting...)'
+title='#{?#{m/r:^[^A-Za-z0-9 ]+ ,#{pane_title}},#{s/^[^A-Za-z0-9 ]+ //:pane_title},}'
 
-case $1 in
-waiting)
-    label=${2:-Agent}
-
-    { read -r window waiting; read -r automatic_rename; } <<EOF
-$(tmux display-message -p -t "$TMUX_PANE" '#{window_id} #{?@agent_waiting,1,0}' \; \
-    show-options -wv -t "$TMUX_PANE" automatic-rename)
-EOF
-    [ -n "$window" ] && [ "$waiting" = 0 ] || exit 0
-
-    tmux set-option -w -o -t "$window" @agent_waiting "$(date +%s)" \; \
-        set-option -w -F -t "$window" @agent_name '#{window_name}' \; \
-        set-option -w -F -t "$TMUX_PANE" @agent_title \
-            '#{?#{m/r:^[^A-Za-z0-9 ]+ ,#{pane_title}},#{s/^[^A-Za-z0-9 ]+ //:pane_title},}' \; \
-        set-option -w -t "$window" @agent_auto "${automatic_rename:-inherit}" \; \
-        set-option -w -t "$window" @agent_label "$label" \; \
-        rename-window -t "$window" "#{window_name}$suffix" || exit 0
-
-    tmux list-clients -F '#{client_name}' | while IFS= read -r client; do
-        tmux display-message -c "$client" -t "$window" -d 5000 \
-            '#{q/h:@agent_label} waiting: #{q/h:session_name} › #{q/h:@agent_name}'
-    done
-    ;;
-clear)
+clear_waiting() {
     read -r window waiting untouched suffixed automatic_rename <<EOF
 $(tmux display-message -p -t "$TMUX_PANE" \
     "#{window_id} #{?@agent_waiting,1,0} #{==:#{window_name},#{@agent_name}$suffix} #{==:#{=/-#{w:$suffix}:window_name},$suffix} #{@agent_auto}")
 EOF
-    [ -n "$window" ] && [ "$waiting" = 1 ] || exit 0
+    [ -n "$window" ] && [ "$waiting" = 1 ] || return 0
 
     set -- show-options -w -t "$window" @agent_waiting
     if [ "$untouched" = 1 ]; then
@@ -52,6 +30,40 @@ EOF
         set-option -w -u -t "$window" @agent_title ';' \
         set-option -w -u -t "$window" @agent_auto ';' \
         set-option -w -u -t "$window" @agent_label
+}
+
+case $1 in
+waiting)
+    label=${2:-Agent}
+
+    { read -r window waiting; read -r automatic_rename; } <<EOF
+$(tmux display-message -p -t "$TMUX_PANE" '#{window_id} #{?@agent_waiting,1,0}' \; \
+    show-options -wv -t "$TMUX_PANE" automatic-rename)
+EOF
+    [ -n "$window" ] && [ "$waiting" = 0 ] || exit 0
+
+    tmux set-option -w -o -t "$window" @agent_waiting "$(date +%s)" \; \
+        set-option -w -F -t "$window" @agent_name '#{window_name}' \; \
+        set-option -w -u -t "$window" @agent_working \; \
+        set-option -w -F -t "$TMUX_PANE" @agent_title "$title" \; \
+        set-option -w -t "$window" @agent_auto "${automatic_rename:-inherit}" \; \
+        set-option -w -t "$window" @agent_label "$label" \; \
+        rename-window -t "$window" "#{window_name}$suffix" || exit 0
+
+    tmux list-clients -F '#{client_name}' | while IFS= read -r client; do
+        tmux display-message -c "$client" -t "$window" -d 5000 \
+            '#{q/h:@agent_label} waiting: #{q/h:session_name} › #{q/h:@agent_name}'
+    done
+    ;;
+working)
+    clear_waiting
+    tmux set-option -w -F -t "$TMUX_PANE" @agent_working "#{?@agent_working,#{@agent_working},$(date +%s)}" \; \
+        set-option -w -F -t "$TMUX_PANE" @agent_title "$title"
+    ;;
+clear)
+    clear_waiting
+    tmux set-option -w -u -t "$TMUX_PANE" @agent_working \; \
+        set-option -w -u -t "$TMUX_PANE" @agent_title
     ;;
 sessions)
     client=$2
@@ -64,53 +76,75 @@ $(tmux display-message -p -c "$client" -t "$TMUX_PANE" '#{client_height} #{serve
 EOF
     [ -n "$current" ] || exit 0
 
+    rows=$(tmux list-sessions -O index \
+        -F "#{W:#{?@agent_waiting,#{@agent_waiting} #{@agent_title}$unit,}}$tab#{W:#{?@agent_working,#{@agent_working} #{@agent_title}$unit,}}$tab#{session_id}$tab#{?session_attached,(attached),}$tab#{session_name}" |
+        awk -F '\t' -v now="$(date +%s)" -v unit="$unit" '
+            function earliest(field, entries, count, start) {
+                since = 0
+                title = ""
+                for (count = split(field, entries, unit); count > 0; count--) {
+                    start = entries[count] + 0
+                    if (start && (!since || start < since)) {
+                        since = start
+                        title = entries[count]
+                        sub(/^[0-9]+ /, "", title)
+                    }
+                }
+                gsub(/#/, "##", title)
+                return since
+            }
+            {
+                name = $5
+                gsub(/#/, "##", name)
+                row = (name ~ /^-/ ? "#[default]" : "") name
+                notes = $4
+                if (earliest($1)) {
+                    group = 0
+                    minutes = int((now - since) / 60)
+                    age = minutes < 60 ? minutes "m" : sprintf("%dh%02dm", minutes / 60, minutes % 60)
+                    notes = (notes ? notes " " : "") "#[fg=themeblack,bg=darkorange](" (title ? title " " : "") "waiting " age ")"
+                } else if (earliest($2)) {
+                    group = 1
+                    notes = (notes ? notes " " : "") "#[fg=themeblack,bg=themegreen](" (title ? title " " : "") "working...)"
+                } else {
+                    group = 2
+                    since = NR
+                }
+                if (notes)
+                    row = row "  #[align=right]" notes
+                printf "%d\t%d\t%s\t%s\n", group, since, $3, row
+            }
+        ' | sort -k 1,1n -k 2,2n)
+
     capacity=$((height - 5))
-    [ "$total" -le "$capacity" ] || capacity=$((capacity - 1))
+    gaps=$(printf '%s\n' "$rows" | awk -F '\t' '$1 != last { groups++; last = $1 } END { print groups - 1 }')
+    [ $((total + gaps)) -le "$capacity" ] || capacity=$((capacity - 1))
 
     set --
+    lines=0
     listed=0
     waiting=0
+    previous=
     choice=0
     while IFS=$tab read -r group _ session name; do
-        [ "$listed" -lt "$capacity" ] || break
-        if [ "$group" = 0 ]; then
-            waiting=$((waiting + 1))
-        elif [ "$waiting" -gt 0 ] && [ "$listed" = "$waiting" ]; then
+        gap=0
+        [ -z "$previous" ] || [ "$group" = "$previous" ] || gap=1
+        [ $((lines + gap)) -lt "$capacity" ] || break
+        if [ "$gap" = 1 ]; then
             set -- "$@" ''
+            lines=$((lines + 1))
+        fi
+        previous=$group
+        if [ "$group" = 0 ]; then
+            waiting=1
         elif [ "$waiting" = 0 ] && [ "$session" = "$current" ]; then
-            choice=$listed
+            choice=$lines
         fi
         set -- "$@" "$name" '' "$leave ; switch-client -t '$session'"
+        lines=$((lines + 1))
         listed=$((listed + 1))
     done <<EOF
-$(tmux list-sessions -O index \
-    -F "#{W:#{?@agent_waiting,#{@agent_waiting} #{@agent_title}$unit,}}$tab#{session_id}$tab#{?session_attached,(attached),}$tab#{session_name}" |
-    awk -F '\t' -v now="$(date +%s)" -v unit="$unit" '
-        {
-            since = 0
-            for (count = split($1, waits, unit); count > 0; count--) {
-                start = waits[count] + 0
-                if (start && (!since || start < since)) {
-                    since = start
-                    title = waits[count]
-                    sub(/^[0-9]+ /, "", title)
-                }
-            }
-            name = $4
-            gsub(/#/, "##", name)
-            row = (name ~ /^-/ ? "#[default]" : "") name
-            notes = $3
-            if (since) {
-                minutes = int((now - since) / 60)
-                age = minutes < 60 ? minutes "m" : sprintf("%dh%02dm", minutes / 60, minutes % 60)
-                gsub(/#/, "##", title)
-                notes = (notes ? notes " " : "") "#[fg=themeblack,bg=darkorange](" (title ? title " " : "") "waiting " age ")"
-            }
-            if (notes)
-                row = row "  #[align=right]" notes
-            printf "%d\t%d\t%s\t%s\n", !since, since ? since : NR, $2, row
-        }
-    ' | sort -k 1,1n -k 2,2n)
+$rows
 EOF
     set -- "$@" ''
     [ "$listed" = "$total" ] || set -- "$@" 'All sessions' '' ''

@@ -3,6 +3,8 @@ def run($arguments):
 
 def waiting: run("waiting 'Claude Code'");
 
+def working: run("working");
+
 def clear: run("clear");
 
 def ours:
@@ -14,8 +16,8 @@ def ours:
     Notification: [
       {matcher: "permission_prompt|idle_prompt|elicitation_dialog|elicitation_url_dialog"} + waiting
     ],
-    UserPromptSubmit: [clear],
-    PostToolBatch: [clear],
+    UserPromptSubmit: [working],
+    PostToolBatch: [working],
     SessionStart: [{matcher: "startup|resume"} + clear],
     SessionEnd: [clear]
   };
