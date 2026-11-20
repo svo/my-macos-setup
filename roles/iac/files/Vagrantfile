@@ -1,0 +1,35 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+#
+# User-level Vagrantfile: Vagrant loads this for every project on this machine.
+#
+# Workaround (added 2026-11-21): on macOS 27, Ruby's
+# `Socket.tcp(host, port, connect_timeout: ...)` reports closed ports as open in
+# the Ruby bundled with Vagrant 2.4.9 (3.3.8). Vagrant's forwarded-port collision
+# check uses exactly that call, so every host port looked "already in use":
+# boxes with fixed `docker.ports` / forwarded ports failed to create, and
+# auto-corrected SSH ports all fell through to 2250. Ruby 4.0.9 behaves correctly.
+#
+# This swaps in a plain blocking connect (what Vagrant used before 2.3). The only
+# caller is HandleForwardedPortCollisions. Remove it once a Vagrant release ships a
+# fixed Ruby; check with:
+#   /opt/vagrant/embedded/bin/ruby -rsocket -e \
+#     'Socket.tcp("127.0.0.1", 1, connect_timeout: 0.1) rescue puts "fixed"'
+require 'socket'
+require 'timeout'
+require 'vagrant/util/is_port_open'
+
+module Vagrant
+  module Util
+    module IsPortOpen
+      def is_port_open?(host, port)
+        Timeout.timeout(1) { TCPSocket.new(host, port).close }
+        true
+      rescue Timeout::Error, Errno::ETIMEDOUT, Errno::ECONNREFUSED,
+             Errno::EHOSTUNREACH, Errno::ENETUNREACH, Errno::EACCES,
+             Errno::ENOTCONN, Errno::EALREADY, Errno::EADDRNOTAVAIL
+        false
+      end
+    end
+  end
+end

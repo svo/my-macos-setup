@@ -95,6 +95,18 @@
   environment:
     SUDO_ASKPASS: /tmp/ansible-askpass.sh
 
+- name: Create vagrant user configuration directory
+  ansible.builtin.file:
+    path: ~/.vagrant.d
+    state: directory
+    mode: "0755"
+
+- name: Install vagrant user Vagrantfile fixing the macOS 27 port collision check
+  ansible.builtin.copy:
+    src: Vagrantfile
+    dest: ~/.vagrant.d/Vagrantfile
+    mode: "0644"
+
 - name: Install direnv environment variable manager
   community.general.homebrew:
     name: direnv
