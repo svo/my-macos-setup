@@ -91,7 +91,7 @@
     path: ~/.zshrc
     marker: "# {mark} ANSIBLE MANAGED BLOCK (tmux start)"
     block: |
-      TERM=xterm &&
+      TERM=xterm-256color &&
       if [ "$TMUX" = "" ]; then tmux; fi
 
 - name: Install coreutils GNU utilities
