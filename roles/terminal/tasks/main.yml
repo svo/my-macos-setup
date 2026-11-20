@@ -59,6 +59,7 @@
       setw -g mode-keys vi
       set -s copy-command 'LC_ALL=en_US.UTF-8 pbcopy'
       set -g status-left-length 60
+      set -g history-limit 50000
   notify: Reload tmux configuration
 
 - name: Create tmux-agent-status install directory
