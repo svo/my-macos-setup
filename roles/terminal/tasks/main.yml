@@ -59,6 +59,7 @@
       setw -g mode-keys vi
       set -s copy-command 'LC_ALL=en_US.UTF-8 pbcopy'
       set -g status-left-length 60
+  notify: Reload tmux configuration
 
 - name: Create tmux-agent-status install directory
   ansible.builtin.file:
@@ -79,6 +80,10 @@
     mode: "0644"
     marker: "# {mark} ANSIBLE MANAGED BLOCK FOR TMUX-AGENT-STATUS"
     block: "{{ lookup('ansible.builtin.file', 'tmux-agent-status.conf') }}"
+  notify: Reload tmux configuration
+
+- name: Apply tmux configuration to the running server
+  ansible.builtin.meta: flush_handlers
 
 - name: Configure tmux auto-start in Terminal.app
   ansible.builtin.blockinfile:

@@ -1,0 +1,13 @@
+---
+- name: Reload tmux configuration
+  ansible.builtin.command:
+    argv:
+      - tmux
+      - source-file
+      - ~/.tmux.conf
+  register: terminal_tmux_reload
+  changed_when: terminal_tmux_reload.rc == 0
+  failed_when:
+    - terminal_tmux_reload.rc != 0
+    - "'no server running' not in terminal_tmux_reload.stderr"
+    - "'error connecting' not in terminal_tmux_reload.stderr"
