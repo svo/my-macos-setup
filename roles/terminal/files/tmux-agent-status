@@ -10,6 +10,7 @@ case $0 in
 esac
 
 title='#{?#{m/r:^[^A-Za-z0-9 ]+ ,#{pane_title}},#{s/^[^A-Za-z0-9 ]+ //:pane_title},}'
+pane='#{?@agent_pane,#{@agent_pane},#{pane_id}}'
 shells='^-?(ba|da|fi|k|tc|z|c)?sh$'
 quiet='#{e|>:#{e|-:#{T:@agent_now},#{pane_last_output_time}},15}'
 condition="#{?#{&&:#{m/r:$shells,#{pane_current_command}},#{!=:#{pane_current_command},#{@agent_command}}},gone,#{?$quiet,quiet,live}}"
@@ -104,6 +105,17 @@ observe)
         start_waiting "$since" ''
     fi
     ;;
+next)
+    client=$2
+    target=$(tmux list-windows -a -f "#{&&:#{@agent_waiting},#{!=:$pane,$TMUX_PANE}}" -F "#{@agent_waiting} $pane" |
+        sort -n | head -n 1 | cut -d ' ' -f 2)
+
+    if [ -n "$target" ]; then
+        tmux switch-client -c "$client" -t "$target"
+    else
+        tmux display-message -c "$client" 'No other agents waiting'
+    fi
+    ;;
 sessions)
     client=$2
     tab=$(printf '\t')
@@ -116,7 +128,7 @@ EOF
     [ -n "$current" ] || exit 0
 
     rows=$(tmux list-sessions -O index \
-        -F "#{W:#{?@agent_waiting,#{@agent_waiting} #{@agent_title}$unit,}}$tab#{W:#{?@agent_working,#{@agent_working} #{@agent_title}$unit,}}$tab#{session_id}$tab#{?session_attached,(attached),}$tab#{session_name}" |
+        -F "#{W:#{?@agent_waiting,#{@agent_waiting} $pane #{@agent_title}$unit,}}$tab#{W:#{?@agent_working,#{@agent_working} $pane #{@agent_title}$unit,}}$tab#{session_id}$tab#{?session_attached,(attached),}$tab#{session_name}" |
         awk -F '\t' -v now="$(date +%s)" -v unit="$unit" '
             function earliest(field, entries, count, start) {
                 since = 0
@@ -127,6 +139,9 @@ EOF
                         since = start
                         title = entries[count]
                         sub(/^[0-9]+ /, "", title)
+                        target = title
+                        sub(/ .*/, "", target)
+                        sub(/^[^ ]+ ?/, "", title)
                     }
                 }
                 gsub(/#/, "##", title)
@@ -148,10 +163,11 @@ EOF
                 } else {
                     group = 2
                     since = NR
+                    target = $3
                 }
                 if (notes)
                     row = row "  #[align=right]" notes
-                printf "%d\t%d\t%s\t%s\n", group, since, $3, row
+                printf "%d\t%d\t%s\t%s\t%s\n", group, since, $3, target, row
             }
         ' | sort -k 1,1n -k 2,2n)
 
@@ -165,7 +181,7 @@ EOF
     waiting=0
     previous=
     choice=0
-    while IFS=$tab read -r group _ session name; do
+    while IFS=$tab read -r group _ session target name; do
         gap=0
         [ -z "$previous" ] || [ "$group" = "$previous" ] || gap=1
         [ $((lines + gap)) -lt "$capacity" ] || break
@@ -179,7 +195,7 @@ EOF
         elif [ "$waiting" = 0 ] && [ "$session" = "$current" ]; then
             choice=$lines
         fi
-        set -- "$@" "$name" '' "$leave ; switch-client -t '$session'"
+        set -- "$@" "$name" '' "$leave ; switch-client -t '$target'"
         lines=$((lines + 1))
         listed=$((listed + 1))
     done <<EOF
