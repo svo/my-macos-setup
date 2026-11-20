@@ -147,6 +147,10 @@ EOF
                 gsub(/#/, "##", title)
                 return since
             }
+            function age(minutes) {
+                minutes = int((now - since) / 60)
+                return minutes < 60 ? minutes "m" : sprintf("%dh%02dm", minutes / 60, minutes % 60)
+            }
             {
                 name = $5
                 gsub(/#/, "##", name)
@@ -154,12 +158,10 @@ EOF
                 notes = $4
                 if (earliest($1)) {
                     group = 0
-                    minutes = int((now - since) / 60)
-                    age = minutes < 60 ? minutes "m" : sprintf("%dh%02dm", minutes / 60, minutes % 60)
-                    notes = (notes ? notes " " : "") "#[fg=themeblack,bg=darkorange](" (title ? title " " : "") "waiting " age ")"
+                    notes = (notes ? notes " " : "") "#[fg=themeblack,bg=darkorange](" (title ? title " " : "") "waiting " age() ")"
                 } else if (earliest($2)) {
                     group = 1
-                    notes = (notes ? notes " " : "") "#[fg=themeblack,bg=themegreen](" (title ? title " " : "") "working...)"
+                    notes = (notes ? notes " " : "") "#[fg=themeblack,bg=themegreen](" (title ? title " " : "") "working " age() ")"
                 } else {
                     group = 2
                     since = NR
