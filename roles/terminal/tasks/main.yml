@@ -58,6 +58,7 @@
       bind % split-window -h -c "#{pane_current_path}"
       setw -g mode-keys vi
       set -s copy-command 'LC_ALL=en_US.UTF-8 pbcopy'
+      set -g status-left-length 60
 
 - name: Create tmux-agent-status install directory
   ansible.builtin.file:
