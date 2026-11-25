@@ -60,6 +60,9 @@
       set -s copy-command 'LC_ALL=en_US.UTF-8 pbcopy'
       set -g status-left-length 60
       set -g history-limit 50000
+      bind -n M-_ send-keys -l "\u2014"
+      bind -n M-- send-keys -l "\u2013"
+      bind -n 'M-;' send-keys -l "\u2026"
   notify: Reload tmux configuration
 
 - name: Create tmux-agent-status install directory
